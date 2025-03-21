@@ -7,10 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="/css/styles.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <div class="bg-dark text-white py-1">
         <div class="container">
             <a href="#conteudo" class="skip-link">Ir para conteúdo</a>
@@ -51,9 +50,9 @@
         </div>
     </nav>
 
-    <main class="container my-5" id="conteudo">
-        <section class="row g-4">
-            <div class="col-md-12">
+    <main class="container my-5 flex-grow-1" id="conteudo">
+        <section class="row g-0"> 
+            <div class="col-12">
                 <div class="card h-100 shadow">
                     <div class="card-body">
                         <h2 class="card-title"><i class="fas fa-newspaper me-2"></i>Últimas Notícias</h2>
@@ -79,61 +78,61 @@
         </section>
     </main>
 
-    <footer class="bg-dark text-white mt-5">
-        <div class="container py-4">
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <h3>Contato</h3>
-                    <p><i class="fas fa-envelope me-2"></i>observatorio@prefeitura.sp.gov.br</p>
-                    <p><i class="fas fa-phone me-2"></i>(11) 1234-5678</p>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <h3>Links Úteis</h3>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white"><i class="fas fa-external-link-alt me-2"></i>Portal Transparência</a></li>
-                        <li><a href="#" class="text-white"><i class="fas fa-balance-scale me-2"></i>Legislação Trabalhista</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h3>Redes Sociais</h3>
-                    <div class="d-flex gap-3">
-                        <a href="#" 
-                           class="text-white social-link" 
-                           data-platform="facebook"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           aria-label="Facebook Oficial">
-                            <i class="fab fa-facebook fa-2x"></i>
-                        </a>
+    <footer class="bg-dark text-white mt-auto py-3">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <h3>Contato</h3>
+                        <p><i class="fas fa-envelope me-2"></i>observatorio@prefeitura.arapiraca.al.gov.br</p>
+                        <p><i class="fas fa-phone me-2"></i>(82) 3521-0000</p>
+                    </div>
                     
-                        <a href="#" 
-                           class="text-white social-link" 
-                           data-platform="twitter"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           aria-label="Perfil no X (Twitter)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="width: 32px; height: 32px;">
-                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                            </svg>
-                        </a>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <h3>Links Úteis</h3>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white"><i class="fas fa-external-link-alt me-2"></i>Portal Transparência</a></li>
+                            <li><a href="#" class="text-white"><i class="fas fa-balance-scale me-2"></i>Legislação Trabalhista</a></li>
+                        </ul>
+                    </div>
                     
-                        <a href="#" 
-                           class="text-white social-link" 
-                           data-platform="instagram"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           aria-label="Instagram Oficial">
-                            <i class="fab fa-instagram fa-2x"></i>
-                        </a>
+                    <div class="col-md-4">
+                        <h3>Redes Sociais</h3>
+                        <div class="d-flex gap-3">
+                            <a href="#" class="text-white social-link" 
+                               data-platform="facebook"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               aria-label="Facebook Oficial">
+                                <i class="fab fa-facebook fa-2x"></i>
+                            </a>
+                            
+                            <a href="#" class="text-white social-link" 
+                               data-platform="twitter"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               aria-label="Perfil no X (Twitter)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="width: 32px; height: 32px;">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                </svg>
+                            </a>
+                            
+                            <a href="#" class="text-white social-link" 
+                               data-platform="instagram"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               aria-label="Instagram Oficial">
+                                <i class="fab fa-instagram fa-2x"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="text-center mt-4">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAbwAAAG8B8aLcQwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABgSURBVDiN7dAxDkAwDETRX5Dg/qdMQkE6GuYUljLzJp7a2gDg7B1VxRzDzHDO4Z7zr6CqyDk/3a2q3wRVxXv/9sM9wXuPiCAiEBHMjK7rXgURwXEc1lrUWv8F3gA2sCwSJZq/ggAAAABJRU5ErkJggg==" alt="Acessibilidade">
-                <p class="mb-0 mt-2 small">© 2024 Prefeitura Municipal de Arapiraca - Todos os direitos reservados</p>
+                
+                <div class="text-center mt-4 pt-3 border-top border-secondary">
+                    <p class="mb-0 small">© 2024 Prefeitura Municipal de Arapiraca - Todos os direitos reservados</p>
+                </div>
             </div>
         </div>
-
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -143,8 +142,6 @@
         document.querySelectorAll('.social-link').forEach(link => {
             const platform = link.dataset.platform;
             link.href = window.socialLinks[platform];
-            
-            // Melhoria de acessibilidade
             link.setAttribute('aria-label', `${platform} oficial`);
         });
     });
