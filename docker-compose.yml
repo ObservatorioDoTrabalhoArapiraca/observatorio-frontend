@@ -1,6 +1,11 @@
 services:
   web:
-    build: .
+    build: 
+      context: .
+      args:
+        - FACEBOOK_URL
+        - TWITTER_URL
+        - INSTAGRAM_URL
     ports:
       - "8080:80"
-    restart: unless-stopped
+    env_file: .env
