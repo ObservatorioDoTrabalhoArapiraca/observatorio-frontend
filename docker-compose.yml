@@ -8,4 +8,4 @@ services:
         - INSTAGRAM_URL
     ports:
       - "8080:80"
-    env_file: .env  
+    env_file: .env
