@@ -114,13 +114,37 @@
                 <div class="col-md-4">
                     <h3>Redes Sociais</h3>
                     <div class="d-flex gap-3">
-                        <a href="#" class="text-white"><i class="fab fa-facebook fa-2x"></i></a>
-                        <a href="#" class="text-white">
+                        <!-- Facebook -->
+                        <a href="#" 
+                           class="text-white social-link" 
+                           data-platform="facebook"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="Facebook Oficial">
+                            <i class="fab fa-facebook fa-2x"></i>
+                        </a>
+                    
+                        <!-- X/Twitter -->
+                        <a href="#" 
+                           class="text-white social-link" 
+                           data-platform="twitter"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="Perfil no X (Twitter)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="width: 32px; height: 32px;">
                                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                             </svg>
                         </a>
-                        <a href="#" class="text-white"><i class="fab fa-instagram fa-2x"></i></a>
+                    
+                        <!-- Instagram -->
+                        <a href="#" 
+                           class="text-white social-link" 
+                           data-platform="instagram"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           aria-label="Instagram Oficial">
+                            <i class="fab fa-instagram fa-2x"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -129,9 +153,21 @@
                 <p class="mb-0 mt-2 small">© 2024 Prefeitura Municipal de Arapiraca - Todos os direitos reservados</p>
             </div>
         </div>
+
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/scripts.js"></script>
+    <script src="/js/config.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.social-link').forEach(link => {
+            const platform = link.dataset.platform;
+            link.href = window.socialLinks[platform];
+            
+            // Melhoria de acessibilidade
+            link.setAttribute('aria-label', `${platform} oficial`);
+        });
+    });
+    </script>
 </body>
 </html>
