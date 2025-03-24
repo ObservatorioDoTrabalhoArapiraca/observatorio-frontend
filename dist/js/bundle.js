@@ -1,1 +1,0 @@
-(()=>{"use strict";const t={facebook:process.env.FACEBOOK_URL||"#",twitter:process.env.TWITTER_URL||"#",instagram:process.env.INSTAGRAM_URL||"#"};window.socialLinks=t,document.addEventListener("DOMContentLoaded",(()=>{"true"===localStorage.getItem("highContrast")&&document.body.classList.add("high-contrast")}))})();

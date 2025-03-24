@@ -1,19 +1,12 @@
-interface SocialLinks {
+export interface SocialLinks {
     facebook: string;
     twitter: string;
     instagram: string;
   }
   
-  // Exporte as configurações
   export const socialLinks: SocialLinks = {
-    facebook: process.env.FACEBOOK_URL || '#',
-    twitter: process.env.TWITTER_URL || '#',
-    instagram: process.env.INSTAGRAM_URL || '#'
+    facebook: "https://facebook.com/seu-perfil",
+    twitter: "https://twitter.com/seu-perfil",
+    instagram: "https://instagram.com/seu-perfil",
   };
   
-  // Extenda a interface Window
-  declare global {
-    interface Window {
-      socialLinks: SocialLinks;
-    }
-  }
