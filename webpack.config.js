@@ -1,36 +1,25 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: './src/ts/scripts.ts',
+  mode: 'production',
+  entry: './src/ts/scripts.ts', // Certifique-se de que este caminho está correto
   output: {
-    filename: 'js/bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
+    path: path.resolve(__dirname, 'dist'), // Gera os arquivos em 'dist'
+    filename: 'bundle.js'
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/public/index.html',
-      filename: 'index.html'
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        { from: 'src/public/css', to: 'css' },
-        { from: 'src/public/images', to: 'images' }
-      ]
-    })
-  ],
+  resolve: {
+    extensions: ['.ts', '.js'], // Permite importar .ts sem precisar colocar a extensão
+    alias: {
+      '@': path.resolve(__dirname, 'src') // Permite importar arquivos usando '@/ts/...'
+    }
+  },
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.ts$/,
         use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-    ],
-  },
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
-  },
+        exclude: /node_modules/
+      }
+    ]
+  }
 };

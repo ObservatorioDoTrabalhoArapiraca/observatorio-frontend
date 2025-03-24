@@ -12,6 +12,14 @@ FROM nginx:alpine
 # 1. Remova os arquivos padrão do Nginx
 RUN rm -rf /usr/share/nginx/html/*
 
+ARG FACEBOOK_URL
+ARG TWITTER_URL
+ARG INSTAGRAM_URL
+
+ENV VITE_FACEBOOK_URL=${FACEBOOK_URL}
+ENV VITE_TWITTER_URL=${TWITTER_URL}
+ENV VITE_INSTAGRAM_URL=${INSTAGRAM_URL}
+
 # 2. Copie todos os arquivos construídos
 COPY --from=build /app/dist /usr/share/nginx/html
 
