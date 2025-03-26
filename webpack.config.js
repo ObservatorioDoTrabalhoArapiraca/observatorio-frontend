@@ -1,16 +1,28 @@
 const path = require('path');
+const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'production',
-  entry: './src/ts/scripts.ts', // Certifique-se de que este caminho está correto
+  entry: './src/ts/scripts.ts',
   output: {
-    path: path.resolve(__dirname, 'dist'), // Gera os arquivos em 'dist'
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
+  plugins: [
+    new Dotenv(),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify({
+        FACEBOOK_URL: process.env.FACEBOOK_URL,
+        TWITTER_URL: process.env.TWITTER_URL,
+        INSTAGRAM_URL: process.env.INSTAGRAM_URL
+      })
+    })
+  ],
   resolve: {
-    extensions: ['.ts', '.js'], // Permite importar .ts sem precisar colocar a extensão
+    extensions: ['.ts', '.js'],
     alias: {
-      '@': path.resolve(__dirname, 'src') // Permite importar arquivos usando '@/ts/...'
+      '@': path.resolve(__dirname, 'src')
     }
   },
   module: {
