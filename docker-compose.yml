@@ -1,11 +1,7 @@
 services:
   web:
-    build: 
-      context: .
-      args:
-        - FACEBOOK_URL
-        - TWITTER_URL
-        - INSTAGRAM_URL
+    build: .
     ports:
-      - "8080:80"
-    env_file: .env
+      - "80:80"
+    volumes:
+      - ./src/public:/usr/share/nginx/html:ro
