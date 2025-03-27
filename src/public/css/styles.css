@@ -12,11 +12,6 @@
     transform: translateX(-50%);
     opacity: 1;
 }
-.contraste-alto {
-    background-color: black !important;
-    color: white !important;
-    border-color: yellow !important;
-}
 
 html, body {
     height: 100%;
@@ -43,6 +38,6 @@ footer .border-top {
 }
 
 h1.fs-4.text-primary {
-    font-size: 2rem !important; /* Aumenta o título "Observatório do Trabalho" */
-    font-weight: bold; /* Deixa o título mais destacado */
+    font-size: 2rem !important; 
+    font-weight: bold;
 }
