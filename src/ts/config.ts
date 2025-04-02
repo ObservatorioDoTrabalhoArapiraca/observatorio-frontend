@@ -9,3 +9,4 @@ export const socialLinks: SocialLinks = {
   twitter: process.env.TWITTER_URL || '#',
   instagram: process.env.INSTAGRAM_URL || '#'
 };
+
