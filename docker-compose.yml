@@ -1,7 +1,0 @@
-services:
-  web:
-    build: .
-    ports:
-      - "80:80"
-    volumes:
-      - ./src/public:/usr/share/nginx/html:ro
