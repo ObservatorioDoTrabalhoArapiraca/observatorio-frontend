@@ -1,0 +1,67 @@
+/* Se for usar um arquivo separado (recomendado), crie src/components/Projeto.css */
+.projeto-content {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: #333;
+  }
+
+  h1 {
+    color: #003d98;
+  }
+  
+  .projeto-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 0.5rem;
+    font-family: 'Georgia', serif;
+  }
+  
+  .projeto-container p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    text-align: justify;
+  }
+  
+  .projeto-container strong {
+    color: #3498db;
+    font-weight: 600;
+  }
+  
+  /* Efeito de destaque nas instituições */
+  .projeto-container strong[title="SETRE"],
+  .projeto-container strong[title="DIESE"] {
+    background-color: #f8f9fa;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    border-left: 4px solid #e74c3c;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .content {
+      padding: 1rem;
+    }
+    
+    .projeto-container h1 {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+    
+    .projeto-container p {
+      font-size: 1rem;
+      text-align: left;
+    }
+  }
+  
+  /* Animação suave de entrada */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .projeto-container {
+    animation: fadeIn 0.5s ease-out;
+  }

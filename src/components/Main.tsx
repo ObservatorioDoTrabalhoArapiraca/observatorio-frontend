@@ -4,7 +4,6 @@ import './Main.css';
 import { FaNewspaper } from 'react-icons/fa6'
 
 const MainContent: React.FC = () => {
-  // Dados das notícias (pode vir de props ou API)
   const newsItems = [
     {
       title: "Novo Programa de Capacitação",
