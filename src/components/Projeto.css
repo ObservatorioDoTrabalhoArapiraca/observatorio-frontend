@@ -1,6 +1,5 @@
 /* Se for usar um arquivo separado (recomendado), crie src/components/Projeto.css */
 .projeto-content {
-    padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
     line-height: 1.6;

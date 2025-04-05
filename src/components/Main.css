@@ -1,8 +1,9 @@
 /* src/components/MainContent.css */
 #conteudo {
-    max-width: 1140px;
+    display: flex;
     margin: 0;
-    padding: 2rem 15px;
+    align-items: center;
+    padding-top: 15px;
 }
 
 .news-section {
