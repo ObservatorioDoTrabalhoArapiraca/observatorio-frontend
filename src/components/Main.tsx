@@ -1,10 +1,9 @@
-// src/components/MainContent.tsx
+
 import React from 'react';
 import './Main.css';
 import { FaNewspaper } from 'react-icons/fa6'
 
 const MainContent: React.FC = () => {
-  // Dados das notícias (pode vir de props ou API)
   const newsItems = [
     {
       title: "Novo Programa de Capacitação",
@@ -30,7 +29,7 @@ const MainContent: React.FC = () => {
             {newsItems.map((item, index) => (
               <a href="#" className="news-item" key={index}>
                 <div className="news-header">
-                  <h3>{item.title}</h3>
+                  <h1>{item.title}</h1>
                   <span>{item.date}</span>
                 </div>
                 <p>{item.content}</p>

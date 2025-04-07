@@ -1,13 +1,16 @@
-/* src/components/MainContent.css */
 #conteudo {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 2rem 15px;
+    display: flex;
+    margin: 0;
+    align-items: center;
+    padding-top: 15px;
 }
 
 .news-section {
+    width: 100%;
+    max-width: 1140px;
     margin: 0 auto;
-}
+    padding: 0 20px;
+  }
 
 .news-card {
     background: white;
@@ -60,7 +63,7 @@
     margin-bottom: 0.5rem;
 }
 
-.news-header h3 {
+.news-header h1 {
     font-size: 1.1rem;
     font-weight: 600;
     margin: 0;
