@@ -4,6 +4,7 @@ import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import Projeto from './pages/ProjetoPage';
 import Home from './pages/Home';
+import Indicadores from './pages/DataPage';
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
           <Navigation />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/projeto" element={<Projeto />} />
+            <Route path="/project" element={<Projeto />} />
+            <Route path="/data" element={<Indicadores />} />
           </Routes>
         </main>
       </BrowserRouter>

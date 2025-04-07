@@ -1,0 +1,63 @@
+.indicadores-container {
+    background-color: #003d98;
+    color: white;
+    min-height: 100vh;
+  }
+  
+  .indicadores-container h1 {
+    margin: 20px;
+    color: #ffff;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+  
+  .grid-container {
+    background-color: #003d98;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem; 
+    padding: 2rem;
+  }
+  
+  .card {
+    width: 100%; 
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    padding: 1rem;
+    box-sizing: border-box; 
+  }
+
+.chart-card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    width: 90%;           
+    max-width: 320px;     
+    box-sizing: border-box;
+    transition: transform 0.2s ease;
+  }
+  
+  .grafico {
+    display: flex;
+    background-color: white;
+    color: black;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+    max-width: max-content;
+  }
+  
+  .grafico:hover {
+    transform: scale(1.01);
+  }
+  
+  .grafico h3 {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  

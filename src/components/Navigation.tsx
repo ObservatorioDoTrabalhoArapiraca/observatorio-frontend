@@ -1,4 +1,3 @@
-// src/components/Navigation.tsx
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import './Navigation.css';
@@ -23,9 +22,9 @@ const Navigation: React.FC = () => {
         </button>
         <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
           <ul>
-          <li><Link to="/projeto">O Projeto</Link></li>
-            <li><a href="/dados">Dados e Estatísticas</a></li>
-            <li><a href="/publicacoes">Publicações</a></li>
+            <li><Link to="/">Inicio</Link></li>
+            <li><Link to="/project">O Projeto</Link></li>
+            <li><a href="/data">Dados e Estatísticas</a></li>
             <li><a href="/legislacao">Legislação</a></li>
             <li><a href="/contato">Contato</a></li>
           </ul>
