@@ -1,7 +1,6 @@
-/* src/components/Navigation.css */
 .main-nav {
     background: #003d98;
-    padding: 1rem 1rem;
+    padding: 1.5rem 1rem;
     margin: 0;
 }
 
@@ -15,6 +14,7 @@
 }
 
 .nav-menu ul {
+    font-size: 1.3rem;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -25,9 +25,9 @@
 .nav-menu a {
     color: white !important;
     text-decoration: none;
-    font-size: 1.1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    font-size: 1.5rem; /* aumente conforme desejado */
+    padding: 0.75rem 1.5rem; /* mais espaço interno */
+    border-radius: 6px;
     transition: all 0.3s ease;
 }
 
@@ -47,8 +47,8 @@
 
 .hamburger {
     display: block;
-    width: 25px;
-    height: 2px;
+    width: 30px; /* antes: 25px */
+    height: 3px; /* antes: 2px */
     background: white;
     position: relative;
     transition: all 0.3s ease;
@@ -66,11 +66,10 @@
 }
 
 .hamburger::before {
-    top: -6px;
+    top: -8px; /* reposicionar */
 }
-
 .hamburger::after {
-    top: 6px;
+    top: 8px;
 }
 
 /* Estilos ativos quando o menu está aberto */
