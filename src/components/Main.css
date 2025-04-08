@@ -2,80 +2,83 @@
     display: flex;
     margin: 0;
     align-items: center;
-    padding-top: 15px;
-}
-
-.news-section {
-    width: 100%;
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 0 20px;
+    padding-top: 25px; /* aumentei o padding */
   }
-
-.news-card {
+  
+  .news-section {
+    width: 100%;
+    max-width: 1200px; /* ligeiramente maior */
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  
+  .news-card {
     background: white;
-    border-radius: 8px;
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    border-radius: 12px;
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15); /* sombra mais marcante */
     overflow: hidden;
-    padding: 2rem;
-}
-
-.news-card h2 {
-    font-size: 1.75rem;
+    padding: 3rem; /* mais espaçamento interno */
+  }
+  
+  .news-card h2 {
+    font-size: 2.2rem; /* maior */
     color: #333;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-}
-
-.news-icon {
-    font-size: 1.5em;
+    gap: 1rem;
+  }
+  
+  .news-icon {
+    font-size: 2rem; /* ícone maior */
     color: #0d6efd;
-}
-
-.news-list {
+  }
+  
+  .news-list {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-}
-
-.news-item {
+    gap: 1.5rem; /* mais espaço entre notícias */
+  }
+  
+  .news-item {
     display: block;
-    padding: 1.25rem;
-    border-radius: 6px;
+    padding: 1.75rem;
+    border-radius: 10px;
     border: 1px solid #dee2e6;
     text-decoration: none;
     color: #333;
     transition: all 0.2s ease;
-}
-
-.news-item:hover {
-    background: #f8f9fa;
-    transform: translateY(-2px);
+    background: #fff;
+  }
+  
+  .news-item:hover {
+    background: #f1f4f9;
+    transform: translateY(-3px);
     border-color: #0d6efd;
-}
-
-.news-header {
+  }
+  
+  .news-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 0.5rem;
-}
-
-.news-header h1 {
-    font-size: 1.1rem;
-    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  
+  .news-header h1 {
+    font-size: 1.5rem; /* título da notícia maior */
+    font-weight: 700;
     margin: 0;
-}
-
-.news-header span {
-    font-size: 0.875rem;
+  }
+  
+  .news-header span {
+    font-size: 1rem;
     color: #666;
-}
-
-.news-item p {
+  }
+  
+  .news-item p {
     margin: 0;
     color: #444;
-    line-height: 1.5;
-}
+    line-height: 1.7;
+    font-size: 1.1rem; /* corpo do texto maior */
+  }
+  
