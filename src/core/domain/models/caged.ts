@@ -1,10 +1,9 @@
 import Model from '@models/model';
 import DTO from '@typing/http/dto';
 
-
+//TODO: melhorar a estrutura
 
 class MovimentacaoCaged extends Model {
-  #id!: string;
   #competenciamov!: string;
   #municipio!: string;
   #secao!: string;
@@ -33,7 +32,6 @@ class MovimentacaoCaged extends Model {
   #FaixaHoraContrat!: string;
 
 	constructor(
-		id: string,
         competenciamov: string,
         municipio: string,
         secao: string,
@@ -62,8 +60,6 @@ class MovimentacaoCaged extends Model {
         FaixaHoraContrat: string,
 	) {
 		super();
-
-		this.#id = id;
         this.#competenciamov = competenciamov;
         this.#municipio = municipio;
         this.#secao = secao;
@@ -93,7 +89,6 @@ class MovimentacaoCaged extends Model {
 	}
 
 	static fromJSON(json: Record<string, unknown>): MovimentacaoCaged {
-        const id = String(json.id);
         const competenciamov = String(json.competenciamov);
         const municipio = String(json.municipio);
         const secao = String(json.secao);
@@ -122,7 +117,6 @@ class MovimentacaoCaged extends Model {
         const FaixaHoraContrat = String(json.FaixaHoraContrat);
     
         return new MovimentacaoCaged(
-            id,
             competenciamov,
             municipio,
             secao,
@@ -154,7 +148,6 @@ class MovimentacaoCaged extends Model {
 
 	toJSON(): DTO {
         const dto = {} as DTO;
-        dto.id = this.#id;
         dto.competenciamov = this.#competenciamov;
         dto.municipio = this.#municipio;
         dto.secao = this.#secao;
@@ -182,10 +175,6 @@ class MovimentacaoCaged extends Model {
         dto.FaixaEtaria = this.#FaixaEtaria;
         dto.FaixaHoraContrat = this.#FaixaHoraContrat;
         return dto;
-    }
-
-    get id() {
-        return this.#id;
     }
     
     get competenciamov() {

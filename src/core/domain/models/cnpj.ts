@@ -1,8 +1,9 @@
 import Model from '@models/model';
 import DTO from '@typing/http/dto';
 
+//TODO: melhorar a estrutura
+
 class Cnpj extends Model {
-	#id!: string;
 	#cnpj!: string;  
  	#cnpj_ordem !: string;
  	#cnpj_dv !: string;
@@ -36,7 +37,6 @@ class Cnpj extends Model {
  	#data !: string;
 
 	 constructor(
-		id: string,
 		cnpj: string,
 		cnpj_ordem: string,
 		cnpj_dv: string,
@@ -71,7 +71,6 @@ class Cnpj extends Model {
 	) {
 		super();
 
-		this.#id = id;
 		this.#cnpj = cnpj;
 		this.#cnpj_ordem = cnpj_ordem;
 		this.#cnpj_dv = cnpj_dv;
@@ -106,7 +105,6 @@ class Cnpj extends Model {
 	}
 
 	static fromJSON(json: Record<string, unknown>): Cnpj {
-		const id = String(json.id);
 		const cnpj = String(json.cnpj);
 		const cnpj_ordem = String(json.cnpj_ordem);
 		const cnpj_dv = String(json.cnpj_dv);
@@ -140,7 +138,6 @@ class Cnpj extends Model {
 		const data = String(json.data);
 	
 		return new Cnpj(
-			id,
 			cnpj,
 			cnpj_ordem,
 			cnpj_dv,
@@ -177,7 +174,6 @@ class Cnpj extends Model {
 
 	toJSON(): DTO {
 		const dto = {} as DTO;
-		dto.id = this.#id;
 		dto.cnpj = this.#cnpj;
 		dto.cnpj_ordem = this.#cnpj_ordem;
 		dto.cnpj_dv = this.#cnpj_dv;
@@ -211,8 +207,7 @@ class Cnpj extends Model {
 		dto.data = this.#data;
 		return dto;
 	}
-	
-	get id() { return this.#id; }
+
 	get cnpj() { return this.#cnpj; }
 	get cnpj_ordem() { return this.#cnpj_ordem; }
 	get cnpj_dv() { return this.#cnpj_dv; }
