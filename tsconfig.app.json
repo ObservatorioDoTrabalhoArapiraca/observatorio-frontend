@@ -20,7 +20,12 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@models/*": ["src/core/domain/models/*"],
+      "@typing/*": ["src/core/domain/types/*"]
+    }
   },
   "include": ["src"]
 }
