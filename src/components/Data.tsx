@@ -1,4 +1,3 @@
-// src/pages/Indicadores.tsx
 import React from 'react';
 import {
   BarChart, Bar, XAxis, YAxis, Legend, PieChart, Pie, Tooltip, Cell, ResponsiveContainer
@@ -60,7 +59,7 @@ const Indicadores: React.FC = () => {
         nameKey="name"
         cx="50%"
         cy="45%"
-        outerRadius={140}  // Aumentamos aqui
+        outerRadius={140}  
         label={({ value }) => value}
       >
         {idadeData.map((entry, index) => (

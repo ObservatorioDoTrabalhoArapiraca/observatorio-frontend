@@ -15,7 +15,7 @@
   position: relative;
   width: 600px;
   height: 503px;
-  background-color: #fff; /* fundo branco pra imagem ficar destacada */
+  background-color: #fff; 
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.1);
@@ -31,26 +31,24 @@
   overflow: hidden;
 }
 
-/* imagem de fundo */
+
 .carousel-container::before {
   content: "";
   position: absolute;
   inset: 0;
   background: url('/images/bg-carrossel.jpg') center center / cover no-repeat;
   z-index: 0;
-  filter: brightness(0.3) hue-rotate(180deg); /* escurece e dá um tom azul */
+  filter: brightness(0.3) hue-rotate(180deg); 
 }
 
-/* camada azul transparente por cima */
 .carousel-container::after {
   content: "";
   position: absolute;
   inset: 0;
-  background-color:rgba(0, 123, 255, 0.5); /* azul com transparência */
+  background-color:rgba(0, 123, 255, 0.5); 
   z-index: 1;
 }
 
-/* conteúdo acima do fundo */
 .carousel-left,
 .carousel-right {
   position: relative;

@@ -21,7 +21,7 @@ const Carousel: React.FC = () => {
   const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % images.length);
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 5000); // muda a cada 5s
+    const interval = setInterval(nextSlide, 5000); 
     return () => clearInterval(interval);
   }, []);
 
