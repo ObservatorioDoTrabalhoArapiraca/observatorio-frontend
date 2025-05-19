@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   BarChart, Bar, XAxis, YAxis, Legend, PieChart, Pie, Tooltip, Cell, ResponsiveContainer
 } from 'recharts';
 import './Data.css';
+import { getAnoTotalMovimentacoes, AnoTotalMovimentacoes, getSalarioPorProfissao, SalarioPorProfissao } from '../core/services/salarioService';
 
 const idadeColors = ['#8884d8', '#82ca9d', '#ffc658', '#ff7f50', '#d84d4d'];
 
@@ -13,19 +14,6 @@ const idadeData = [
     { name: '55-64 anos', value: 10 },
     { name: '65+ anos', value: 7 }
   ];
-
-const data2 = [
-  { name: '2012', value: 2200000 },
-  { name: '2013', value: 2300000 },
-  { name: '2014', value: 2350000 },
-  { name: '2015', value: 2250000 },
-  { name: '2016', value: 2280000 },
-  { name: '2017', value: 2290000 },
-  { name: '2018', value: 2230000 },
-  { name: '2019', value: 2240000 },
-  { name: '2020', value: 2300000 },
-  { name: '2022', value: 2500000 },
-];
 
 const data3 = [
   { name: 'Indústria', value: 400000 },
@@ -44,6 +32,32 @@ const data4 = [
 ];
 
 const Indicadores: React.FC = () => {
+  const [movAno, setMovAno] = useState<AnoTotalMovimentacoes[]>([]);
+  const [loadingMov, setLoadingMov] = useState(true);
+  const [topProfissoes, setTopProfissoes] = useState<SalarioPorProfissao[]>([]);
+  const [loadingProf, setLoadingProf] = useState(true);
+
+  useEffect(() => {
+    getAnoTotalMovimentacoes()
+      .then(data => {
+        setMovAno(data.filter(item => String(item.ano) !== '2025'));
+      })
+      .finally(() => setLoadingMov(false));
+
+    getSalarioPorProfissao()
+      .then(data => {
+        // Ordena por total decrescente e pega as 5 maiores
+        const comTotal = data.filter(p => typeof p.total === 'number');
+        if (comTotal.length > 0) {
+          const top5 = [...comTotal].sort((a, b) => (b.total ?? 0) - (a.total ?? 0)).slice(0, 5);
+          setTopProfissoes(top5);
+        } else {
+          setTopProfissoes([]);
+        }
+      })
+      .finally(() => setLoadingProf(false));
+  }, []);
+
   return (
     <div className="indicadores-container">
         <h1>Indicadores</h1>
@@ -82,28 +96,37 @@ const Indicadores: React.FC = () => {
   </ResponsiveContainer>
 </div>
 
-
         <div className="grafico">
-          <h3>Nº de empregos formais<br />2012 a 2022</h3>
+          <h3>Nº de empregos formais<br />por ano</h3>
           <ResponsiveContainer width="100%" height={400}>
-            <BarChart data={data2}>
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="value" fill="#8e8e8e" />
-            </BarChart>
+            {loadingMov ? (
+              <p>Carregando...</p>
+            ) : (
+              <BarChart data={movAno.map(item => ({ name: item.ano, value: item.total }))}>
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="value" fill="#8e8e8e" />
+              </BarChart>
+            )}
           </ResponsiveContainer>
         </div>
 
         <div className="grafico">
-          <h3>Vínculos por setor<br />Arapiraca, 2022</h3>
+          <h3>Top 5 Profissões com Mais Casos</h3>
           <ResponsiveContainer width="100%" height={400}>
-            <BarChart data={data3}>
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="value" fill="#c084fc" />
-            </BarChart>
+            {loadingProf ? (
+              <p>Carregando...</p>
+            ) : topProfissoes.length === 0 ? (
+              <p>Dados de total de casos não disponíveis.</p>
+            ) : (
+              <BarChart data={topProfissoes.map(p => ({ name: p.profissao, value: p.total }))} layout="vertical">
+                <XAxis type="number" />
+                <YAxis dataKey="name" type="category" width={180} />
+                <Tooltip />
+                <Bar dataKey="value" fill="#c084fc" />
+              </BarChart>
+            )}
           </ResponsiveContainer>
         </div>
 

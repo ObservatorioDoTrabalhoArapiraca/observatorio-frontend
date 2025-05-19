@@ -5,7 +5,7 @@ const Divider: React.FC = () => {
     <div
       style={{
         height: '2px',
-        backgroundColor: '#003366', // azul escuro
+        backgroundColor: '#003366',
         margin: '1.5rem 0',
         borderRadius: '1px',
       }}

@@ -1,0 +1,106 @@
+.tab-selector {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 2.5rem 0;
+  gap: 1rem;
+}
+
+.tab-btn {
+  background: #e5e7eb;
+  color: #003d98;
+  border: none;
+  padding: 0.75rem 2.5rem;
+  font-size: 1.2rem;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+  outline: none;
+}
+
+.tab-btn.active {
+  background: #003d98;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.tab-btn:not(.active):hover {
+  background: #c7d2fe;
+  color: #003d98;
+}
+
+.pdf-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pdf-item {
+  margin-bottom: 1rem;
+  background: #f4f8ff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: box-shadow 0.2s;
+}
+
+.pdf-link {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  text-decoration: none;
+  color: #003d98;
+  font-weight: 500;
+  gap: 1rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.pdf-link:hover {
+  background: #e0eaff;
+}
+
+.pdf-icon {
+  font-size: 2rem;
+}
+
+.pdf-title {
+  flex: 1;
+  font-size: 1.1rem;
+}
+
+.pdf-action {
+  background: #003d98;
+  color: #fff;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-left: 1rem;
+  transition: background 0.2s;
+}
+
+.pdf-link:hover .pdf-action {
+  background: #0050c7;
+}
+
+.documentos-container {
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  padding: 0 2.5rem;
+}
+
+.documentos-container h2 {
+  text-align: left;
+  margin-bottom: 2.5rem;
+  padding-left: 0.25rem;
+}
+
+.documentos-container h3 {
+  margin-left: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.documentos-container h4 {
+  margin-left: 1.5rem;
+  margin-bottom: 0.5rem;
+} 
