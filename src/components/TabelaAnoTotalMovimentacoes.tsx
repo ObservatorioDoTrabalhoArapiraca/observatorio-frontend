@@ -25,8 +25,8 @@ const TabelaAnoTotalMovimentacoes: React.FC = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div>
-      <h1>Total de Movimentações por Ano</h1>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <h1 style={{ textAlign: 'center', marginBottom: '2rem' }}>Total de Movimentações por Ano</h1>
       <table>
         <thead>
           <tr>

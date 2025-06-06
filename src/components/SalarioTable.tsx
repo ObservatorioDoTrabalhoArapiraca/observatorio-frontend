@@ -26,8 +26,8 @@ const TabelaSalarioPorEscolaridade: React.FC = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div>
-      <h1>Salário por Escolaridade</h1>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <h1 style={{ textAlign: 'center', marginBottom: '2rem' }}>Salário por Escolaridade</h1>
       <table>
         <thead>
           <tr>

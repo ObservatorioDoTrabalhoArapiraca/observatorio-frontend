@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import TabelaSalarioPorEscolaridade from '../components/SalarioTable';
-import TabelaMedianaSalario from '../components/TabelaMedianaSalario';
+import TabelaSalarioPorProfissao from '../components/TabelaSalarioPorProfissao';
 import TabelaAnoTotalMovimentacoes from '../components/TabelaAnoTotalMovimentacoes';
 import Data from '../components/Data';
 import './DataPage.css';
 
 const DataPage = () => {
   const [tab, setTab] = useState<'tabela' | 'graficos'>('tabela');
-  const [tabela, setTabela] = useState<'escolaridade' | 'mediana' | 'movimentacoes'>('escolaridade');
+  const [tabela, setTabela] = useState<'escolaridade' | 'profissao' | 'movimentacoes'>('escolaridade');
 
   return (
     <main className="Data">
@@ -35,10 +35,10 @@ const DataPage = () => {
               Salário por Escolaridade
             </button>
             <button
-              className={tabela === 'mediana' ? 'tab-btn active' : 'tab-btn'}
-              onClick={() => setTabela('mediana')}
+              className={tabela === 'profissao' ? 'tab-btn active' : 'tab-btn'}
+              onClick={() => setTabela('profissao')}
             >
-              Mediana Salarial por Sexo
+              Salário por Profissão
             </button>
             <button
               className={tabela === 'movimentacoes' ? 'tab-btn active' : 'tab-btn'}
@@ -48,7 +48,7 @@ const DataPage = () => {
             </button>
           </div>
           {tabela === 'escolaridade' && <TabelaSalarioPorEscolaridade />}
-          {tabela === 'mediana' && <TabelaMedianaSalario />}
+          {tabela === 'profissao' && <TabelaSalarioPorProfissao />}
           {tabela === 'movimentacoes' && <TabelaAnoTotalMovimentacoes />}
         </>
       )}
