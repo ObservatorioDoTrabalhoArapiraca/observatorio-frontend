@@ -1,7 +1,7 @@
 import api from './api';
 
 export interface SalarioPorEscolaridade {
-  escolaridade: string;
+  grau_de_instrucao: string;
   saldo: number;
   maior: number;
   menor: number;

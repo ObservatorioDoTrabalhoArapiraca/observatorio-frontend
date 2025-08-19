@@ -40,7 +40,7 @@ const TabelaSalarioPorEscolaridade: React.FC = () => {
         <tbody>
           {salarios.map((salario, index) => (
             <tr key={index}>
-              <td>{salario.escolaridade}</td>
+              <td>{salario.grau_de_instrucao}</td>
               <td>{salario.saldo.toFixed(2)}</td>
               <td>{salario.maior.toFixed(2)}</td>
               <td>{salario.menor.toFixed(2)}</td>

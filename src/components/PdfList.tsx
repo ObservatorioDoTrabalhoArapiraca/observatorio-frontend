@@ -13,18 +13,10 @@ type PdfFile = {
 const PdfList: React.FC<PdfListProps> = ({ tipo }) => {
   const [pdfFiles, setPdfFiles] = useState<PdfFile[]>([]);
 
-  useEffect(() => {
-    fetch('http://localhost:8000/api/pdfs/')
-      .then((res) => res.json())
-      .then((data) => setPdfFiles(data))
-      .catch(() => setPdfFiles([]));
-  }, []);
-
-  // Filtra por tipo se prop fornecida
   const filtered = tipo
     ? pdfFiles.filter(pdf => {
-        if (tipo === 'conjuntural') return pdf.name.toLowerCase().includes('conjuntural');
-        if (tipo === 'tematico') return pdf.name.toLowerCase().includes('temática');
+        if (tipo === 'conjuntural') return pdf.url.toLowerCase().includes('conjuntural');
+        if (tipo === 'tematico') return pdf.url.toLowerCase().includes('tematico');
         return true;
       })
     : pdfFiles;
