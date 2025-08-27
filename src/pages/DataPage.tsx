@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import TabelaSalarioPorEscolaridade from '../components/SalarioTable';
 import TabelaSalarioPorProfissao from '../components/TabelaSalarioPorProfissao';
 import TabelaAnoTotalMovimentacoes from '../components/TabelaAnoTotalMovimentacoes';
+import TabelaProfissoesPorDeficiencia from '../components/TabelaProfissoesPorDeficiencia';
 import Data from '../components/Data';
 import './DataPage.css';
 
 const DataPage = () => {
   const [tab, setTab] = useState<'tabela' | 'graficos'>('tabela');
-  const [tabela, setTabela] = useState<'escolaridade' | 'profissao' | 'movimentacoes'>('escolaridade');
+  const [tabela, setTabela] = useState<'escolaridade' | 'profissao' | 'movimentacoes' | 'deficiencia'>('escolaridade');
 
   return (
     <main className="Data">
@@ -46,10 +47,17 @@ const DataPage = () => {
             >
               Total de Movimentações por Ano
             </button>
+            <button
+              className={tabela === 'deficiencia' ? 'tab-btn active' : 'tab-btn'}
+              onClick={() => setTabela('deficiencia')}
+            >
+              Profissões por Deficiência
+            </button>
           </div>
           {tabela === 'escolaridade' && <TabelaSalarioPorEscolaridade />}
           {tabela === 'profissao' && <TabelaSalarioPorProfissao />}
           {tabela === 'movimentacoes' && <TabelaAnoTotalMovimentacoes />}
+          {tabela === 'deficiencia' && <TabelaProfissoesPorDeficiencia />}
         </>
       )}
       {tab === 'graficos' && <Data />}

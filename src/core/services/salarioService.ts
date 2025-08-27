@@ -25,6 +25,11 @@ export interface SalarioPorProfissao {
   total?: number;
 }
 
+export interface ProfissoesPorDeficiencia {
+  cbo_2002_ocupacao: string;
+  total_deficientes: number;
+}
+
 export const getSalarioPorEscolaridade = async (): Promise<SalarioPorEscolaridade[]> => {
   try {
     const response = await api.get('salario-por-escolaridade/');
@@ -61,6 +66,17 @@ export const getSalarioPorProfissao = async (): Promise<SalarioPorProfissao[]> =
     return response.data;
   } catch (error) {
     console.error('Erro ao buscar os dados de salário por profissão:', error);
+    throw error;
+  }
+};
+
+export const getProfissoesPorDeficiencia = async (tipo?: string): Promise<ProfissoesPorDeficiencia[]> => {
+  try {
+    const params = tipo ? { tipo } : {};
+    const response = await api.get('profissoes-mais-deficientes/', { params });
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao buscar os dados de profissões por deficiência:', error);
     throw error;
   }
 };
