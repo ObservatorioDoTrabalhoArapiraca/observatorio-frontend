@@ -24,13 +24,20 @@ const TabelaSalarioPorProfissao: React.FC = () => {
     const fetchData = async () => {
       try {
         const data = await getSalarioPorProfissao();
-        // Aplica as substituições aos dados
-        const dadosProcessados = data.map(item => ({
-          ...item,
-          profissao: substituicoes[item.profissao] || item.profissao
-        }));
-        setDados(dadosProcessados);
+        if (data && Array.isArray(data)) {
+          // Aplica as substituições aos dados
+          const dadosProcessados = data.map(item => ({
+            ...item,
+            profissao: substituicoes[item.profissao] || item.profissao
+          }));
+          setDados(dadosProcessados);
+        } else {
+          setDados([]);
+          setError('Nenhum dado disponível.');
+        }
       } catch (err) {
+        console.error('Erro ao carregar profissões:', err);
+        setDados([]);
         setError('Erro ao carregar os dados.');
       } finally {
         setLoading(false);

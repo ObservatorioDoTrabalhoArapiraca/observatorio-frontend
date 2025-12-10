@@ -37,13 +37,20 @@ const TabelaProfissoesPorDeficiencia: React.FC = () => {
       try {
         setLoading(true);
         const data = await getProfissoesPorDeficiencia(filtroDeficiencia || undefined);
-        // Aplica as substituições aos dados
-        const dadosProcessados = data.map(item => ({
-          ...item,
-          cbo_2002_ocupacao: substituicoes[item.cbo_2002_ocupacao] || item.cbo_2002_ocupacao
-        }));
-        setDados(dadosProcessados);
+        if (data && Array.isArray(data)) {
+          // Aplica as substituições aos dados
+          const dadosProcessados = data.map(item => ({
+            ...item,
+            cbo_2002_ocupacao: substituicoes[item.cbo_2002_ocupacao] || item.cbo_2002_ocupacao
+          }));
+          setDados(dadosProcessados);
+        } else {
+          setDados([]);
+          setError('Nenhum dado disponível.');
+        }
       } catch (err) {
+        console.error('Erro ao carregar profissões por deficiência:', err);
+        setDados([]);
         setError('Erro ao carregar os dados.');
       } finally {
         setLoading(false);

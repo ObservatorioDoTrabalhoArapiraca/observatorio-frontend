@@ -10,9 +10,24 @@ const TabelaAnoTotalMovimentacoes: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
+        setError(null);
         const data = await getAnoTotalMovimentacoes();
+        setDados(data || []);
         setDados(data);
+        if (data && Array.isArray(data)) {
+          setDados(data);
+        } else {
+        
+          setDados([]);
+          setError('Nenhum dado disponível.');
+        }
       } catch (err) {
+
+        
+        setError('Erro ao carregar os dados. Tente novamente mais tarde.');
+       
+        setDados([]);
         setError('Erro ao carregar os dados.');
       } finally {
         setLoading(false);
@@ -24,6 +39,9 @@ const TabelaAnoTotalMovimentacoes: React.FC = () => {
   if (loading) return <p>Carregando...</p>;
   if (error) return <p>{error}</p>;
 
+    if (!dados || dados.length === 0) {
+    return <div className="no-data">Nenhum dado disponível</div>;
+  }
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <h1 style={{ textAlign: 'center', marginBottom: '2rem' }}>Total de Movimentações por Ano</h1>
@@ -38,7 +56,7 @@ const TabelaAnoTotalMovimentacoes: React.FC = () => {
           {dados.map((item, idx) => (
             <tr key={idx}>
               <td>{item.ano}</td>
-              <td>{item.total}</td>
+              <td>{item.total_movimentacoes}</td>
             </tr>
           ))}
         </tbody>

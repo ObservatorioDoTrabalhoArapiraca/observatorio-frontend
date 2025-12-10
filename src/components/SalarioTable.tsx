@@ -11,8 +11,15 @@ const TabelaSalarioPorEscolaridade: React.FC = () => {
     const fetchData = async () => {
       try {
         const data = await getSalarioPorEscolaridade(); 
-        setSalarios(data); 
+        if (data && Array.isArray(data)) {
+          setSalarios(data);
+        } else {
+          setSalarios([]);
+          setError('Nenhum dado disponível.');
+        }
       } catch (err) {
+        console.error('Erro ao carregar salários:', err);
+        setSalarios([]);
         setError('Erro ao carregar os dados.');
       } finally {
         setLoading(false); 

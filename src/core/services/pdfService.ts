@@ -13,20 +13,18 @@ export const getPdfs = async (): Promise<PdfFile[]> => {
   try {
 
     const response = await api.get("pdfs/")
-    console.log('📄 PDFs recebidos:', response.data)
+   
     const pdfs = response.data
     
-    const baseUrl = (import.meta.env.VITE_API_URL as string || 'https://observatorio-backend-production.up.railway.app/api/').replace('/api/', '')
+    const baseUrl = (import.meta.env.VITE_API_URL as string).replace('/api/', '')
 
-    console.log("🌐 Base URL que será usada:", baseUrl)
 
     const normalizedPdfs = pdfs.map((pdf: PdfFile) => {
       try {
         const urlObj = new URL(pdf.url)
         const newUrl = `${baseUrl}${urlObj.pathname}`
 
-        console.log(`✅ Convertido: ${pdf.url} -> ${newUrl}`)
-
+      
         return {
           ...pdf,
           url: newUrl,
@@ -37,7 +35,7 @@ export const getPdfs = async (): Promise<PdfFile[]> => {
       }
     })
 
-    console.log("📦 PDFs finais:", normalizedPdfs)
+   
     
     return normalizedPdfs
     

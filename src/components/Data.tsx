@@ -40,20 +40,36 @@ const Indicadores: React.FC = () => {
   useEffect(() => {
     getAnoTotalMovimentacoes()
       .then(data => {
-        setMovAno(data.filter(item => String(item.ano) !== '2025'));
+        if (data && Array.isArray(data)) {
+          setMovAno(data.filter(item => String(item.ano) !== '2025'));
+        } else {
+          setMovAno([]);
+        }
+      })
+      .catch(err => {
+        console.error('Erro ao carregar movimentações:', err);
+        setMovAno([]);
       })
       .finally(() => setLoadingMov(false));
 
     getSalarioPorProfissao()
       .then(data => {
-        // Ordena por total decrescente e pega as 5 maiores
-        const comTotal = data.filter(p => typeof p.total === 'number');
-        if (comTotal.length > 0) {
-          const top5 = [...comTotal].sort((a, b) => (b.total ?? 0) - (a.total ?? 0)).slice(0, 5);
-          setTopProfissoes(top5);
+        if (data && Array.isArray(data)) {
+          // Ordena por total decrescente e pega as 5 maiores
+          const comTotal = data.filter(p => typeof p.total === 'number');
+          if (comTotal.length > 0) {
+            const top5 = [...comTotal].sort((a, b) => (b.total ?? 0) - (a.total ?? 0)).slice(0, 5);
+            setTopProfissoes(top5);
+          } else {
+            setTopProfissoes([]);
+          }
         } else {
           setTopProfissoes([]);
         }
+      })
+      .catch(err => {
+        console.error('Erro ao carregar profissões:', err);
+        setTopProfissoes([]);
       })
       .finally(() => setLoadingProf(false));
   }, []);

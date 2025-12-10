@@ -14,7 +14,7 @@ export interface MedianaSalario {
 
 export interface AnoTotalMovimentacoes {
   ano: number;
-  total: number;
+  total_movimentacoes: number;
 }
 
 export interface SalarioPorProfissao {
@@ -52,17 +52,32 @@ export const getMedianaSalario = async (): Promise<MedianaSalario[]> => {
 
 export const getAnoTotalMovimentacoes = async (): Promise<AnoTotalMovimentacoes[]> => {
   try {
+  
+
     const response = await api.get('ano-total-movimentacoes/');
-    return response.data.ano_total_results;
+  
+
+    if (Array.isArray(response.data)) {
+    
+      return response.data;
+    }
+    console.warn('⚠️ [salarioService] response.data não é um array');
+    return [];
+
+   
   } catch (error) {
+    console.error('❌ [salarioService] Erro ao buscar movimentações por ano:', error);
     console.error('Erro ao buscar os dados de movimentações por ano:', error);
     throw error;
+
   }
 };
 
 export const getSalarioPorProfissao = async (): Promise<SalarioPorProfissao[]> => {
   try {
+   
     const response = await api.get('salario-por-profissao/');
+   
     return response.data;
   } catch (error) {
     console.error('Erro ao buscar os dados de salário por profissão:', error);
