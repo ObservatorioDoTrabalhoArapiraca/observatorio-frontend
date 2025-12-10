@@ -11,9 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Force Git Author for Deployment
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
       - name: Install dependencies with npm
         run: npm install
-        
+
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
