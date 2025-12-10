@@ -15,13 +15,13 @@ const idadeData = [
     { name: '65+ anos', value: 7 }
   ];
 
-const data3 = [
-  { name: 'Indústria', value: 400000 },
-  { name: 'Construção', value: 200000 },
-  { name: 'Comércio', value: 600000 },
-  { name: 'Serviços', value: 1500000 },
-  { name: 'Agro', value: 300000 },
-];
+// const data3 = [
+//   { name: 'Indústria', value: 400000 },
+//   { name: 'Construção', value: 200000 },
+//   { name: 'Comércio', value: 600000 },
+//   { name: 'Serviços', value: 1500000 },
+//   { name: 'Agro', value: 300000 },
+// ];
 
 const data4 = [
   { name: '2019', negras: 20, naoNegras: 15, homensNegros: 12, homensNaoNegros: 10 },
@@ -92,7 +92,7 @@ const Indicadores: React.FC = () => {
         outerRadius={140}  
         label={({ value }) => value}
       >
-        {idadeData.map((entry, index) => (
+        {idadeData.map((_, index) => (
           <Cell key={`cell-${index}`} fill={idadeColors[index % idadeColors.length]} />
         ))}
       </Pie>
@@ -118,7 +118,7 @@ const Indicadores: React.FC = () => {
             {loadingMov ? (
               <p>Carregando...</p>
             ) : (
-              <BarChart data={movAno.map(item => ({ name: item.ano, value: item.total }))}>
+              <BarChart data={movAno.map(item => ({ name: item.ano, value: item.total_movimentacoes }))}>
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip />
