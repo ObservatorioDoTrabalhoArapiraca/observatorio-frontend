@@ -19,7 +19,45 @@ const api = axios.create({
   },
 });
 
+// Interceptor para debug de requisições
+api.interceptors.request.use(
+  (config) => {
+    // console.log('🔄 Fazendo requisição para:', config.baseURL + config.url);
+    console.log('🔄 Método:', config.method?.toUpperCase());
+    console.log('🔄 Headers:', config.headers);
+    return config;
+  },
+  (error) => {
+    console.error('❌ Erro ao configurar requisição:', error);
+    return Promise.reject(error);
+  }
+);
 
+// Interceptor para debug de respostas
+api.interceptors.response.use(
+  (response) => {
+    console.log('✅ Resposta recebida de:', response.config.url);
+    console.log('✅ Status:', response.status);
+    console.log('✅ Dados:', response.data);
+    return response;
+  },
+  (error) => {
+    console.error('❌ Erro na resposta da API:');
+    console.error('   URL:', error.config?.url);
+    console.error('   Status:', error.response?.status);
+    console.error('   Status Text:', error.response?.statusText);
+    console.error('   Mensagem:', error.message);
+    console.error('   Dados do erro:', error.response?.data);
+    console.error('   Headers:', error.response?.headers);
+    
+    // CORS error
+    if (error.message === 'Network Error') {
+      console.error('⚠️ Possível erro de CORS ou rede!');
+    }
+    
+    return Promise.reject(error);
+  }
+);
 
 
 
