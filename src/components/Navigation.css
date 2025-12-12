@@ -99,8 +99,9 @@
         padding: 1rem;
     }
     
-    .nav-menu.active {
+    .nav-menu .active {
         display: block;
+        z-index: 9000;
     }
     
     .nav-menu ul {

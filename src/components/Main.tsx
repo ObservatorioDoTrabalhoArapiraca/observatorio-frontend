@@ -1,9 +1,9 @@
 
-import React from 'react';
-import './Main.css';
-import { FaNewspaper } from 'react-icons/fa6'
+import { FaNewspaper } from 'react-icons/fa6';
+// import './Main.css';
+import { ReactElement } from 'react';
 
-const MainContent: React.FC = () => {
+const MainContent = (): ReactElement => {
   const newsItems = [
     {
       title: "Novo Programa de Capacitação",
@@ -18,7 +18,7 @@ const MainContent: React.FC = () => {
   ];
 
   return (
-    <main id="conteudo">
+    <main>
       <section className="news-section">
         <article className="news-card">
           <h2>

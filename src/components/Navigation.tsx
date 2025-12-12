@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Navigation.css';
 
 const Navigation: React.FC = () => {
@@ -24,7 +24,7 @@ const Navigation: React.FC = () => {
           <ul>
             <li><Link to="/">Inicio</Link></li>
             <li><Link to="/project">O Projeto</Link></li>
-            <li><Link to="/data">Dados e Estatísticas</Link></li>
+            <li><Link to="/data" className='bg-green-500 text-red-500'>Dados e Estatísticas</Link></li>
             <li><Link to="/legislacao">Legislação</Link></li>
             <li><Link to="/relatorio">Documentos</Link></li>
           </ul>

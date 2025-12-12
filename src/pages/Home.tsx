@@ -5,13 +5,13 @@ import Diviser from '../components/Diviser'
 
 const Home = () => {
     return (
-        <main className="content">
+        <>
         <Diviser></Diviser>
         <Carrousel/>
         <Diviser></Diviser>
         <MainContent /> 
         <Diviser></Diviser>
-      </main>
+      </>
     );
   };
 

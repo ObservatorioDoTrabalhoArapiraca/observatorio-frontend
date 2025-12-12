@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
     box-sizing: border-box;
     font-family: 'Poppins';
@@ -25,9 +29,9 @@ main {
   flex: 1;
 }
 
-.content {
+/* .content {
   margin: 0;
   flex: 1;
   min-width: 100%;
   padding: 0;
-}
+} */

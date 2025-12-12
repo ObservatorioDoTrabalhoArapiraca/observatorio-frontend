@@ -12,7 +12,8 @@ function App() {
     <div className="App">
       <Header />
       <BrowserRouter>
-        <main className="content">
+        <main>
+          {/* retirar os main de todas as páginas */}
           <Navigation />
           <Routes>
             <Route path="/" element={<Home />} />

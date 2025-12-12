@@ -1,9 +1,11 @@
-#conteudo {
+
+
+/* #conteudo {
     display: flex;
     margin: 0;
     align-items: center;
-    padding-top: 25px; /* aumentei o padding */
-  }
+    padding-top: 25px; 
+  } */
   
   .news-section {
     width: 100%;
