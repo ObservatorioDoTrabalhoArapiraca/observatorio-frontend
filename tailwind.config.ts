@@ -10,9 +10,21 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
-        "primary-color": "var(--primary-color)",
-        "secondary-color": "var(--secondary-color)",
-        "off-white": "var(--off-white)",
+        /* Blue */
+        "primary-blue": "hsl(213, 93%, 17%)" /* #032856 */,
+        "secondary-blue": "hsl(231, 79%, 50%)" /* #1b39e2 */,
+        "tertiary-blue": "hsl(212, 93%, 50%)" /* #0979f5 */,
+
+        /* Green */
+        "primary-green": "hsl(148, 85%, 46%)" /* #12d86e */,
+        "secondary-green": "hsl(151, 100%, 31%)" /* #009e52 */,
+        "tertiary-green": "hsl(155, 84%, 22%)" /* #096841 */,
+
+        /* Yellow */
+        "primary-yellow": "hsl(48, 87%, 51%)" /* #efc516 */,
+
+        /* Neutrals */
+        "off-white": "hsl(210, 30%, 88%)" /* #d8e1ea */,
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

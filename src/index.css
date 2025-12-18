@@ -40,10 +40,22 @@ main {
 @layer base {
   :root {
     /* Variáveis de cor */
-    --primary-color: #003d98;
-    --secondary-color: #0d6efd;
-    --off-white: #f1f4f9;
 
+    /* Blue */
+    --primary-blue: 	hsl(213, 93%, 17%)  /* #032856 */ 
+    --secondary-blue: 	hsl(231, 79%, 50%)  /* #1b39e2 */;
+    --tertiary-blue: hsl(212, 93%, 50%)  /* #0979f5 */;
+
+    /* Green */
+    --primary-green: 	hsl(148, 85%, 46%)  /* #12d86e */;
+    --secondary-green: 	hsl(151, 100%, 31%)  /* #009e52 */;
+    --tertiary-green: 	hsl(155, 84%, 22%)  /* #096841 */;
+
+
+    --primary-yellow: 	hsl(48, 87%, 51%)  /* #efc516 */;
+
+    /* Neutrals */
+    --off-white: #	hsl(210, 30%, 88%)  /* #d8e1ea */;
 
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;

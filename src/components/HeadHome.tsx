@@ -20,7 +20,7 @@ export default function HeadHome({
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/images/cidade3.jpg')" }}
       />
-      <div className="absolute inset-0 bg-blue-800/70" />
+      <div className="absolute inset-0 bg-[#1b39e2]/70" />
       <div className="relative z-10 flex flex-col md:flex-row justify-center items-center gap-6 w-full h-full px-8">
         {/* Carrossel */}
         <Carousel
@@ -41,7 +41,7 @@ export default function HeadHome({
                 key={index}
                 className="flex items-center justify-center p-4"
               >
-                <div className="relative w-full h-64 rounded-lg shadow-md overflow-hidden bg-white">
+                <div className="relative w-full h-64 rounded-lg shadow-md overflow-hidden bg-off-white">
                   <img
                     className="absolute inset-0 w-full h-full object-cover"
                     src={image.src}
@@ -57,7 +57,7 @@ export default function HeadHome({
         </Carousel>
 
         {/* Descrição */}
-        <div className="max-w-[500px] text-white p-6">
+        <div className="max-w-[500px] text-off-white p-6">
           <h2 className="text-2xl font-bold mb-4">Sobre o Projeto</h2>
           <p className="text-base leading-relaxed">{description}</p>
         </div>
