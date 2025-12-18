@@ -9,7 +9,6 @@ const Header = () => {
             <img
               src="/images/logo-arapiraca.png"
               alt="Brasão da cidade de Arapiraca"
-            
             />
           </div>
           <div className="">
@@ -18,7 +17,11 @@ const Header = () => {
           </div>
         </div>
         <div className="w-56  ">
-          <img src="/images/sine-logo-min.jpg" alt="Logo do Sine" className="" />
+          <img
+            src="/images/LOGO_SINE/Logo-Sine Casa do Trabalhador-MTE-2025-1@4xg"
+            alt="Logo do Sine"
+            className=""
+          />
         </div>
       </div>
     </header>
