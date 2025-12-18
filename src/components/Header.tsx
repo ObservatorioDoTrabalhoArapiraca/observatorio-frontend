@@ -18,7 +18,7 @@ const Header = () => {
         </div>
         <div className="w-56  ">
           <img
-            src="/images/LOGO_SINE/Logo-Sine Casa do Trabalhador-MTE-2025-1@4xg"
+            src="/images/LOGO_SINE/Logo-Sine Casa do Trabalhador-MTE-2025.png"
             alt="Logo do Sine"
             className=""
           />
