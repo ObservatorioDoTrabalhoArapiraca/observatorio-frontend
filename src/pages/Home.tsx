@@ -3,9 +3,9 @@ import { GridCrads } from "../components/GridCrads"
 
 const Home = () => {
   const images = [
-    { src: "/public/images/cidade1.jpg", alt: "Praça Central" },
-    { src: "/public/images/cidade2.jpg", alt: "Vista Aérea" },
-    { src: "/public/images/cidade3.jpg", alt: "Parque Municipal" },
+    { src: "/images/cidade1.jpg", alt: "Praça Central" },
+    { src: "/images/cidade2.jpg", alt: "Vista Aérea" },
+    { src: "/images/cidade3.jpg", alt: "Parque Municipal" },
   ]
   return (
     <>
