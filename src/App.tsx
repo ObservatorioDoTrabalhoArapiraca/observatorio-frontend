@@ -12,9 +12,9 @@ function App() {
     <div className="App">
       <Header />
       <BrowserRouter>
+          <Navigation />
         <main>
           {/* retirar os main de todas as páginas */}
-          <Navigation />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/project" element={<Projeto />} />
