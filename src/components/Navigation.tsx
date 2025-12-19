@@ -45,7 +45,6 @@ const Navigation: React.FC = () => {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-
       <div className="sm:block sm:flex-col w-full hidden text-off-white">
         <ul className="w-full flex justify-between items-center px-4 py-2">
           {naviLinks.map((link) => (

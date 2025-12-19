@@ -12,10 +12,10 @@ const Home = () => {
       <HeadHome
         images={images}
         description="Este projeto visa valorizar os espaços urbanos, promover o turismo local
-  e destacar as belezas naturais e arquitetônicas da cidade. Com iniciativas 
-  de infraestrutura e cultura, esperamos fortalecer o sentimento de pertencimento 
-  e orgulho na população.
-  Junte-se a nós nessa jornada de redescoberta e celebração da nossa cidade!"
+        e destacar as belezas naturais e arquitetônicas da cidade. Com iniciativas 
+        de infraestrutura e cultura, esperamos fortalecer o sentimento de pertencimento 
+        e orgulho na população.
+        Junte-se a nós nessa jornada de redescoberta e celebração da nossa cidade!"
       />
       <GridCrads />
     </>

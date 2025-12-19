@@ -1,3 +1,8 @@
+
+import tailwindcssAnimate from "tailwindcss-animate"
+import tailwindcssLineClamp from "@tailwindcss/line-clamp"
+
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
@@ -68,5 +73,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate, tailwindcssLineClamp],
 }
