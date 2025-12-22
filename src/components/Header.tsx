@@ -1,4 +1,4 @@
-// import "./Header.css"
+
 
 const Header = () => {
   return (
@@ -12,11 +12,11 @@ const Header = () => {
             />
           </div>
           <div className="">
-            <h1>Observatório do Trabalho</h1>
+            <div>Observatório do Trabalho</div>
             <p>Prefeitura Municipal de Arapiraca</p>
           </div>
         </div>
-        <div className="w-56  ">
+        <div className="md:w-56 w-36  ">
           <img
             src="/images/LOGO_SINE/Logo-Sine Casa do Trabalhador-MTE-2025.png"
             alt="Logo do Sine"

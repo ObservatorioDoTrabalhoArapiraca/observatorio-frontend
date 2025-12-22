@@ -17,7 +17,7 @@ const TabelaAnoTotalMovimentacoes: React.FC = () => {
         console.log('📊 [TabelaAnoTotalMovimentacoes] Dados recebidos:', data);
         console.log('📊 [TabelaAnoTotalMovimentacoes] Tipo:', typeof data);
         console.log('📊 [TabelaAnoTotalMovimentacoes] É array?', Array.isArray(data));
-        console.log('📊 [TabelaAnoTotalMovimentacoes] Length:', data?.length);
+        // console.log('📊 [TabelaAnoTotalMovimentacoes] Length:', data?.length);
 
         setDados(data || []);
         setDados(data);

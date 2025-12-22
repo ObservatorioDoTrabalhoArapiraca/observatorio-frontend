@@ -19,9 +19,9 @@ const Navigation: React.FC = () => {
   const naviLinks = [
     { name: "Inicio", path: "/" },
     { name: "O Projeto", path: "/project" },
-    { name: "Dados e Estatísticas", path: "/data" },
-    { name: "Legislação", path: "/legislacao" },
+    { name: "Dados e Estatísticas", path: "/tabelas/escolaridade" },
     { name: "Documentos", path: "/relatorio" },
+    { name: "Ajuda", path: "/ajuda" },
   ]
 
   return (

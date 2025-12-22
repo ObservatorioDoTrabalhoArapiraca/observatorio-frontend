@@ -4,14 +4,14 @@ import TabelaSalarioPorProfissao from '../components/TabelaSalarioPorProfissao';
 import TabelaAnoTotalMovimentacoes from '../components/TabelaAnoTotalMovimentacoes';
 import TabelaProfissoesPorDeficiencia from '../components/TabelaProfissoesPorDeficiencia';
 import Data from '../components/Data';
-import './DataPage.css';
+// import './DataPage.css';
 
-const DataPage = () => {
+export const Tabelas = () => {
   const [tab, setTab] = useState<'tabela' | 'graficos'>('tabela');
   const [tabela, setTabela] = useState<'escolaridade' | 'profissao' | 'movimentacoes' | 'deficiencia'>('escolaridade');
 
   return (
-    <main className="Data">
+    <div className="Data">
       <div className="tab-selector">
         <button
           className={tab === 'tabela' ? 'tab-btn active' : 'tab-btn'}
@@ -61,8 +61,7 @@ const DataPage = () => {
         </>
       )}
       {tab === 'graficos' && <Data />}
-    </main>
+    </div>
   );
 };
 
-export default DataPage;

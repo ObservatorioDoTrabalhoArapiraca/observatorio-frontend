@@ -1,7 +1,4 @@
-// import '../components/Projeto.css'
-
 const ProjetoPage: React.FC = () => {
-
   return (
     <main className="projeto-content max-w-screen-xl mx-auto md:w-[70vw] p-6 text-justify leading-8">
       <h1 className="text-2xl font-bold mb-4 text-secondary-blue">O Projeto</h1>
@@ -45,6 +42,6 @@ const ProjetoPage: React.FC = () => {
       </p>
     </main>
   )
-};
+}
 
-export default ProjetoPage;
+export default ProjetoPage

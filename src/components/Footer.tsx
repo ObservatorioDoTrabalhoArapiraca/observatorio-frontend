@@ -1,7 +1,7 @@
 import React from "react"
 import { FaEnvelope, FaInstagram, FaPhone } from "react-icons/fa"
 import { FaXTwitter } from "react-icons/fa6"
-// import "./Projeto.css"
+
 const Footer: React.FC = () => {
   return (
     <footer className="text-off-white p-6 px-0  z-10 bg-[#1a1a1a]">
