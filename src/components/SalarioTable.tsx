@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { getSalarioPorEscolaridade, SalarioPorEscolaridade } from '../core/services/salarioService';
+import { getSalarioPorEscolaridade } from '../core/services/salarioService';
 import './SalarioTable.css';
+import { SalarioPorEscolaridade } from '@/types';
 
 const TabelaSalarioPorEscolaridade: React.FC = () => {
   const [salarios, setSalarios] = useState<SalarioPorEscolaridade[]>([]); 

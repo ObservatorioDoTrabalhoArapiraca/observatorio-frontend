@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { getProfissoesPorDeficiencia, ProfissoesPorDeficiencia } from '../core/services/salarioService';
+import { getProfissoesPorDeficiencia } from '../core/services/salarioService';
 import './SalarioTable.css';
+import { ProfissoesPorDeficiencia } from '@/types';
 
 type SortDirection = 'asc' | 'desc' | 'default';
 type SortColumn = 'cbo_2002_ocupacao' | 'total_deficientes' | null;

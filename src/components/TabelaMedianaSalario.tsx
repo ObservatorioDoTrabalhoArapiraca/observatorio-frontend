@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { getMedianaSalario, MedianaSalario } from '../core/services/salarioService';
+import { getMedianaSalario } from '../core/services/salarioService';
 import './SalarioTable.css';
+import { MedianaSalario } from '@/types';
 
 const TabelaMedianaSalario: React.FC = () => {
   const [dados, setDados] = useState<MedianaSalario[]>([]);

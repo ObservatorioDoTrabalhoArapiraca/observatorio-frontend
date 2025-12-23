@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { getSalarioPorProfissao, SalarioPorProfissao } from '../core/services/salarioService';
+import { getSalarioPorProfissao } from '../core/services/salarioService';
 import './SalarioTable.css';
+import { SalarioPorProfissao } from '@/types';
 
 type SortDirection = 'asc' | 'desc' | 'default';
 type SortColumn = 'profissao' | 'maximo' | 'minimo' | 'media' | 'total' | null;

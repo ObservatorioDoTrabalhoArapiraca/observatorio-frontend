@@ -3,7 +3,8 @@ import {
   BarChart, Bar, XAxis, YAxis, Legend, PieChart, Pie, Tooltip, Cell, ResponsiveContainer
 } from 'recharts';
 import './Data.css';
-import { getAnoTotalMovimentacoes, AnoTotalMovimentacoes, getSalarioPorProfissao, SalarioPorProfissao } from '../core/services/salarioService';
+import { getAnoTotalMovimentacoes, getSalarioPorProfissao } from '../core/services/salarioService';
+import { AnoTotalMovimentacoes, SalarioPorProfissao } from '@/types';
 
 const idadeColors = ['#8884d8', '#82ca9d', '#ffc658', '#ff7f50', '#d84d4d'];
 
