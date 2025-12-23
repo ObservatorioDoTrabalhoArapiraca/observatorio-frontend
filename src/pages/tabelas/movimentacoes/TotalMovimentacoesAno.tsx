@@ -1,32 +1,19 @@
 import { DataTable } from "@/components/table/DataTable"
-import { columns, Payment } from "@/pages/tabelas/movimentacoes/columns"
+import { getAnoTotalMovimentacoes } from "@/core/services/salarioService";
+import { columns } from "@/pages/tabelas/movimentacoes/columns"
+import { AnoTotalMovimentacoes } from "@/types";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-
-
-async function getData(): Promise<Payment[]> {
-  // Fetch data from your API here.
-  return [
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    // ...
-  ]
-}
-
 export default function DemoPage() {
- const [dados, setDados] = useState<Payment[]>([]);
+ const [dados, setDados] = useState<AnoTotalMovimentacoes[]>([])
 
   const [loading, setLoading] = useState<boolean>(true);
   const { category } = useParams()
    useEffect(() => {
       setLoading(true);
       const fetchData = async () => {
-        const dados = await getData()
+        const dados = await getAnoTotalMovimentacoes()
         setDados(dados);
     
             setLoading(false);
@@ -38,7 +25,7 @@ export default function DemoPage() {
    if (loading) return <div>Carregando...</div>
 
   return (
-    <div className="container mx-auto py-10">
+    <div className="container mx-auto p-4">
       <DataTable columns={columns} data={dados} />
     </div>
   )

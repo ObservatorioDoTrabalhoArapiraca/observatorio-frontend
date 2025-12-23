@@ -1,27 +1,27 @@
-
-
+import { AnoTotalMovimentacoes } from "@/types"
+import { capitalizeFirstLetter } from "@/Utils/capitalizeFirstLettrer"
 import { ColumnDef } from "@tanstack/react-table"
 
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
-export type Payment = {
-  id: string
-  amount: number
-  status: "pending" | "processing" | "success" | "failed"
-  email: string
-}
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<AnoTotalMovimentacoes>[] = [
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: "ano",
+    header: ({ column }) => {
+      return (
+        <div className="font-bold">
+          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
+        </div>
+      )
+    },
   },
   {
-    accessorKey: "email",
-    header: "Email",
-  },
-  {
-    accessorKey: "amount",
-    header: "Amount",
+    accessorKey: "total_movimentacoes",
+    header: ({ column }) => {
+      return (
+        <div className="font-bold ">
+          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
+        </div>
+      )
+    },
   },
 ]

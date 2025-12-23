@@ -1,27 +1,79 @@
 
-
 import { ColumnDef } from "@tanstack/react-table"
+import { capitalizeFirstLetter } from "@/Utils/capitalizeFirstLettrer"
+import { SalarioPorEscolaridade } from "@/types"
 
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
-export type Payment = {
-  id: string
-  amount: number
-  status: "pending" | "processing" | "success" | "failed"
-  email: string
-}
-
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<SalarioPorEscolaridade>[] = [
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: "grau_de_instrucao",
+    header: ({ column }) => {
+      return (
+        <div className="font-bold ">
+          {capitalizeFirstLetter(column.id)
+            .replace(/_/g, " ") 
+            }
+        </div>
+      )
+    },
   },
   {
-    accessorKey: "email",
-    header: "Email",
+    accessorKey: "saldo",
+    header: ({ column }) => {
+      return (
+        <div className="font-bold ">
+          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
+        </div>
+      )
+    },
+    cell: ({ row }) => {
+      return (
+        <div>
+          {row.original.saldo.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })}
+        </div>
+      )
+    },
   },
   {
-    accessorKey: "amount",
-    header: "Amount",
+    accessorKey: "maior",
+    header: ({ column }) => {
+      return (
+        <div className="font-bold ">
+          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
+        </div>
+      )
+    },
+    cell: ({ row }) => {
+      return (
+        <div>
+          {row.original.maior.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })}
+        </div>
+      )
+    },
+  },
+  {
+    accessorKey: "menor",
+    header: ({ column }) => {
+      return (
+        <div className="font-bold ">
+          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
+        </div>
+      )
+    },
+    cell: ({ row }) => {
+      return (
+        <div>
+          {row.original.menor.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })}
+        </div>
+      )
+    },
   },
 ]

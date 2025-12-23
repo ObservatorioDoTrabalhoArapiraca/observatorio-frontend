@@ -1,34 +1,5 @@
+import { AnoTotalMovimentacoes, MedianaSalario, ProfissoesPorDeficiencia, SalarioPorEscolaridade, SalarioPorProfissao } from '@/types';
 import api from './api';
-
-export interface SalarioPorEscolaridade {
-  grau_de_instrucao: string;
-  saldo: number;
-  maior: number;
-  menor: number;
-}
-
-export interface MedianaSalario {
-  sexo: string;
-  mediana: number;
-}
-
-export interface AnoTotalMovimentacoes {
-  ano: number;
-  total_movimentacoes: number;
-}
-
-export interface SalarioPorProfissao {
-  profissao: string;
-  maximo: number;
-  minimo: number;
-  media: number;
-  total?: number;
-}
-
-export interface ProfissoesPorDeficiencia {
-  cbo_2002_ocupacao: string;
-  total_deficientes: number;
-}
 
 export const getSalarioPorEscolaridade = async (): Promise<SalarioPorEscolaridade[]> => {
   try {
@@ -61,12 +32,12 @@ export const getAnoTotalMovimentacoes = async (): Promise<AnoTotalMovimentacoes[
     
       return response.data;
     }
-    console.warn('⚠️ [salarioService] response.data não é um array');
+
     return [];
 
    
   } catch (error) {
-    console.error('❌ [salarioService] Erro ao buscar movimentações por ano:', error);
+    console.error(' Erro ao buscar movimentações por ano:', error);
     console.error('Erro ao buscar os dados de movimentações por ano:', error);
     throw error;
 

@@ -11,17 +11,19 @@ const Footer: React.FC = () => {
             <h1 className="w-full font-bold text-off-white">Contato</h1>
             <div className="border-b-[1px] border-off-white w-full" />
           </div>
-          <div className="mt-4 flex flex-col gap-4 md:gap-2">
+          <div className="mt-4 flex flex-col gap-4 md:gap-2 ">
             <p className="text-xs md:text-base md:items-center flex flex-col sm:flex-row gap-2">
-              <FaEnvelope className=" text-off-white flex text-sm w-10" />
-              <span className="
-               line-clamp-3 break-words">
-                observatorio@prefeitura.arapiraca.al.gov.br
+              <FaEnvelope className=" text-off-white flex text-sm" />
+              <span
+                className="
+               line-clamp-3 break-words"
+              >
+                observatoriodotrabalhodeara@gmail.com
               </span>
             </p>
             <p className="text-xs md:text-base md:items-center flex flex-col sm:flex-row gap-2">
               <FaPhone className=" text-off-white flex text-sm " />
-              (82) 3521-0000
+              (82) 9 8767-6015
             </p>
           </div>
         </div>

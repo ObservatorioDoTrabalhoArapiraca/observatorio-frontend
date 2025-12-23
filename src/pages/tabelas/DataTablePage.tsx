@@ -1,7 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import SalarioPorEscolaridade from "@/pages/tabelas/escolaridade/SalarioPorEscolaridade";
-import TotalMovimentacoesAno from "@/pages/tabelas/movimentacoes/TotalMovimentacoesAno";
-import { useEffect } from "react";
+import SalarioPorEscolaridade from "@/pages/tabelas/escolaridade/SalarioPorEscolaridade"
+import TotalMovimentacoesAno from "@/pages/tabelas/movimentacoes/TotalMovimentacoesAno"
+import { useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
 const categories = [
@@ -12,10 +12,9 @@ const categories = [
 ]
 
 export default function DemoPage() {
-
   const { category } = useParams()
-  
-  const navigate = useNavigate();
+
+  const navigate = useNavigate()
 
   const currentCategory = category ?? "escolaridade"
 
@@ -25,11 +24,9 @@ export default function DemoPage() {
     }
   }, [category, navigate, currentCategory])
 
-
   const handleTabChange = (key: string) => {
-    if(key !== category) {
-      navigate(`/tabelas/${key}`, {replace: true}
-      );
+    if (key !== category) {
+      navigate(`/tabelas/${key}`, { replace: true })
     }
   }
 
@@ -38,11 +35,15 @@ export default function DemoPage() {
       defaultValue="escolaridade"
       value={category}
       onValueChange={handleTabChange}
-      className="w-[400px]"
+      className=""
     >
-      <TabsList>
+      <TabsList className=" pt-4  flex justify-center w-full h-fit overflow-x-auto pb-5">
         {categories.map((tab) => (
-          <TabsTrigger key={tab.value} value={tab.value}>
+          <TabsTrigger
+            key={tab.value}
+            value={tab.value}
+            className=" bg-off-white text-primary-blue p-3 rounded-t-md"
+          >
             {tab.label}
           </TabsTrigger>
         ))}

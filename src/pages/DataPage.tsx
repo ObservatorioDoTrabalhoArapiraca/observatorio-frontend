@@ -6,6 +6,7 @@ import TabelaProfissoesPorDeficiencia from '../components/TabelaProfissoesPorDef
 import Data from '../components/Data';
 // import './DataPage.css';
 
+// TODO: excluir depois de testar
 export const Tabelas = () => {
   const [tab, setTab] = useState<'tabela' | 'graficos'>('tabela');
   const [tabela, setTabela] = useState<'escolaridade' | 'profissao' | 'movimentacoes' | 'deficiencia'>('escolaridade');

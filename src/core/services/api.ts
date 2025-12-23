@@ -22,6 +22,7 @@ const api = axios.create({
 // Interceptor para debug de requisições
 api.interceptors.request.use(
   (config) => {
+    // TODO: apagar os consoles depois
     // console.log('🔄 Fazendo requisição para:', config.baseURL + config.url);
     console.log('🔄 Método:', config.method?.toUpperCase());
     console.log('🔄 Headers:', config.headers);
