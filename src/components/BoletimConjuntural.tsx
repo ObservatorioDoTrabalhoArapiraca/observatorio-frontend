@@ -13,7 +13,7 @@ export default function BoletimConjuntural({
   grouped: Record<string, Record<string, PdfFile[]>>
 }) {
   return (
-    <div className="w-1/2 mx-auto">
+    <div className="md:w-3/4 p-4 md:p-0 mx-auto">
       <h2 className="my-4">Documentos Disponíveis</h2>
 
       {filtered.length === 0 && <p>Nenhum PDF disponível.</p>}
@@ -34,10 +34,12 @@ export default function BoletimConjuntural({
                           href={pdf.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="cursor-pointer flex items-center justify-between space-x-4 hover:text-primary-blue"
+                          className="flex flex-wrap cursor-pointer items-center justify-between space-x-4 hover:text-primary-blue"
                         >
+                          <div>
                           <span>📄</span>
                           <span>{pdf.name}</span>
+                          </div>
                           <Button className="bg-secondary-blue text-white px-2 py-1 rounded">
                             Abrir
                           </Button>
