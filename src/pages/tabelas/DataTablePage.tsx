@@ -1,59 +1,20 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { tableCategories } from "@/core/services/navLinks"
 import SalarioPorEscolaridade from "@/pages/tabelas/escolaridade/SalarioPorEscolaridade"
 import TotalMovimentacoesAno from "@/pages/tabelas/movimentacoes/TotalMovimentacoesAno"
-import { useEffect } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import TabsComponent from "@/pages/tabelas/TabsComponent"
 
-const categories = [
-  { label: "Salário por Escolaridade", value: "escolaridade" },
-  { label: "Salário por Profissão", value: "profissao" },
-  { label: "Total de Movimentações por Ano", value: "movimentacoes" },
-  { label: "Profissões por Deficiência", value: "deficiencia" },
-]
-
-export default function DemoPage() {
-  const { category } = useParams()
-
-  const navigate = useNavigate()
-
-  const currentCategory = category ?? "escolaridade"
-
-  useEffect(() => {
-    if (!category) {
-      navigate(`/tabelas/${currentCategory}`, { replace: true })
-    }
-  }, [category, navigate, currentCategory])
-
-  const handleTabChange = (key: string) => {
-    if (key !== category) {
-      navigate(`/tabelas/${key}`, { replace: true })
-    }
-  }
-
+export default function DataTablePage() {
   return (
-    <Tabs
-      defaultValue="escolaridade"
-      value={category}
-      onValueChange={handleTabChange}
-      className=""
-    >
-      <TabsList className=" pt-4  flex justify-center w-full h-fit overflow-x-auto pb-5">
-        {categories.map((tab) => (
-          <TabsTrigger
-            key={tab.value}
-            value={tab.value}
-            className=" bg-off-white text-primary-blue p-3 rounded-t-md"
-          >
-            {tab.label}
-          </TabsTrigger>
-        ))}
-      </TabsList>
-      <TabsContent value="escolaridade">
-        <SalarioPorEscolaridade />
-      </TabsContent>
-      <TabsContent value="movimentacoes">
-        <TotalMovimentacoesAno />
-      </TabsContent>
-    </Tabs>
+    <TabsComponent
+      cardTitle="Tabelas"
+      categories={tableCategories}
+      defaultTab="escolaridade"
+      navigateTo="tabelas"
+      tabsContent={[
+      // TODO: adicionar os outros componentes das tabelas aqui
+        { value: "escolaridade", content: <SalarioPorEscolaridade /> },
+        { value: "movimentacoes", content: <TotalMovimentacoesAno /> },
+      ]}
+    />
   )
 }

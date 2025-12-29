@@ -27,3 +27,9 @@ export interface ProfissoesPorDeficiencia {
   cbo_2002_ocupacao: string
   total_deficientes: number
 }
+
+export type NaviLink = {
+  name: string
+  path?: string
+  children?: {name: string, path: string}[]
+}

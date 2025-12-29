@@ -5,43 +5,33 @@ import { ReactElement } from "react"
 export const GridCrads = (): ReactElement => {
   const newsItems = [
     {
-      title: "Novo Programa de Capacitação",
+      title: "Notícias do Mundo do Trabalho de Arapiraca",
       date: "3 dias atrás",
       content:
         "Inscrições abertas para cursos gratuitos em tecnologia Inscrições abertas para cursos gratuitos em tecnologia Inscrições abertas para cursos gratuitos em tecnologia Inscrições abertas para cursos gratuitos em tecnologia",
     },
     {
-      title: "Feira de Empregos 2024",
+      title: "Feira de Empregabilidade CITE - Anual (2024/2025)",
       date: "5 dias atrás",
       content: "Evento reunirá mais de 100 empresas no centro de convenções",
     },
     {
-      title: "Feira de Empregos 2024 Feira de Empregos 2024 sdsfsd dfgdf",
+      title: "PDF do último estudo do observatório do Trabalho",
       date: "5 dias atrás",
       content: "Evento reunirá mais de 100 empresas no centro de convenções",
     },
     {
-      title: "Feira de Empregos 2024",
+      title: "Mapa por CNPJs Ativos em Arapiraca",
       date: "5 dias atrás",
       content: "Evento reunirá mais de 100 empresas no centro de convenções",
     },
     {
-      title: "Feira de Empregos 2024",
+      title: "SINE Municipal de Arapiraca",
       date: "5 dias atrás",
       content: "Evento reunirá mais de 100 empresas no centro de convenções",
     },
     {
-      title: "Feira de Empregos 2024",
-      date: "5 dias atrás",
-      content: "Evento reunirá mais de 100 empresas no centro de convenções",
-    },
-    {
-      title: "Feira de Empregos 2024",
-      date: "5 dias atrás",
-      content: "Evento reunirá mais de 100 empresas no centro de convenções",
-    },
-    {
-      title: "Feira de Empregos 2024",
+      title: "Formulário de Estudos e Pesquisa",
       date: "5 dias atrás",
       content: "Evento reunirá mais de 100 empresas no centro de convenções",
     },

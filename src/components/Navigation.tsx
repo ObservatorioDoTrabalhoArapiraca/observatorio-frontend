@@ -1,3 +1,4 @@
+import { DropdownNavItem } from "@/components/DropDownNavItem"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -7,7 +8,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import React from "react"
+import { naviLinks } from "@/core/services/navLinks"
+
 import { FaAlignJustify } from "react-icons/fa"
 import { Link, useLocation } from "react-router-dom"
 
@@ -16,13 +18,6 @@ const Navigation: React.FC = () => {
   const isActive = (path: string) => {
     return location.pathname === path
   }
-  const naviLinks = [
-    { name: "Inicio", path: "/" },
-    { name: "O Projeto", path: "/project" },
-    { name: "Dados e Estatísticas", path: "/tabelas/escolaridade" },
-    { name: "Documentos", path: "/relatorio" },
-    { name: "Ajuda", path: "/ajuda" },
-  ]
 
   return (
     <nav className="main-nav bg-primary-blue p-3 px-8">
@@ -37,11 +32,22 @@ const Navigation: React.FC = () => {
             <DropdownMenuLabel>Menu</DropdownMenuLabel>
             <DropdownMenuSeparator />
 
-            {naviLinks.map((link) => (
-              <DropdownMenuItem asChild key={link.name}>
-                <Link to={link.path}>{link.name}</Link>
-              </DropdownMenuItem>
-            ))}
+            {naviLinks.map((link) =>
+              link.children ? (
+                <div className="flex flex-col items-start">
+                  <DropdownNavItem link={link} />
+                </div>
+              ) : (
+                <DropdownMenuItem asChild key={link.name}>
+                  <Link
+                    to={link.path!}
+                    className="bg-transparent shadow-none hover:bg-tertiary-green"
+                  >
+                    {link.name}
+                  </Link>
+                </DropdownMenuItem>
+              )
+            )}
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
@@ -51,12 +57,27 @@ const Navigation: React.FC = () => {
             <li
               key={link.name}
               className={`relative pb-1 ${
-                isActive(link.path)
+                link?.path
+                  ? isActive(link.path)
+                    ? "after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-6 after:h-[2px] after:bg-primary-yellow"
+                    : ""
+                  : link.children?.some((sublink) => isActive(sublink.path))
                   ? "after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-6 after:h-[2px] after:bg-primary-yellow"
                   : ""
               }`}
             >
-              <Link to={link.path}>{link.name}</Link>
+              {link.path ? (
+                <Link
+                  to={link.path}
+                  className="bg-transparent  shadow-none hover:bg-tertiary-green p-3 rounded-lg"
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <>
+                  <DropdownNavItem link={link} />
+                </>
+              )}
             </li>
           ))}
         </ul>

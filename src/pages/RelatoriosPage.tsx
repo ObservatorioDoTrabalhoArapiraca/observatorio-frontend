@@ -1,29 +1,9 @@
-import  { useState } from 'react';
-import PdfList from '../components/PdfList';
-import '../pages/DataPage.css';
+import PdfList, { PdfListProps } from "@/components/PdfList"
+import { useParams } from "react-router-dom"
 
 const RelatoriosPage = () => {
-  const [tab, setTab] = useState<'conjuntural' | 'tematico'>('conjuntural');
+  const { category } = useParams()
+  return <PdfList tipo={category as PdfListProps["tipo"]} />
+}
 
-  return (
-    <main>
-      <div className="tab-selector">
-        <button
-          className={tab === 'conjuntural' ? 'tab-btn active' : 'tab-btn'}
-          onClick={() => setTab('conjuntural')}
-        >
-          Boletins Conjunturais
-        </button>
-        <button
-          className={tab === 'tematico' ? 'tab-btn active' : 'tab-btn'}
-          onClick={() => setTab('tematico')}
-        >
-          Temático
-        </button>
-      </div>
-      <PdfList tipo={tab} />
-    </main>
-  );
-};
-
-export default RelatoriosPage;
+export default RelatoriosPage

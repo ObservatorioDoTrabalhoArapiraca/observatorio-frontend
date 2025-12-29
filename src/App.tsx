@@ -1,12 +1,9 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from './components/Header'
-import Navigation from './components/Navigation';
-import Footer from './components/Footer';
-import Projeto from './pages/Project';
-import Home from './pages/Home';
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Footer from "./components/Footer"
+import Header from "./components/Header"
+import Navigation from "./components/Navigation"
 
-import RelatoriosPage from './pages/RelatoriosPage';
-import DataTablePage from '@/pages/tabelas/DataTablePage';
+import { routePaths } from "@/lib/routes"
 
 function App() {
   return (
@@ -17,12 +14,9 @@ function App() {
         <main>
           {/* retirar os main de todas as páginas */}
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/project" element={<Projeto />} />
-            {/* <Route path="/tabelas" element={<DataPage />} /> */}
-            <Route path="/tabelas/:category" element={<DataTablePage />} />
-            <Route path="/relatorio" element={<RelatoriosPage />} />
-            <Route path="/ajuda" element={<div>Ajuda</div>} />
+            {routePaths.map(({ path, element }) => (
+              <Route key={path} path={path} element={element} />
+            ))}
           </Routes>
         </main>
       </BrowserRouter>
@@ -31,4 +25,4 @@ function App() {
   )
 }
 
-export default App; 
+export default App
