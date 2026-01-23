@@ -33,6 +33,8 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="overflow-hidden rounded-md border">
+
+      {/* TODO: adicionar a opção de pesquisa por título */}
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (

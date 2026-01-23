@@ -1,8 +1,25 @@
-export interface SalarioPorEscolaridade {
-  grau_de_instrucao: string
-  saldo: number
-  maior: number
-  menor: number
+export interface DistribuicaoPorEscolaridade {
+  ano: number
+  escolaridade_codigo?: string
+  escolaridade_descricao: string
+  mes: number
+  percentual: string
+  total_movimentacoes: number
+}
+export interface DistribuicaoPorFaixaEtaria {
+  ano: number
+  mes: number
+  fixa_etaria: string
+  percentual: string
+  total_movimentacoes: number
+}
+export interface SalarioPorProfissao {
+  ano: number
+  escolaridade_codigo?: string
+  escolaridade_descricao: string
+  mes: number
+  percentual: string
+  total_movimentacoes: number
 }
 
 export interface MedianaSalario {

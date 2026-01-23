@@ -1,9 +1,9 @@
 
 import { ColumnDef } from "@tanstack/react-table"
 import { capitalizeFirstLetter } from "@/Utils/capitalizeFirstLettrer"
-import { DistribuicaoPorEscolaridade } from "@/types"
+import { SalarioPorProfissao } from "@/types"
 
-export const columns: ColumnDef<DistribuicaoPorEscolaridade>[] = [
+export const columns: ColumnDef<SalarioPorProfissao>[] = [
   {
     accessorKey: "ano",
     header: ({ column }) => {

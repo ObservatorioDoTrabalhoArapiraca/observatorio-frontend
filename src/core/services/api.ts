@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const API_URL = import.meta.env.VITE_API_URL as string
+const API_URL = import.meta.env.VITE_API_URL as string || "http://localhost:3000/api"
 
 console.log("🌐 API_URL configurada:", API_URL)
 
