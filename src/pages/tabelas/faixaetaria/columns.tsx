@@ -1,9 +1,9 @@
 
-import { ColumnDef } from "@tanstack/react-table"
 import { capitalizeFirstLetter } from "@/Utils/capitalizeFirstLettrer"
-import { DistribuicaoPorEscolaridade } from "@/types"
+import { DistribuicaoPorFaixaEtaria } from "@/types"
+import { ColumnDef } from "@tanstack/react-table"
 
-export const columns: ColumnDef<DistribuicaoPorEscolaridade>[] = [
+export const columns: ColumnDef<DistribuicaoPorFaixaEtaria>[] = [
   {
     accessorKey: "ano",
     header: ({ column }) => {
@@ -43,7 +43,7 @@ export const columns: ColumnDef<DistribuicaoPorEscolaridade>[] = [
   //   },
   // },
   {
-    accessorKey: "escolaridade_descricao",
+    accessorKey: "faixa_etaria",
     header: ({ column }) => {
       return (
         <div className="font-bold ">
@@ -54,7 +54,7 @@ export const columns: ColumnDef<DistribuicaoPorEscolaridade>[] = [
     cell: ({ row }) => {
       return (
         <div>
-          {row.original.escolaridade_descricao}
+          {row.original.faixa_etaria}
         </div>
       )
     },

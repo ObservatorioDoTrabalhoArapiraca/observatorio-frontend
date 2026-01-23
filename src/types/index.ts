@@ -9,7 +9,7 @@ export interface DistribuicaoPorEscolaridade {
 export interface DistribuicaoPorFaixaEtaria {
   ano: number
   mes: number
-  fixa_etaria: string
+  faixa_etaria: string
   percentual: string
   total_movimentacoes: number
 }

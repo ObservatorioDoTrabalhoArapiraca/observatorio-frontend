@@ -1,6 +1,7 @@
 import { DataTable } from "@/components/table/DataTable"
 import { getDistribuicaoFaixaEtaria } from "@/core/services/cagedArapiracaServices"
-import { columns } from "@/pages/tabelas/escolaridade/columns"
+import { columns } from "@/pages/tabelas/faixaetaria/columns"
+
 import { DistribuicaoPorFaixaEtaria } from "@/types"
 
 import { useEffect, useState } from "react"
