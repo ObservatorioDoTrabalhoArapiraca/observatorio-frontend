@@ -1,7 +1,7 @@
-import { AnoTotalMovimentacoes, MedianaSalario, ProfissoesPorDeficiencia, SalarioPorProfissao } from '@/types';
+import { AnoTotalMovimentacoes, DistribuicaoPorEscolaridade, MedianaSalario, ProfissoesPorDeficiencia, SalarioPorProfissao } from '@/types';
 import api from './api';
 
-export const getSalarioPorEscolaridade = async (): Promise<SalarioPorEscolaridade[]> => {
+export const getSalarioPorEscolaridade = async (): Promise<DistribuicaoPorEscolaridade[]> => {
   try {
     const response = await api.get('salario-por-escolaridade/');
     return response.data.salario_por_escolaridade; 

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { getSalarioPorEscolaridade } from '../core/services/salarioService';
 import './SalarioTable.css';
-import { SalarioPorEscolaridade } from '@/types';
+import { DistribuicaoPorEscolaridade } from '@/types';
 
 const TabelaSalarioPorEscolaridade: React.FC = () => {
-  const [salarios, setSalarios] = useState<SalarioPorEscolaridade[]>([]); 
+  const [salarios, setSalarios] = useState<DistribuicaoPorEscolaridade[]>([]); 
   const [loading, setLoading] = useState<boolean>(true); 
   const [error, setError] = useState<string | null>(null); 
 
@@ -48,10 +48,11 @@ const TabelaSalarioPorEscolaridade: React.FC = () => {
         <tbody>
           {salarios.map((salario, index) => (
             <tr key={index}>
-              <td>{salario.grau_de_instrucao}</td>
+              <td>teste</td>
+              {/* <td>{salario.grau_de_instrucao}</td>
               <td>{salario.saldo.toFixed(2)}</td>
               <td>{salario.maior.toFixed(2)}</td>
-              <td>{salario.menor.toFixed(2)}</td>
+              <td>{salario.menor.toFixed(2)}</td> */}
             </tr>
           ))}
         </tbody>
