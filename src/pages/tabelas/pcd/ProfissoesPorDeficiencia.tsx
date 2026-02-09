@@ -21,12 +21,8 @@ export default function TablePage() {
     const fetchData = async () => {
       try {
         const query = {ano: 2020, mes: 1, agregacao: "mensal" as "mensal" | "anual"}
-        console.log("🔄 Buscando dados com query:", query)
         const dadosRecebidos = await getProfissoesPorDeficiencia({ano: query.ano, mes: query.mes, agregacao: query.agregacao})
-        console.log("✅ Dados recebidos:", dadosRecebidos)
         setDados(dadosRecebidos)
-        console.log("✅ Tipo dos dados:", typeof dadosRecebidos, Array.isArray(dadosRecebidos))
-        console.log("✅ Quantidade de itens:", dadosRecebidos?.length)
         
         if (dadosRecebidos && Array.isArray(dadosRecebidos)) {
           setDados(dadosRecebidos)
@@ -45,7 +41,6 @@ export default function TablePage() {
     fetchData()
   }, [category])
 
-  console.log("dados", dados);
   
 
   if (loading) return <Spinner text="Carregando..."/>

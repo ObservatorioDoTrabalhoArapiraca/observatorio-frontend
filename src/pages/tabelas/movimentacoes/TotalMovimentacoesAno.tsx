@@ -18,10 +18,8 @@ export default function DemoPage() {
      setError(null);
      const fetchData = async () => {
        try {
-          console.log("🔄 Buscando dados com query:", query)
              
          const dados = await getTotalMovimentacao({ ano: query.ano, mes: query.mes, agregacao: query.agregacao })
-         console.log("✅ Dados recebidos:", dados)
          setDados(dados);
          
          setLoading(false);

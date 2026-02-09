@@ -43,8 +43,7 @@ const PdfList: React.FC<PdfListProps> = ({ tipo, pdfs, isLoading }) => {
     }
     return pdf.nome.toLowerCase().includes(searchTerm.toLowerCase())
   })
-  console.log(`🔍 Tipo: ${tipo}, Total filtrado: ${filteredPdfs.length}`)
-  console.log(`🔍 filtered, `, filteredPdfs)
+
 
   if (tipo === "tematico") {
     const grouped = groupPdfsByYearMonth(filteredPdfs)

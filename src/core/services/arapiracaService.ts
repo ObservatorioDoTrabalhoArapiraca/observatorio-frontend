@@ -40,7 +40,6 @@ export const getPeriodos = async (): Promise<ArapiracaResponse> => {
     const response = await api.get("arapiraca/")
     return response.data
   } catch (error) {
-    console.error("Erro ao buscar períodos:", error)
     throw error
   }
 }
@@ -54,7 +53,6 @@ export const getSerieTemporal = async (): Promise<any> => {
     const response = await api.get("arapiraca/serie/")
     return response.data
   } catch (error) {
-    console.error("Erro ao buscar série temporal:", error)
     throw error
   }
 }
@@ -68,7 +66,6 @@ export const getDadosAno = async (ano: number): Promise<any> => {
     const response = await api.get(`arapiraca/${ano}/`)
     return response.data
   } catch (error) {
-    console.error(`Erro ao buscar dados do ano ${ano}:`, error)
     throw error
   }
 }
@@ -82,7 +79,6 @@ export const getComparacao = async (): Promise<any> => {
     const response = await api.get("arapiraca/comparacao/")
     return response.data
   } catch (error) {
-    console.error("Erro ao buscar comparação:", error)
     throw error
   }
 }

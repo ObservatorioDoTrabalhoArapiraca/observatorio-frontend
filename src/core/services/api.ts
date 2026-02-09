@@ -4,8 +4,7 @@ import axios from "axios"
 
 const API_URL =  "http://localhost:8000/api"
 // import.meta.env.VITE_API_URL as string ||
-console.log("🌐 API_URL configurada:", API_URL)
-console.log("🌐 API_URL import:", import.meta.env.VITE_API_URL as string)
+
 
 if (!API_URL) {
   console.error("❌ VITE_API_URL não está definida!")
@@ -23,14 +22,11 @@ const api = axios.create({
 // Interceptor para debug de requisições
 api.interceptors.request.use(
   (config) => {
-    // TODO: apagar os consoles depois
-    // console.log('🔄 Fazendo requisição para:', config.baseURL + config.url);
-    // console.log('🔄 Método:', config.method?.toUpperCase());
-    // console.log('🔄 Headers:', config.headers);
+ 
     return config
   },
   (error) => {
-    // console.error('❌ Erro ao configurar requisição:', error);
+    
     return Promise.reject(error)
   }
 )
@@ -38,19 +34,12 @@ api.interceptors.request.use(
 // Interceptor para debug de respostas
 api.interceptors.response.use(
   (response) => {
-    // console.log('✅ Resposta recebida de:', response.config.url);
-    // console.log('✅ Status:', response.status);
-    // console.log('✅ Dados:', response.data);
+  
+
     return response
   },
   (error) => {
-    // console.error('❌ Erro na resposta da API:');
-    // console.error('   URL:', error.config?.url);
-    // console.error('   Status:', error.response?.status);
-    // console.error('   Status Text:', error.response?.statusText);
-    // console.error('   Mensagem:', error.message);
-    // console.error('   Dados do erro:', error.response?.data);
-    // console.error('   Headers:', error.response?.headers);
+ 
 
     // CORS error
     if (error.message === "Network Error") {

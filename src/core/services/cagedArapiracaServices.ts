@@ -17,12 +17,8 @@ export const getDistribuicaoPorEscolaridade = async ({ano, mes, agregacao}: Quer
       },
     });
 
-    console.log("📦 Response completo:", response)
-    console.log("📦 Response.data:", response.data)
-    console.log("📦 salario_por_escolaridade:", response.data)
     return response.data; 
   } catch (error) {
-    console.error('Erro ao buscar os dados de Distribuição por escolaridade:', error);
     throw error;
   }
 };
@@ -36,12 +32,8 @@ export const getDistribuicaoFaixaEtaria = async ({ano, mes, agregacao}: QueryPar
       },
     });
 
-    console.log("📦 Response completo:", response)
-    console.log("📦 Response.data:", response.data)
-    console.log("📦 salario_por_escolaridade:", response.data)
     return response.data; 
   } catch (error) {
-    console.error('Erro ao buscar os dados de Distribuição por escolaridade:', error);
     throw error;
   }
 };
@@ -55,12 +47,8 @@ export const getDistribuicaoPorSexo = async ({ano, mes, agregacao}: QueryParams)
       },
     });
 
-    console.log("📦 Response completo:", response)
-    console.log("📦 Response.data:", response.data)
-    console.log("📦 salario_por_escolaridade:", response.data)
     return response.data; 
   } catch (error) {
-    console.error('Erro ao buscar os dados de Distribuição por escolaridade:', error);
     throw error;
   }
 };
@@ -74,12 +62,8 @@ export const getProfissoesPorDeficiencia = async ({ano, mes, agregacao}: QueryPa
       },
     });
 
-    console.log("📦 Response completo:", response)
-    console.log("📦 Response.data:", response.data)
-    console.log("📦 salario_por_escolaridade:", response.data)
     return response.data; 
   } catch (error) {
-    console.error('Erro ao buscar os dados de Distribuição por escolaridade:', error);
     throw error;
   }
 };
@@ -93,12 +77,8 @@ export const getTotalMovimentacao = async ({ano, mes, agregacao}: QueryParams): 
       },
     });
 
-    console.log("📦 Response completo:", response)
-    console.log("📦 Response.data:", response.data)
-    console.log("📦 salario_por_escolaridade:", response.data)
     return response.data; 
   } catch (error) {
-    console.error('Erro ao buscar os dados de Distribuição por escolaridade:', error);
     throw error;
   }
 };

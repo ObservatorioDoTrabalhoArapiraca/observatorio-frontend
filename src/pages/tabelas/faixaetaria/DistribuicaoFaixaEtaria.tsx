@@ -21,12 +21,9 @@ export default function TablePage() {
     setError(null)
     const fetchData = async () => {
       try {
-        console.log("🔄 Buscando dados com query:", query)
         const dados = await getDistribuicaoFaixaEtaria({ano: query.ano, mes: query.mes, agregacao: query.agregacao})
-        console.log("✅ Dados recebidos:", dados)
         setDados(dados)
       } catch (error) {
-        console.error("❌ Erro ao buscar dados:", error)
         setError("Erro ao buscar dados")
       } finally {
         setLoading(false)
@@ -36,7 +33,6 @@ export default function TablePage() {
     fetchData()
   }, [category, query.ano, query.mes, query.agregacao])
 
-  console.log("dados", dados);
   
 
   if (loading) return <Spinner text="Carregando..."/>

@@ -12,10 +12,8 @@ export function usePdfFiles() {
         setIsLoading(true)
         setError(null)
         const data = await getPdfs()
-        console.log("📄 PDFs carregados no hook:", data)
         setPdfs(data)
       } catch (err) {
-        console.error("❌ Erro ao carregar PDFs:", err)
         setError(err instanceof Error ? err.message : "Erro ao carregar PDFs")
         setPdfs([])
       } finally {
