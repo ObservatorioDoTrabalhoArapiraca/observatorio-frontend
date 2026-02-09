@@ -6,6 +6,15 @@ export interface DistribuicaoPorEscolaridade {
   percentual: string
   total_movimentacoes: number
 }
+
+export interface DistribuicaoPorSexo {
+  ano: number
+  sexo_codigo?: string
+  sexo_descricao: string
+  total_movimentacoes: number
+  mes: number
+  percentual: string
+}
 export interface DistribuicaoPorFaixaEtaria {
   ano: number
   mes: number
@@ -41,8 +50,11 @@ export interface SalarioPorProfissao {
 }
 
 export interface ProfissoesPorDeficiencia {
-  cbo_2002_ocupacao: string
-  total_deficientes: number
+  ano: number
+  tipo_deficiencia: string
+  tipo_deficiencia_descricao: string
+  percentual: string
+  total_movimentacoes: number
 }
 
 export type NaviLink = {

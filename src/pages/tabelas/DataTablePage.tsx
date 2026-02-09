@@ -2,6 +2,8 @@ import { tableCategories } from "@/core/services/navLinks"
 import SalarioPorEscolaridade from "@/pages/tabelas/escolaridade/SalarioPorEscolaridade"
 import DistribuicaoFaixaEtaria from "@/pages/tabelas/faixaetaria/DistribuicaoFaixaEtaria"
 import TotalMovimentacoesAno from "@/pages/tabelas/movimentacoes/TotalMovimentacoesAno"
+import ProfissoesPorDeficiencia from "@/pages/tabelas/pcd/ProfissoesPorDeficiencia"
+import DistribuicaoPorSexo from "@/pages/tabelas/sexo/DistribuicaoPorSexo"
 import TabsComponent from "@/pages/tabelas/TabsComponent"
 
 export default function DataTablePage() {
@@ -18,6 +20,8 @@ export default function DataTablePage() {
         { value: "escolaridade", content: <SalarioPorEscolaridade /> },
         { value: "faixaetaria", content: <DistribuicaoFaixaEtaria /> },
         { value: "movimentacoes", content: <TotalMovimentacoesAno /> },
+        { value: "sexo", content: <DistribuicaoPorSexo /> },
+        { value: "pcd", content: <ProfissoesPorDeficiencia /> },
       ]}
     />
   )

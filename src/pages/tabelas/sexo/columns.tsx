@@ -1,9 +1,9 @@
 
-import { capitalizeFirstLetter } from "@/Utils/capitalizeFirstLettrer"
-import { DistribuicaoPorFaixaEtaria } from "@/types"
 import { ColumnDef } from "@tanstack/react-table"
+import { capitalizeFirstLetter } from "@/Utils/capitalizeFirstLettrer"
+import { DistribuicaoPorSexo } from "@/types"
 
-export const columns: ColumnDef<DistribuicaoPorFaixaEtaria>[] = [
+export const columns: ColumnDef<DistribuicaoPorSexo>[] = [
   {
     accessorKey: "ano",
     header: ({ column }) => {
@@ -19,6 +19,7 @@ export const columns: ColumnDef<DistribuicaoPorFaixaEtaria>[] = [
       return (
         <div>
           {row.original.ano}
+        
         </div>
       )
     },
@@ -42,7 +43,7 @@ export const columns: ColumnDef<DistribuicaoPorFaixaEtaria>[] = [
   //   },
   // },
   {
-    accessorKey: "faixa_etaria",
+    accessorKey: "sexo_descricao",
     header: ({ column }) => {
       return (
         <div className="font-bold ">
@@ -53,7 +54,7 @@ export const columns: ColumnDef<DistribuicaoPorFaixaEtaria>[] = [
     cell: ({ row }) => {
       return (
         <div>
-          {row.original.faixa_etaria}
+          {row.original.sexo_descricao}
         </div>
       )
     },
@@ -94,21 +95,21 @@ export const columns: ColumnDef<DistribuicaoPorFaixaEtaria>[] = [
       )
     },
   },
-  {
-    accessorKey: "total_movimentacoes",
-    header: ({ column }) => {
-      return (
-        <div className="font-bold ">
-          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
-        </div>
-      )
-    },
-    cell: ({ row }) => {
-      return (
-        <div>
-          {row.original.total_movimentacoes}
-        </div>
-      )
-    },
-  },
+  // {
+  //   accessorKey: "total_movimentacoes",
+  //   header: ({ column }) => {
+  //     return (
+  //       <div className="font-bold ">
+  //         {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
+  //       </div>
+  //     )
+  //   },
+  //   cell: ({ row }) => {
+  //     return (
+  //       <div>
+  //         {row.original.total_movimentacoes}
+  //       </div>
+  //     )
+  //   },
+  // },
 ]

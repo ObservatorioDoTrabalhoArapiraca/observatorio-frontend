@@ -1,8 +1,11 @@
+// rm -rf node_modules/.vite
+
 import axios from "axios"
 
-const API_URL = import.meta.env.VITE_API_URL as string || "http://localhost:3000/api"
-
+const API_URL =  "http://localhost:8000/api"
+// import.meta.env.VITE_API_URL as string ||
 console.log("🌐 API_URL configurada:", API_URL)
+console.log("🌐 API_URL import:", import.meta.env.VITE_API_URL as string)
 
 if (!API_URL) {
   console.error("❌ VITE_API_URL não está definida!")

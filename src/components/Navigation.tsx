@@ -24,9 +24,9 @@ const Navigation: React.FC = () => {
       <div className="sm:hidden flex text-off-white">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <Button className="bg-transparent hover:pointer shadow-none border-0 hover:border-0  hover:text-primary-blue hover:bg-off-white">
+            <div className="bg-transparent hover:pointer shadow-none border-0 hover:border-0  hover:text-primary-blue hover:bg-off-white">
               <FaAlignJustify />
-            </Button>
+            </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="bg-primary-blue border-2 border-off-white text-off-white ">
             <DropdownMenuLabel>Menu</DropdownMenuLabel>

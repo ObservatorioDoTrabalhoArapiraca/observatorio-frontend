@@ -1,5 +1,6 @@
 import { DataTable } from "@/components/table/DataTable"
-import { getAnoTotalMovimentacoes } from "@/core/services/salarioService";
+import { Spinner } from "@/components/ui/spinner";
+import { getTotalMovimentacao } from "@/core/services/cagedArapiracaServices";
 import { columns } from "@/pages/tabelas/movimentacoes/columns"
 import { AnoTotalMovimentacoes } from "@/types";
 import { useEffect, useState } from "react";
@@ -10,19 +11,33 @@ export default function DemoPage() {
 
   const [loading, setLoading] = useState<boolean>(true);
   const { category } = useParams()
+  const [error, setError] = useState<string | null>(null)
+  const query = {ano: 2020, mes: 1, agregacao: "mensal" as "mensal" | "anual"}
    useEffect(() => {
-      setLoading(true);
-      const fetchData = async () => {
-        const dados = await getAnoTotalMovimentacoes()
-        setDados(dados);
-    
-            setLoading(false);
-          ;
-      }
-      fetchData()
+     setLoading(true);
+     setError(null);
+     const fetchData = async () => {
+       try {
+          console.log("🔄 Buscando dados com query:", query)
+             
+         const dados = await getTotalMovimentacao({ ano: query.ano, mes: query.mes, agregacao: query.agregacao })
+         console.log("✅ Dados recebidos:", dados)
+         setDados(dados);
+         
+         setLoading(false);
+         ;
+       }
+       catch (error) {
+         console.error("❌ Erro ao buscar dados:", error)
+         setError("Erro ao buscar dados")
+       } finally {
+         setLoading(false)
+       }
+       fetchData()
+     }
    }, [category]);
   
-   if (loading) return <div>Carregando...</div>
+   if (loading) return <Spinner text="Carregando..."/>
 
   return (
     <div className="container mx-auto p-4">

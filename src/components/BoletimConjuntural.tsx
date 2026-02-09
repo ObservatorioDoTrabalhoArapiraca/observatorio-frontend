@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { PdfFile } from "@/core/services/pdfService"
 import { monthOrder } from "@/Utils/capitalizeFirstLettrer"
+import { File } from "lucide-react"
 
 export default function BoletimConjuntural({
   filtered,
@@ -37,8 +38,8 @@ export default function BoletimConjuntural({
                           className="flex flex-wrap cursor-pointer items-center justify-between space-x-4 hover:text-primary-blue"
                         >
                           <div>
-                          <span>📄</span>
-                          <span>{pdf.name}</span>
+                          <File className="inline-block mr-2 text-gray-600" />
+                          <span>{pdf.nome}</span>
                           </div>
                           <Button className="bg-secondary-blue text-white px-2 py-1 rounded">
                             Abrir

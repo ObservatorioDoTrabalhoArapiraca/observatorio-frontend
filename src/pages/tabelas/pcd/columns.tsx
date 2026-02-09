@@ -1,9 +1,9 @@
 
 import { capitalizeFirstLetter } from "@/Utils/capitalizeFirstLettrer"
-import { DistribuicaoPorFaixaEtaria } from "@/types"
+import { ProfissoesPorDeficiencia } from "@/types"
 import { ColumnDef } from "@tanstack/react-table"
 
-export const columns: ColumnDef<DistribuicaoPorFaixaEtaria>[] = [
+export const columns: ColumnDef<ProfissoesPorDeficiencia>[] = [
   {
     accessorKey: "ano",
     header: ({ column }) => {
@@ -19,12 +19,48 @@ export const columns: ColumnDef<DistribuicaoPorFaixaEtaria>[] = [
       return (
         <div>
           {row.original.ano}
+        
+        </div>
+      )
+    },
+  },
+  {
+    accessorKey: "tipo_deficiencia",
+    header: ({ column }) => {
+      return (
+        <div className="font-bold ">
+          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
+        </div>
+      )
+    },
+    cell: ({ row }) => {
+      return (
+        <div>
+          {row.original.tipo_deficiencia}
+        
+        </div>
+      )
+    },
+  },
+  {
+    accessorKey: "tipo_deficiencia_descricao",
+    header: ({ column }) => {
+      return (
+        <div className="font-bold ">
+          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
+        </div>
+      )
+    },
+    cell: ({ row }) => {
+      return (
+        <div>
+          {row.original.tipo_deficiencia_descricao}
         </div>
       )
     },
   },
   // {
-  //   accessorKey: "escolaridade_codigo",
+  //   accessorKey: "mes",
   //   header: ({ column }) => {
   //     return (
   //       <div className="font-bold ">
@@ -35,47 +71,12 @@ export const columns: ColumnDef<DistribuicaoPorFaixaEtaria>[] = [
   //   cell: ({ row }) => {
   //     return (
   //       <div>
-  //         {row.original.escolaridade_codigo}
-        
+  //         {row.original.mes}
+           
   //       </div>
   //     )
   //   },
   // },
-  {
-    accessorKey: "faixa_etaria",
-    header: ({ column }) => {
-      return (
-        <div className="font-bold ">
-          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
-        </div>
-      )
-    },
-    cell: ({ row }) => {
-      return (
-        <div>
-          {row.original.faixa_etaria}
-        </div>
-      )
-    },
-  },
-  {
-    accessorKey: "mes",
-    header: ({ column }) => {
-      return (
-        <div className="font-bold ">
-          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
-        </div>
-      )
-    },
-    cell: ({ row }) => {
-      return (
-        <div>
-          {row.original.mes}
-           
-        </div>
-      )
-    },
-  },
   {
     accessorKey: "percentual",
     header: ({ column }) => {

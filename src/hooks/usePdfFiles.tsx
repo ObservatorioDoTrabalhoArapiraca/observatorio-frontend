@@ -2,24 +2,30 @@ import { useEffect, useState } from "react"
 import { getPdfs, PdfFile } from "../core/services/pdfService"
 
 export function usePdfFiles() {
-  const [pdfFiles, setPdfFiles] = useState<PdfFile[]>([])
-  const [loading, setLoading] = useState(true)
+  const [pdfs, setPdfs] = useState<PdfFile[]>([])
+  const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  useEffect(() => {
+ 
     const fetchPdfs = async () => {
       try {
+        setIsLoading(true)
+        setError(null)
         const data = await getPdfs()
-        setPdfFiles(data)
+        console.log("📄 PDFs carregados no hook:", data)
+        setPdfs(data)
       } catch (err) {
-        setError("Erro ao carregar PDFs")
-        console.log(err)
+        console.error("❌ Erro ao carregar PDFs:", err)
+        setError(err instanceof Error ? err.message : "Erro ao carregar PDFs")
+        setPdfs([])
       } finally {
-        setLoading(false)
+        setIsLoading(false)
       }
     }
-    fetchPdfs()
-  }, [])
+  
+    useEffect(() => {
+      fetchPdfs()
+    }, [])
 
-  return { pdfFiles, loading, error }
+  return { pdfs, isLoading, error, refetch: fetchPdfs }
 }

@@ -1,4 +1,5 @@
 import { DataTable } from "@/components/table/DataTable"
+import { Spinner } from "@/components/ui/spinner"
 import { getDistribuicaoPorEscolaridade } from "@/core/services/cagedArapiracaServices"
 import { columns } from "@/pages/tabelas/escolaridade/columns"
 import { DistribuicaoPorEscolaridade } from "@/types"
@@ -37,7 +38,7 @@ export default function TablePage() {
   console.log("dados", dados);
   
 
-  if (loading) return <div>Carregando...</div>
+  if (loading) return <Spinner text="Carregando..."/>
   if (error) return <div>{error}</div>
   return (
     <div className="w-full mx-auto p-4">

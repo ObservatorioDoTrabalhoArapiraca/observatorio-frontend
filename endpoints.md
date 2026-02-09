@@ -1,4 +1,4 @@
-
+<!-- TODO: preencher com os corretos para documentar -->
 Endpoints Arapiraca
 // 1. Lista todos os períodos
 GET /api/arapiraca/

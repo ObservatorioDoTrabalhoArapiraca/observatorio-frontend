@@ -21,9 +21,10 @@ export const naviLinks = [
 export const tableCategories = [
   { label: "Salário por Escolaridade", value: "escolaridade" },
   { label: "Salário por Profissão", value: "profissao" },
+  { label: "Distribuilção por sexo", value: "sexo" },
   { label: "Salário por Faixa Etária", value: "faixaetaria" },
   { label: "Total de Movimentações por Ano", value: "movimentacoes" },
-  { label: "Profissões por Deficiência", value: "deficiencia" },
+  { label: "Profissões por Deficiência", value: "pcd" },
 ]
 export const boletinsCategories = [
   { label: "conjunturais", value: "conjunturais" },

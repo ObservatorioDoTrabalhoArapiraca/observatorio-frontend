@@ -5,6 +5,7 @@ import {
 import './Data.css';
 import { getAnoTotalMovimentacoes, getSalarioPorProfissao } from '../core/services/salarioService';
 import { AnoTotalMovimentacoes, SalarioPorProfissao } from '@/types';
+import { Spinner } from '@/components/ui/spinner';
 
 const idadeColors = ['#8884d8', '#82ca9d', '#ffc658', '#ff7f50', '#d84d4d'];
 
@@ -117,7 +118,7 @@ const Indicadores: React.FC = () => {
           <h3>Nº de empregos formais<br />por ano</h3>
           <ResponsiveContainer width="100%" height={400}>
             {loadingMov ? (
-              <p>Carregando...</p>
+              <Spinner text="Carregando..."/>
             ) : (
               <BarChart data={movAno.map(item => ({ name: item.ano, value: item.total_movimentacoes }))}>
                 <XAxis dataKey="name" />
@@ -133,7 +134,7 @@ const Indicadores: React.FC = () => {
           <h3>Top 5 Profissões com Mais Casos</h3>
           <ResponsiveContainer width="100%" height={400}>
             {loadingProf ? (
-              <p>Carregando...</p>
+              <Spinner text="Carregando..."/>
             ) : topProfissoes.length === 0 ? (
               <p>Dados de total de casos não disponíveis.</p>
             ) : (
