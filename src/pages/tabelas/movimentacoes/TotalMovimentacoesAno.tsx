@@ -27,8 +27,8 @@ export default function DemoPage() {
          setLoading(false);
          ;
        }
-       catch (error) {
-         console.error("❌ Erro ao buscar dados:", error)
+       catch (err) {
+         console.error("❌ Erro ao buscar dados:", error, err)
          setError("Erro ao buscar dados")
        } finally {
          setLoading(false)
