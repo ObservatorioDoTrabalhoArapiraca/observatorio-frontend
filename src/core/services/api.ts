@@ -2,8 +2,7 @@
 
 import axios from "axios"
 
-const API_URL =  "http://localhost:8000/api"
-// import.meta.env.VITE_API_URL as string ||
+const API_URL =  import.meta.env.VITE_API_URL 
 
 
 if (!API_URL) {
