@@ -15,7 +15,7 @@ export interface PdfListProps {
   pdfs: PdfFile[]
   isLoading: boolean
 }
-// TODO: adicionar paginação se necessário
+
 
 const PdfList: React.FC<PdfListProps> = ({ tipo, pdfs, isLoading }) => {
 
@@ -69,7 +69,7 @@ const PdfList: React.FC<PdfListProps> = ({ tipo, pdfs, isLoading }) => {
 
   return  (
     <div className="space-y-6">
-      {/* TODO:  Barra de Pesquisa */}
+    {/* TODO: adicionar a opção de pesquisa por título */}
       <div className="relative">
         <input
           type="text"
@@ -113,6 +113,7 @@ const PdfList: React.FC<PdfListProps> = ({ tipo, pdfs, isLoading }) => {
             >
               <div className="flex items-start space-x-3">
                 {/* TODO: trocar esse ícone por algum da biblioteca */}
+                <div>icone</div>
                 <svg
                   className="w-8 h-8 text-red-600 flex-shrink-0"
                   fill="currentColor"

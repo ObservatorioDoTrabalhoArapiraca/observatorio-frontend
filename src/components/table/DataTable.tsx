@@ -7,6 +7,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table"
 
+import PaginationTable from "@/components/table/PaginationTable"
 import {
   Table,
   TableBody,
@@ -15,15 +16,18 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import TableFilters, { TableFiltersProps } from "@/components/table/TableFilters"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
+  filters?: TableFiltersProps
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  filters,
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
     data,
@@ -35,6 +39,16 @@ export function DataTable<TData, TValue>({
     <div className="overflow-hidden rounded-md border">
 
       {/* TODO: adicionar a opção de pesquisa por título */}
+
+      {/* adicionar Filtro para pegar os parametros de busca: ano, mes, agregacao e vai passar como parametros para a rota */}
+      <TableFilters
+        ano={filters?.ano ?? 0}
+        mes={filters?.mes ?? 0}
+        isAnual={filters?.isAnual ?? false}
+        onAnoChange={filters?.onAnoChange ?? (() => {})}
+        onMesChange={filters?.onMesChange ?? (() => {})}
+        onAgregacaoChange={filters?.onAgregacaoChange ?? (() => {})}
+      />
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -76,7 +90,11 @@ export function DataTable<TData, TValue>({
             </TableRow>
           )}
         </TableBody>
+       
+        
       </Table>
+      {/* TODO: fazer esse componente funcionar */}
+        <PaginationTable table={table} />
     </div>
   )
 }

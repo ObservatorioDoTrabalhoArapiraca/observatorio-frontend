@@ -1,10 +1,11 @@
 import { tableCategories } from "@/core/services/navLinks"
 import SalarioPorEscolaridade from "@/pages/tabelas/escolaridade/SalarioPorEscolaridade"
 import DistribuicaoFaixaEtaria from "@/pages/tabelas/faixaetaria/DistribuicaoFaixaEtaria"
-import TotalMovimentacoesAno from "@/pages/tabelas/movimentacoes/TotalMovimentacoesAno"
+import Movimentacoes from "@/pages/tabelas/movimentacoes/Movimentacoes"
 import ProfissoesPorDeficiencia from "@/pages/tabelas/pcd/ProfissoesPorDeficiencia"
 import DistribuicaoPorSexo from "@/pages/tabelas/sexo/DistribuicaoPorSexo"
 import TabsComponent from "@/pages/tabelas/TabsComponent"
+import TotalMovimentacoesAno from "@/pages/tabelas/totalmovimentacoesano/TotalMovimentacoesAno"
 
 export default function DataTablePage() {
   return (
@@ -17,9 +18,10 @@ export default function DataTablePage() {
       // TODO: adicionar os outros componentes das tabelas aqui quando refizer as tabelas no backend
 
       // TODO: adicionar a opção de pesquisa em todas as tabelas
+        { value: "movimentacoes", content: <Movimentacoes /> },
+        { value: "totalmovimentacoesano", content: <TotalMovimentacoesAno /> },
         { value: "escolaridade", content: <SalarioPorEscolaridade /> },
         { value: "faixaetaria", content: <DistribuicaoFaixaEtaria /> },
-        { value: "movimentacoes", content: <TotalMovimentacoesAno /> },
         { value: "sexo", content: <DistribuicaoPorSexo /> },
         { value: "pcd", content: <ProfissoesPorDeficiencia /> },
       ]}

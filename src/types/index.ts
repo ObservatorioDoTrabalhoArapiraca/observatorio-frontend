@@ -37,8 +37,76 @@ export interface MedianaSalario {
 }
 
 export interface AnoTotalMovimentacoes {
-  ano: number
-  total_movimentacoes: number
+  total_movimentacoes: number,
+  filtros_aplicados: {
+      ano: number,
+      agregacao: "mensal" | "anual",
+      mes: number
+  }
+}
+
+export interface Movimentacao {
+  id: number,
+  competencia_movimentacao: number,
+  regiao_codigo: number,
+  regiao_descricao: string,
+  uf_codigo: number,
+  uf_descricao: string,
+  municipio_codigo: number,
+  municipio_descricao: string,
+  secao_codigo: string,
+  secao_descricao: string,
+  subclasse_codigo: number,
+  subclasse_descricao: string,
+  cbo2002_ocupacao_codigo: number,
+  cbo2002_ocupacao_descricao: string,
+  categoria_codigo: number,
+  categoria_descricao: string,
+  grau_instrucao_descricao: string,
+  raca_cor_codigo: number,
+  raca_cor_descricao: string,
+  grau_instrucao_codigo: number,
+  sexo_codigo: number,
+  sexo_descricao: string,
+  tipo_empregador_codigo: number,
+  tipo_empregador_descricao: string,
+  tipo_estabelecimento_codigo: number,
+  tipo_estabelecimento_descricao: string,
+  tipo_movimentacao_codigo: number,
+  tipo_movimentacao_descricao: string,
+  tipo_deficiencia_codigo: number,
+  tipo_deficiencia_descricao: string,
+  saldo_movimentacao: number,
+  idade: number,
+  horas_contratuais: number,
+  salario: string,
+  tamanho_estabelecimento: number,
+  indicador_trabalho_intermitente: string,
+  indicador_trabalho_parcial: string,
+  indicador_aprendiz: string,
+  origem_informacao: string,
+  criado_em: string,
+  atualizado_em: string
+
+ }
+export interface Movimentacoes {
+  total_movimentacoes: number,
+  filtros_aplicados: {
+      ano: number,
+      agregacao: "mensal" | "anual",
+      mes: number
+  }
+  paginacao: {
+    page: number,
+    page_size: number,
+    total_pages: number,
+    links: {
+        next: number | null,
+        previous: number | null
+    }
+
+  },
+  resultados: Movimentacao[]
 }
 
 export interface SalarioPorProfissao {

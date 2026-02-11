@@ -44,12 +44,12 @@ export default function TabsComponent({
         value={category}
         onValueChange={handleTabChange}
       >
-        <TabsList className=" pt-4 flex flex-row items-start md:items-center md:justify-center justify-start w-full h-fit overflow-x-auto pb-5">
+        <TabsList className="p-4 flex flex-row items-start  justify-start w-full h-fit overflow-x-auto pb-5">
           {categories.map((tab) => (
             <TabsTrigger
-              key={tab.value}
-              value={tab.value}
-              className=" bg-off-white text-primary-blue p-3 rounded-t-md"
+            key={tab.value}
+            value={tab.value}
+            className=" bg-off-white text-primary-blue p-3 rounded-t-md"
             >
               {tab.label}
             </TabsTrigger>
