@@ -1,9 +1,9 @@
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination"
 
-type PaginationTableProps = {
+export type PaginationTableProps = {
   table: any
 }
-export default function PaginationTable({ table }: PaginationTableProps) {
+export default function PaginationTable() {
   return (
     <Pagination className="py-4 bg-off-white">
     <PaginationContent>
