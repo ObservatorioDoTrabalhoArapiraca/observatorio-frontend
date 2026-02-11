@@ -3,6 +3,7 @@ import SalarioPorEscolaridade from "@/pages/tabelas/escolaridade/SalarioPorEscol
 import DistribuicaoFaixaEtaria from "@/pages/tabelas/faixaetaria/DistribuicaoFaixaEtaria"
 import Movimentacoes from "@/pages/tabelas/movimentacoes/Movimentacoes"
 import ProfissoesPorDeficiencia from "@/pages/tabelas/pcd/ProfissoesPorDeficiencia"
+import SalarioPorProfissao from "@/pages/tabelas/salarioprofissao/SalarioPorProfissao"
 import DistribuicaoPorSexo from "@/pages/tabelas/sexo/DistribuicaoPorSexo"
 import TabsComponent from "@/pages/tabelas/TabsComponent"
 import TotalMovimentacoesAno from "@/pages/tabelas/totalmovimentacoesano/TotalMovimentacoesAno"
@@ -17,13 +18,13 @@ export default function DataTablePage() {
       tabsContent={[
       // TODO: adicionar os outros componentes das tabelas aqui quando refizer as tabelas no backend
 
-      // TODO: adicionar a opção de pesquisa em todas as tabelas
         { value: "movimentacoes", content: <Movimentacoes /> },
         { value: "totalmovimentacoesano", content: <TotalMovimentacoesAno /> },
         { value: "escolaridade", content: <SalarioPorEscolaridade /> },
         { value: "faixaetaria", content: <DistribuicaoFaixaEtaria /> },
         { value: "sexo", content: <DistribuicaoPorSexo /> },
         { value: "pcd", content: <ProfissoesPorDeficiencia /> },
+        { value: "salarioporprofissao", content: <SalarioPorProfissao /> },
       ]}
     />
   )

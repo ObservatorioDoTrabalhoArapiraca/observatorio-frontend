@@ -5,13 +5,48 @@ import { columns } from "@/pages/tabelas/escolaridade/columns"
 import { DistribuicaoPorEscolaridade } from "@/types"
 
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useSearchParams } from "react-router-dom"
 
 export default function TablePage() {
   const [dados, setDados] = useState<DistribuicaoPorEscolaridade[]>([])
   const { category } = useParams()
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [ano, setAno] = useState<number>(Number(searchParams.get("ano")) || new Date().getFullYear());
+  const [mes, setMes] = useState<number>(
+    Number(searchParams.get("mes")) || 1
+  );
+  const [isAnual, setIsAnual] = useState<boolean>(searchParams.get("agregacao") === "anual");
+
+  const handleAnoChange = (novoAno: number) => {
+    setAno(novoAno);
+    setSearchParams({
+      ano: novoAno.toString(),
+      mes: mes.toString(),
+      agregacao: isAnual ? "anual" : "mensal",
+    });
+  };
+ 
+  const handleMesChange = (novoMes: number) => {
+    setMes(novoMes);
+    setSearchParams({
+      ano: ano.toString(),
+      mes: novoMes.toString(),
+      agregacao: isAnual ? "anual" : "mensal",
+    });
+  };
+
+  const handleAgregacaoChange = (novoIsAnual: boolean) => {
+    setIsAnual(novoIsAnual);
+    setSearchParams({
+      ano: ano.toString(),
+      mes: mes.toString(),
+      agregacao: novoIsAnual ? "anual" : "mensal",
+    });
+  };
+  
   
   
   useEffect(() => {
@@ -19,8 +54,8 @@ export default function TablePage() {
     setError(null)
     const fetchData = async () => {
       try {
-        const query = {ano: 2020, mes: 1, agregacao: "mensal" as "mensal" | "anual"}
-        const dadosRecebidos = await getDistribuicaoPorEscolaridade({ano: query.ano, mes: query.mes, agregacao: query.agregacao})
+       
+        const dadosRecebidos = await getDistribuicaoPorEscolaridade({ano: ano, mes: mes, agregacao: isAnual ? "anual" : "mensal"})
         setDados(dadosRecebidos)
         
         if (dadosRecebidos && Array.isArray(dadosRecebidos)) {
@@ -38,7 +73,7 @@ export default function TablePage() {
 
     }
     fetchData()
-  }, [category])
+  }, [category, ano, mes, isAnual])
 
   
 
@@ -49,6 +84,14 @@ export default function TablePage() {
       <DataTable<DistribuicaoPorEscolaridade, DistribuicaoPorEscolaridade>
         data={dados}
         columns={columns}
+        filters={{
+          ano,
+          mes,
+          isAnual,
+          onAnoChange: handleAnoChange,
+          onMesChange: handleMesChange,
+          onAgregacaoChange: handleAgregacaoChange,
+        }}
       />
     </div>
   )

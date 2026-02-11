@@ -1,18 +1,51 @@
 import { DataTable } from "@/components/table/DataTable"
 import { Spinner } from "@/components/ui/spinner"
-import { getDistribuicaoPorEscolaridade } from "@/core/services/cagedArapiracaServices"
-import { columns } from "@/pages/tabelas/escolaridade/columns"
-import { DistribuicaoPorEscolaridade } from "@/types"
+import { getSalarioPorProfissao } from "@/core/services/cagedArapiracaServices"
+import { columns } from "@/pages/tabelas/salarioprofissao/columns"
+import {  SalarioPorProfissao } from "@/types"
 
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useSearchParams } from "react-router-dom"
 
 export default function TablePage() {
-  const [dados, setDados] = useState<DistribuicaoPorEscolaridade[]>([])
+  const [dados, setDados] = useState<SalarioPorProfissao[]>([])
   const { category } = useParams()
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
-  const query = {ano: 2020, mes: 1, agregacao: "mensal" as "mensal" | "anual"}
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [ano, setAno] = useState<number>(Number(searchParams.get("ano")) || new Date().getFullYear());
+  const [mes, setMes] = useState<number>(
+    Number(searchParams.get("mes")) || 1
+  );
+  const [isAnual, setIsAnual] = useState<boolean>(searchParams.get("agregacao") === "anual");
+
+  const handleAnoChange = (novoAno: number) => {
+    setAno(novoAno);
+    setSearchParams({
+      ano: novoAno.toString(),
+      mes: mes.toString(),
+      agregacao: isAnual ? "anual" : "mensal",
+    });
+  };
+ 
+  const handleMesChange = (novoMes: number) => {
+    setMes(novoMes);
+    setSearchParams({
+      ano: ano.toString(),
+      mes: novoMes.toString(),
+      agregacao: isAnual ? "anual" : "mensal",
+    });
+  };
+
+  const handleAgregacaoChange = (novoIsAnual: boolean) => {
+    setIsAnual(novoIsAnual);
+    setSearchParams({
+      ano: ano.toString(),
+      mes: mes.toString(),
+      agregacao: novoIsAnual ? "anual" : "mensal",
+    });
+  };
   
   
   useEffect(() => {
@@ -20,7 +53,7 @@ export default function TablePage() {
     setError(null)
     const fetchData = async () => {
       try {
-        const dados = await getDistribuicaoPorEscolaridade({ano: query.ano, mes: query.mes, agregacao: query.agregacao})
+        const dados = await getSalarioPorProfissao({ano: ano, mes: mes, agregacao: isAnual ? "anual" : "mensal"})
         setDados(dados)
       } catch (error) {
         console.error("❌ Erro ao buscar dados:", error)
@@ -31,7 +64,7 @@ export default function TablePage() {
 
     }
     fetchData()
-  }, [category, query.ano, query.mes, query.agregacao])
+  }, [category, ano, mes, isAnual])
 
   
 
@@ -39,9 +72,17 @@ export default function TablePage() {
   if (error) return <div>{error}</div>
   return (
     <div className="w-full mx-auto p-4">
-      <DataTable<DistribuicaoPorEscolaridade, DistribuicaoPorEscolaridade>
+      <DataTable<SalarioPorProfissao, SalarioPorProfissao>
         data={dados}
         columns={columns}
+        filters={{
+          ano,
+          mes,
+          isAnual,
+          onAnoChange: handleAnoChange,
+          onMesChange: handleMesChange,
+          onAgregacaoChange: handleAgregacaoChange,
+        }}
       />
     </div>
   )

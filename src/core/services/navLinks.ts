@@ -21,7 +21,7 @@ export const naviLinks = [
 export const tableCategories = [
   { label: "Movimentações", value: "movimentacoes" },
   { label: "Salário por Escolaridade", value: "escolaridade" },
-  { label: "Salário por Profissão", value: "profissao" },
+  { label: "Salário por Profissão", value: "salarioporprofissao" },
   { label: "Distribuilção por sexo", value: "sexo" },
   { label: "Salário por Faixa Etária", value: "faixaetaria" },
   { label: "Profissões por Deficiência", value: "pcd" },

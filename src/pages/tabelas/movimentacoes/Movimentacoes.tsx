@@ -11,14 +11,14 @@ export default function MovimentacoesTablePage() {
   
   const [loading, setLoading] = useState<boolean>(true);
   const { category } = useParams()
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const [ano, setAno] = useState<number>(Number(searchParams.get("ano")) || new Date().getFullYear());
   const [mes, setMes] = useState<number>(
     Number(searchParams.get("mes")) || 1
   );
   const [isAnual, setIsAnual] = useState<boolean>(searchParams.get("agregacao") === "anual");
-
+// TODO: adicionar esses paramentros de filtro nas outras
   const handleAnoChange = (novoAno: number) => {
     setAno(novoAno);
     setSearchParams({
@@ -45,9 +45,7 @@ export default function MovimentacoesTablePage() {
       agregacao: novoIsAnual ? "anual" : "mensal",
     });
   };
-  
 
-  // TODO: adicionar esses filtros em todas as tabelas
    useEffect(() => {
      const fetchData = async () => {
      

@@ -1,95 +1,37 @@
 
-import { ColumnDef } from "@tanstack/react-table"
-import { capitalizeFirstLetter } from "@/Utils/capitalizeFirstLettrer"
 import { SalarioPorProfissao } from "@/types"
+import { ColumnDef } from "@tanstack/react-table"
 
 export const columns: ColumnDef<SalarioPorProfissao>[] = [
   {
     accessorKey: "ano",
-    header: ({ column }) => {
-      return (
-        <div className="font-bold ">
-          {capitalizeFirstLetter(column.id)
-            .replace(/_/g, " ") 
-            }
-        </div>
-      )
-    },
+    header: "Ano",
     cell: ({ row }) => {
       return (
         <div>
           {row.original.ano}
-        
-        </div>
-      )
-    },
-  },
-  // {
-  //   accessorKey: "escolaridade_codigo",
-  //   header: ({ column }) => {
-  //     return (
-  //       <div className="font-bold ">
-  //         {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
-  //       </div>
-  //     )
-  //   },
-  //   cell: ({ row }) => {
-  //     return (
-  //       <div>
-  //         {row.original.escolaridade_codigo}
-        
-  //       </div>
-  //     )
-  //   },
-  // },
-  {
-    accessorKey: "escolaridade_descricao",
-    header: ({ column }) => {
-      return (
-        <div className="font-bold ">
-          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
-        </div>
-      )
-    },
-    cell: ({ row }) => {
-      return (
-        <div>
-          {row.original.escolaridade_descricao}
         </div>
       )
     },
   },
   {
-    accessorKey: "mes",
-    header: ({ column }) => {
-      return (
-        <div className="font-bold ">
-          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
-        </div>
-      )
-    },
+    accessorKey: "cbo_descricao",
+    header: "Profissão (CBO)",
     cell: ({ row }) => {
       return (
         <div>
-          {row.original.mes}
-           
+          {row.original.cbo_descricao}
         </div>
       )
     },
   },
   {
-    accessorKey: "percentual",
-    header: ({ column }) => {
-      return (
-        <div className="font-bold ">
-          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
-        </div>
-      )
-    },
+    accessorKey: "salario_medio",
+    header: "Salário Médio",
     cell: ({ row }) => {
       return (
         <div>
-          {row.original.percentual}%
+          {row.original.salario_medio.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
            
         </div>
       )
@@ -97,17 +39,12 @@ export const columns: ColumnDef<SalarioPorProfissao>[] = [
   },
   {
     accessorKey: "total_movimentacoes",
-    header: ({ column }) => {
-      return (
-        <div className="font-bold ">
-          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
-        </div>
-      )
-    },
+    header: "Total Movimentações",
     cell: ({ row }) => {
       return (
         <div>
           {row.original.total_movimentacoes}
+           
         </div>
       )
     },

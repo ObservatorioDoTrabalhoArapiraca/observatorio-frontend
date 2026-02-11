@@ -6,6 +6,13 @@ export interface DistribuicaoPorEscolaridade {
   percentual: string
   total_movimentacoes: number
 }
+export interface SalarioPorProfissao {
+  ano: number
+  cbo_codigo: string
+  cbo_descricao: string
+  salario_medio: number
+  total_movimentacoes: number
+}
 
 export interface DistribuicaoPorSexo {
   ano: number

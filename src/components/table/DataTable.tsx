@@ -21,7 +21,7 @@ import TableFilters, { TableFiltersProps } from "@/components/table/TableFilters
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
-  filters?: TableFiltersProps
+  filters: TableFiltersProps
 }
 
 export function DataTable<TData, TValue>({
@@ -42,12 +42,12 @@ export function DataTable<TData, TValue>({
 
       {/* adicionar Filtro para pegar os parametros de busca: ano, mes, agregacao e vai passar como parametros para a rota */}
       <TableFilters
-        ano={filters?.ano ?? 0}
-        mes={filters?.mes ?? 0}
-        isAnual={filters?.isAnual ?? false}
-        onAnoChange={filters?.onAnoChange ?? (() => {})}
-        onMesChange={filters?.onMesChange ?? (() => {})}
-        onAgregacaoChange={filters?.onAgregacaoChange ?? (() => {})}
+        ano={filters.ano}
+        mes={filters.mes}
+        isAnual={filters.isAnual}
+        onAnoChange={filters.onAnoChange}
+        onMesChange={filters.onMesChange}
+        onAgregacaoChange={filters.onAgregacaoChange}
       />
       <Table>
         <TableHeader>

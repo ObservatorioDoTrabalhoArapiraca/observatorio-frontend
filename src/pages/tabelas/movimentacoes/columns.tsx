@@ -3,6 +3,8 @@ import { ColumnDef } from "@tanstack/react-table"
 
 
 export const columns: ColumnDef<Movimentacao>[] = [
+
+  // TODO:exibir o resto dos dados da tabela de movimentacoes no colums
   {
     accessorKey: "competencia_movimentacao",
     header: "Competência",
