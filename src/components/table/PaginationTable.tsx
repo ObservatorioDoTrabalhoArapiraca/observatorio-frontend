@@ -1,5 +1,5 @@
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination"
-
+// TODO: implementar paginação para tabelas, usando o componente Pagination do shadcn, e integrando com a API para buscar os dados paginados
 export type PaginationTableProps = {
   table: any
 }
