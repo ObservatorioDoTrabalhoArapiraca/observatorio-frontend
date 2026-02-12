@@ -94,7 +94,7 @@ export function DataTable<TData, TValue>({
         
       </Table>
       {/* TODO: fazer esse componente funcionar */}
-        <PaginationTable table={table} />
+        <PaginationTable />
     </div>
   )
 }
