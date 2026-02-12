@@ -1,17 +1,17 @@
 import { AnoTotalMovimentacoes } from "@/types"
 import { ColumnDef } from "@tanstack/react-table"
 
-
+// TODO: testar quando a api voltar a retornar o ano
 export const columns: ColumnDef<AnoTotalMovimentacoes>[] = [
   {
-    accessorKey: "filtros_aplicados.ano",
+    accessorKey: "ano",
     header: "Ano",
     cell: ({ row }) => {
-      return (
-        <div>
-          {row.original.filtros_aplicados.ano}
-        </div>
-      )
+      const ano = row.original.filtros_aplicados?.ano 
+      ?? row.original.filtros_aplicados?.ano 
+      ?? "Todos os anos";
+    return <div>{ano}</div>;
+  
     },
   },
   {

@@ -13,37 +13,63 @@ export default function MovimentacoesTablePage() {
   const { category } = useParams()
   const [error, setError] = useState<string | null>(null);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [ano, setAno] = useState<number>(Number(searchParams.get("ano")) || new Date().getFullYear());
-  const [mes, setMes] = useState<number>(
-    Number(searchParams.get("mes")) || 1
-  );
+
+  const parseAnoFromUrl = (): number | null => {
+    const anoParam = searchParams.get("ano");
+    if (!anoParam) return null;
+    const anoNum = Number(anoParam);
+    return isNaN(anoNum) ? null : anoNum;
+  };
+
+  const parseMesFromUrl = (): number | null => {
+    const mesParam = searchParams.get("mes");
+    if (!mesParam) return null;
+    const mesNum = Number(mesParam);
+    return isNaN(mesNum) ? null : mesNum;
+  };
+
+  const [ano, setAno] = useState<number | null>(parseAnoFromUrl());
+  const [mes, setMes] = useState<number | null>(parseMesFromUrl());
   const [isAnual, setIsAnual] = useState<boolean>(searchParams.get("agregacao") === "anual");
-// TODO: adicionar esses paramentros de filtro nas outras
-  const handleAnoChange = (novoAno: number) => {
+  const handleAnoChange = (novoAno: number | null) => {
     setAno(novoAno);
-    setSearchParams({
-      ano: novoAno.toString(),
-      mes: mes.toString(),
-      agregacao: isAnual ? "anual" : "mensal",
-    });
+    if (novoAno === null) { 
+      setMes(null)
+      setSearchParams({})
+    } else {
+
+      setSearchParams({
+        ano: novoAno?.toString(),
+        ...(mes !== null && { mes: mes?.toString() }),
+        agregacao: isAnual ? "anual" : "mensal",
+      });
+    }
   };
  
-  const handleMesChange = (novoMes: number) => {
+  const handleMesChange = (novoMes: number | null) => {
     setMes(novoMes);
-    setSearchParams({
-      ano: ano.toString(),
-      mes: novoMes.toString(),
-      agregacao: isAnual ? "anual" : "mensal",
-    });
+    if (ano !== null) {
+
+      setSearchParams({
+        // isso aqui muda?
+        ano: ano.toString(),
+        ...(novoMes !== null && { mes: novoMes.toString() }),
+        agregacao: isAnual ? "anual" : "mensal",
+      });
+    }
+      
   };
 
   const handleAgregacaoChange = (novoIsAnual: boolean) => {
     setIsAnual(novoIsAnual);
-    setSearchParams({
-      ano: ano.toString(),
-      mes: mes.toString(),
-      agregacao: novoIsAnual ? "anual" : "mensal",
-    });
+    if (ano !== null) {
+      setSearchParams({
+        ano: ano.toString(),
+        ...(mes !== null && { mes: mes.toString() }),
+        agregacao: novoIsAnual ? "anual" : "mensal",
+      });
+      
+    }
   };
 
    useEffect(() => {
@@ -52,11 +78,15 @@ export default function MovimentacoesTablePage() {
        setLoading(true);
        setError(null);
        try {
-             
+            //  TODO: passar esses paramentros de ano opcionais para as outras tabelas
          const dados = await getMovimentacoes({
-           ano: ano, mes: mes, agregacao: isAnual ? "anual" : "mensal",
-           detalhes: true
-         });
+            ...(ano !== null && { ano }),
+            ...(mes !== null && { mes }),
+            agregacao: isAnual ? "anual" : "mensal",
+            detalhes: true,
+          })
+           
+     
          setDados(dados.resultados);
          setLoading(false);
          
@@ -81,8 +111,8 @@ export default function MovimentacoesTablePage() {
         mes,
         isAnual,
         onAnoChange: handleAnoChange,
-          onMesChange: handleMesChange,
-          onAgregacaoChange: handleAgregacaoChange,
+        onMesChange: handleMesChange,
+        onAgregacaoChange: handleAgregacaoChange,
       }}
       />
     </div>

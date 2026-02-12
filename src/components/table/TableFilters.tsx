@@ -10,11 +10,11 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export interface TableFiltersProps {
-  ano: number;
-  mes: number;
+  ano: number | null;
+  mes: number | null;
   isAnual: boolean;
-  onAnoChange: (ano: number) => void;
-  onMesChange: (mes: number) => void;
+  onAnoChange: (ano: number| null) => void;
+  onMesChange: (mes: number| null) => void;
   onAgregacaoChange: (isAnual: boolean) => void;
 }
 
@@ -45,6 +45,15 @@ export default function TableFilters({
     { value: 12, label: "Dezembro" },
   ];
 
+  const handleAnoChange = (value: string) => {
+    if (value === "todos") {
+      onAnoChange(null);
+      onMesChange(null); // Limpa o mês também quando seleciona "Todos"
+    } else {
+      onAnoChange(Number(value));
+    }
+  };
+
   return (
     <Card className="mb-6 shadow-md bg-off-white/40 ">
       <CardHeader>
@@ -56,13 +65,14 @@ export default function TableFilters({
           <div className="flex flex-col gap-2">
             <Label htmlFor="ano">Ano</Label>
             <Select 
-              value={ano.toString()} 
-              onValueChange={(value) => onAnoChange(Number(value))}
+              value={ano?.toString() ?? "todos"} 
+              onValueChange={handleAnoChange}
             >
               <SelectTrigger className="w-[180px]" id="ano">
                 <SelectValue placeholder="Selecione o ano" />
               </SelectTrigger>
               <SelectContent>
+              <SelectItem value="todos">Todos os anos</SelectItem>
                 {anos.map((a) => (
                   <SelectItem key={a} value={a.toString()}>
                     {a}
@@ -76,8 +86,9 @@ export default function TableFilters({
           <div className="flex flex-col gap-2">
             <Label htmlFor="mes">Mês</Label>
             <Select 
-              value={mes.toString()} 
+              value={mes?.toString() ?? ""} 
               onValueChange={(value) => onMesChange(Number(value))}
+              disabled={ano === null}
             >
               <SelectTrigger className="w-[180px]" id="mes">
                 <SelectValue placeholder="Selecione o mês" />
@@ -109,7 +120,11 @@ export default function TableFilters({
         </div>
         
         <p className="text-sm text-muted-foreground mt-3">
-          Agregação atual: <strong>{isAnual ? "Anual" : "Mensal"}</strong>
+        {ano === null ? (
+            <>Exibindo: <strong>Todos os anos</strong></>
+          ) : (
+            <>Agregação atual: <strong>{isAnual ? "Anual" : "Mensal"}</strong></>
+          )}
         </p>
       </CardContent>
     </Card>
