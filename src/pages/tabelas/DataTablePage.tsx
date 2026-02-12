@@ -16,9 +16,9 @@ export default function DataTablePage() {
       defaultTab="escolaridade"
       navigateTo="tabelas"
       tabsContent={[
-      // TODO: adicionar os outros componentes das tabelas aqui quando refizer as tabelas no backend
+    
 
-        { value: "movimentacoes", content: <Movimentacoes /> },
+        // { value: "movimentacoes", content: <Movimentacoes /> },
         { value: "totalmovimentacoesano", content: <TotalMovimentacoesAno /> },
         { value: "escolaridade", content: <SalarioPorEscolaridade /> },
         { value: "faixaetaria", content: <DistribuicaoFaixaEtaria /> },
