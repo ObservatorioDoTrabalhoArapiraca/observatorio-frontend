@@ -53,9 +53,9 @@ export const getDistribuicaoFaixaEtaria = async ({ano, mes, agregacao}: QueryPar
     throw error;
   }
 };
-export const getDistribuicaoPorSexo = async ({ano, mes, agregacao}: QueryParams): Promise<DistribuicaoPorSexo[]> => {
+export const getDistribuicaoPorSexo = async ({ano, mes, agregacao}: QueryParams): Promise<DistribuicaoPorSexo> => {
   try {
-    const response = await api.get<DistribuicaoPorSexo[]>(`analises/sexo/`, {
+    const response = await api.get<DistribuicaoPorSexo>(`analises/sexo/`, {
       params: {
         ...(ano !== undefined && { ano }),
         ...(mes !== undefined && { mes }),

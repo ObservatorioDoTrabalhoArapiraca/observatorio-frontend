@@ -14,13 +14,22 @@ export interface SalarioPorProfissao {
   total_movimentacoes: number
 }
 
-export interface DistribuicaoPorSexo {
+export interface Sexo {
   ano: number
   sexo_codigo?: string
   sexo_descricao: string
   total_movimentacoes: number
   mes: number
   percentual: string
+}
+export interface DistribuicaoPorSexo {
+  count: number,
+  total_pages: number,
+  current_page: number,
+  page_size: number,
+  next: string | null,
+  previous: string | null,
+  results: Sexo[]
 }
 export interface DistribuicaoPorFaixaEtaria {
   ano: number
