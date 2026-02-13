@@ -2,7 +2,7 @@ import { DataTable } from "@/components/table/DataTable"
 import { Spinner } from "@/components/ui/spinner"
 import { getDistribuicaoPorSexo } from "@/core/services/cagedArapiracaServices"
 import { columns } from "@/pages/tabelas/sexo/columns"
-import { DistribuicaoPorSexo, Sexo } from "@/types"
+import { Sexo } from "@/types"
 
 import { useEffect, useState } from "react"
 import { useParams, useSearchParams } from "react-router-dom"
