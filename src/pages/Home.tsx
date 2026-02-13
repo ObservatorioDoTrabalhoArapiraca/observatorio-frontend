@@ -1,5 +1,6 @@
 import HeadHome from "@/components/HeadHome"
 import { GridCrads } from "../components/GridCrads"
+import NewsPaper from "@/pages/NewsPaper"
 
 const Home = () => {
   const images = [
@@ -17,6 +18,7 @@ const Home = () => {
         e orgulho na população.
         Junte-se a nós nessa jornada de redescoberta e celebração da nossa cidade!"
       />
+      <NewsPaper />
       <GridCrads />
     </>
   )

@@ -5,10 +5,10 @@ import { ReactElement } from "react"
 export const GridCrads = (): ReactElement => {
   const newsItems = [
     {
-      title: "Notícias do Mundo do Trabalho de Arapiraca",
+      title: "Qualificações Profissionais",
       date: "3 dias atrás",
       content:
-        "Inscrições abertas para cursos gratuitos em tecnologia Inscrições abertas para cursos gratuitos em tecnologia Inscrições abertas para cursos gratuitos em tecnologia Inscrições abertas para cursos gratuitos em tecnologia",
+        "Inscrições abertas para cursos gratuitos em tecnologia Inscrições abertas para cursos gratuitos em tecnologia. Inscrições abertas para cursos gratuitos em tecnologia Inscrições abertas para cursos gratuitos em tecnologia.",
         link: "#"
     },
     {
@@ -60,7 +60,7 @@ export const GridCrads = (): ReactElement => {
             >
               <div className="font-bold text-sm">
                 <div className="flex justify-between flex-row pb-4 gap-2">
-                  <h1 className="line-clamp-2">{item.title}</h1>
+                  <h1 className="line-clamp-2  text-primary-blue">{item.title}</h1>
                   <span className="text-md w-32">{item.date}</span>
                 </div>
               </div>

@@ -5,7 +5,7 @@ import { columns } from "@/pages/tabelas/movimentacoes/columns";
 import { Movimentacao } from "@/types";
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
-
+// OBS: essa tabela for removida do frontend por não ser necessária segundo o Levi. Eu mantive o código pois caso seja necessário refazer a tabela de movimentações já tem pronta aqui.
 export default function MovimentacoesTablePage() {
  const [dados, setDados] = useState<Movimentacao[]>([])
   
