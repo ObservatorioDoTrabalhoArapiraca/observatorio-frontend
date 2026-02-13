@@ -1,7 +1,6 @@
 import { tableCategories } from "@/core/services/navLinks"
 import SalarioPorEscolaridade from "@/pages/tabelas/escolaridade/SalarioPorEscolaridade"
 import DistribuicaoFaixaEtaria from "@/pages/tabelas/faixaetaria/DistribuicaoFaixaEtaria"
-import Movimentacoes from "@/pages/tabelas/movimentacoes/Movimentacoes"
 import ProfissoesPorDeficiencia from "@/pages/tabelas/pcd/ProfissoesPorDeficiencia"
 import SalarioPorProfissao from "@/pages/tabelas/salarioprofissao/SalarioPorProfissao"
 import DistribuicaoPorSexo from "@/pages/tabelas/sexo/DistribuicaoPorSexo"
