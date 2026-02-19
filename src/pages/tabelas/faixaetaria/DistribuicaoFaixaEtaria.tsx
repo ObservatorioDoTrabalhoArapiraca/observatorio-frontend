@@ -3,13 +3,13 @@ import { Spinner } from "@/components/ui/spinner"
 import { getDistribuicaoFaixaEtaria } from "@/core/services/cagedArapiracaServices"
 import { columns } from "@/pages/tabelas/faixaetaria/columns"
 
-import { DistribuicaoPorFaixaEtaria } from "@/types"
+import { FaixaEtaria } from "@/types"
 
 import { useEffect, useState } from "react"
 import { useParams, useSearchParams } from "react-router-dom"
 
 export default function TablePage() {
-  const [dados, setDados] = useState<DistribuicaoPorFaixaEtaria[]>([])
+  const [dados, setDados] = useState<FaixaEtaria[]>([])
   const { category } = useParams()
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
@@ -20,15 +20,13 @@ export default function TablePage() {
 const parseAnoFromUrl = (): number | null => {
     const anoParam = searchParams.get("ano");
     if (!anoParam) return null;
-    const anoNum = Number(anoParam);
-    return isNaN(anoNum) ? null : anoNum;
+    return anoParam ? Number(anoParam) : null;
   };
 
   const parseMesFromUrl = (): number | null => {
     const mesParam = searchParams.get("mes");
     if (!mesParam) return null;
-    const mesNum = Number(mesParam);
-    return isNaN(mesNum) ? null : mesNum;
+    return mesParam ? Number(mesParam) : null;
   };
 
   const [ano, setAno] = useState<number | null>(parseAnoFromUrl());
@@ -77,13 +75,14 @@ const parseAnoFromUrl = (): number | null => {
     setError(null)
     const fetchData = async () => {
       try {
-        const dados = await getDistribuicaoFaixaEtaria({
+        const response = await getDistribuicaoFaixaEtaria({
           ...(ano !== null && { ano }),
           ...(mes !== null && { mes }),
           agregacao: isAnual ? "anual" : "mensal"
         })
-        setDados(dados)
+        setDados(response.results)
       } catch (error) {
+        console.error("❌ Erro ao buscar dados:", error)
         setError("Erro ao buscar dados")
       } finally {
         setLoading(false)
@@ -99,8 +98,8 @@ const parseAnoFromUrl = (): number | null => {
   if (error) return <div>{error}</div>
   return (
     <div className="w-full mx-auto p-4">
-      <DataTable<DistribuicaoPorFaixaEtaria, DistribuicaoPorFaixaEtaria>
-        data={dados}
+      <DataTable<FaixaEtaria, FaixaEtaria>
+        data={dados || []}
         columns={columns}
         filters={{
           ano,
@@ -110,6 +109,8 @@ const parseAnoFromUrl = (): number | null => {
           onMesChange: handleMesChange,
           onAgregacaoChange: handleAgregacaoChange,
         }}
+        searchColumn="faixa_etaria"
+        searchPlaceholder="Filtrar por faixa etária..."
       />
     </div>
   )

@@ -1,9 +1,9 @@
 
 import { capitalizeFirstLetter } from "@/Utils/capitalizeFirstLettrer"
-import { ProfissoesPorDeficiencia } from "@/types"
+import { Deficiencia } from "@/types"
 import { ColumnDef } from "@tanstack/react-table"
 
-export const columns: ColumnDef<ProfissoesPorDeficiencia>[] = [
+export const columns: ColumnDef<Deficiencia>[] = [
   {
     accessorKey: "ano",
     header: ({ column }) => {
@@ -25,7 +25,7 @@ export const columns: ColumnDef<ProfissoesPorDeficiencia>[] = [
     },
   },
   {
-    accessorKey: "tipo_deficiencia",
+    accessorKey: "mes",
     header: ({ column }) => {
       return (
         <div className="font-bold ">
@@ -36,8 +36,8 @@ export const columns: ColumnDef<ProfissoesPorDeficiencia>[] = [
     cell: ({ row }) => {
       return (
         <div>
-          {row.original.tipo_deficiencia}
-        
+          {row.original.mes}
+           
         </div>
       )
     },
@@ -59,24 +59,6 @@ export const columns: ColumnDef<ProfissoesPorDeficiencia>[] = [
       )
     },
   },
-  // {
-  //   accessorKey: "mes",
-  //   header: ({ column }) => {
-  //     return (
-  //       <div className="font-bold ">
-  //         {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
-  //       </div>
-  //     )
-  //   },
-  //   cell: ({ row }) => {
-  //     return (
-  //       <div>
-  //         {row.original.mes}
-           
-  //       </div>
-  //     )
-  //   },
-  // },
   {
     accessorKey: "percentual",
     header: ({ column }) => {

@@ -24,41 +24,6 @@ export const columns: ColumnDef<Sexo>[] = [
       )
     },
   },
-  // {
-  //   accessorKey: "escolaridade_codigo",
-  //   header: ({ column }) => {
-  //     return (
-  //       <div className="font-bold ">
-  //         {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
-  //       </div>
-  //     )
-  //   },
-  //   cell: ({ row }) => {
-  //     return (
-  //       <div>
-  //         {row.original.escolaridade_codigo}
-        
-  //       </div>
-  //     )
-  //   },
-  // },
-  {
-    accessorKey: "sexo_descricao",
-    header: ({ column }) => {
-      return (
-        <div className="font-bold ">
-          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
-        </div>
-      )
-    },
-    cell: ({ row }) => {
-      return (
-        <div>
-          {row.original.sexo_descricao}
-        </div>
-      )
-    },
-  },
   {
     accessorKey: "mes",
     header: ({ column }) => {
@@ -73,6 +38,23 @@ export const columns: ColumnDef<Sexo>[] = [
         <div>
           {row.original.mes}
            
+        </div>
+      )
+    },
+  },
+  {
+    accessorKey: "sexo_descricao",
+    header: ({ column }) => {
+      return (
+        <div className="font-bold ">
+          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
+        </div>
+      )
+    },
+    cell: ({ row }) => {
+      return (
+        <div>
+          {row.original.sexo_descricao}
         </div>
       )
     },

@@ -1,9 +1,9 @@
 
-import { ColumnDef } from "@tanstack/react-table"
 import { capitalizeFirstLetter } from "@/Utils/capitalizeFirstLettrer"
-import { DistribuicaoPorEscolaridade } from "@/types"
+import { Escolaridade } from "@/types"
+import { ColumnDef } from "@tanstack/react-table"
 
-export const columns: ColumnDef<DistribuicaoPorEscolaridade>[] = [
+export const columns: ColumnDef<Escolaridade>[] = [
   {
     accessorKey: "ano",
     header: ({ column }) => {
@@ -24,41 +24,6 @@ export const columns: ColumnDef<DistribuicaoPorEscolaridade>[] = [
       )
     },
   },
-  // {
-  //   accessorKey: "escolaridade_codigo",
-  //   header: ({ column }) => {
-  //     return (
-  //       <div className="font-bold ">
-  //         {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
-  //       </div>
-  //     )
-  //   },
-  //   cell: ({ row }) => {
-  //     return (
-  //       <div>
-  //         {row.original.escolaridade_codigo}
-        
-  //       </div>
-  //     )
-  //   },
-  // },
-  {
-    accessorKey: "escolaridade_descricao",
-    header: ({ column }) => {
-      return (
-        <div className="font-bold ">
-          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
-        </div>
-      )
-    },
-    cell: ({ row }) => {
-      return (
-        <div>
-          {row.original.escolaridade_descricao}
-        </div>
-      )
-    },
-  },
   {
     accessorKey: "mes",
     header: ({ column }) => {
@@ -73,6 +38,23 @@ export const columns: ColumnDef<DistribuicaoPorEscolaridade>[] = [
         <div>
           {row.original.mes}
            
+        </div>
+      )
+    },
+  },
+  {
+    accessorKey: "escolaridade_descricao",
+    header: ({ column }) => {
+      return (
+        <div className="font-bold ">
+          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
+        </div>
+      )
+    },
+    cell: ({ row }) => {
+      return (
+        <div>
+          {row.original.escolaridade_descricao}
         </div>
       )
     },

@@ -8,9 +8,9 @@ type QueryParams = {
   detalhes?: boolean;
 };
 
-export const getDistribuicaoPorEscolaridade = async ({ano, mes, agregacao}: QueryParams): Promise<DistribuicaoPorEscolaridade[]> => {
+export const getDistribuicaoPorEscolaridade = async ({ano, mes, agregacao}: QueryParams): Promise<DistribuicaoPorEscolaridade> => {
   try {
-    const response = await api.get<DistribuicaoPorEscolaridade[]>(`analises/escolaridade/`, {
+    const response = await api.get<DistribuicaoPorEscolaridade>(`analises/escolaridade/`, {
       params: {
         ...(ano !== undefined && { ano }),
         ...(mes !== undefined && { mes }),
@@ -23,9 +23,9 @@ export const getDistribuicaoPorEscolaridade = async ({ano, mes, agregacao}: Quer
     throw error;
   }
 };
-export const getSalarioPorProfissao = async ({ano, mes, agregacao}: QueryParams): Promise<SalarioPorProfissao[]> => {
+export const getSalarioPorProfissao = async ({ano, mes, agregacao}: QueryParams): Promise<SalarioPorProfissao> => {
   try {
-    const response = await api.get<SalarioPorProfissao[]>(`analises/salario-ocupacao/`, {
+    const response = await api.get<SalarioPorProfissao>(`analises/salario-ocupacao/`, {
       params: {
         ...(ano !== undefined && { ano }),
         ...(mes !== undefined && { mes }),
@@ -38,9 +38,9 @@ export const getSalarioPorProfissao = async ({ano, mes, agregacao}: QueryParams)
     throw error;
   }
 };
-export const getDistribuicaoFaixaEtaria = async ({ano, mes, agregacao}: QueryParams): Promise<DistribuicaoPorFaixaEtaria[]> => {
+export const getDistribuicaoFaixaEtaria = async ({ano, mes, agregacao}: QueryParams): Promise<DistribuicaoPorFaixaEtaria> => {
   try {
-    const response = await api.get<DistribuicaoPorFaixaEtaria[]>(`analises/idade/`, {
+    const response = await api.get<DistribuicaoPorFaixaEtaria>(`analises/idade/`, {
       params: {
         ...(ano !== undefined && { ano }),
         ...(mes !== undefined && { mes }),
@@ -68,9 +68,9 @@ export const getDistribuicaoPorSexo = async ({ano, mes, agregacao}: QueryParams)
     throw error;
   }
 };
-export const getProfissoesPorDeficiencia = async ({ano, mes, agregacao}: QueryParams): Promise<ProfissoesPorDeficiencia[]> => {
+export const getProfissoesPorDeficiencia = async ({ano, mes, agregacao}: QueryParams): Promise<ProfissoesPorDeficiencia> => {
   try {
-    const response = await api.get<ProfissoesPorDeficiencia[]>(`analises/pcd/`, {
+    const response = await api.get<ProfissoesPorDeficiencia>(`analises/pcd/`, {
       params: {
         ...(ano !== undefined && { ano }),
         ...(mes !== undefined && { mes }),

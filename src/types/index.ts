@@ -1,4 +1,4 @@
-export interface DistribuicaoPorEscolaridade {
+export interface Escolaridade {
   ano: number
   escolaridade_codigo?: string
   escolaridade_descricao: string
@@ -6,12 +6,31 @@ export interface DistribuicaoPorEscolaridade {
   percentual: string
   total_movimentacoes: number
 }
-export interface SalarioPorProfissao {
+export interface DistribuicaoPorEscolaridade {
+  count: number,
+  total_pages: number,
+  current_page: number,
+  page_size: number,
+  next: string | null,
+  previous: string | null,
+  results: Escolaridade[]
+}
+export interface Profissao {
   ano: number
   cbo_codigo: string
   cbo_descricao: string
+  mes?: number
   salario_medio: number
   total_movimentacoes: number
+}
+export interface SalarioPorProfissao {
+  count: number,
+  total_pages: number,
+  current_page: number,
+  page_size: number,
+  next: string | null,
+  previous: string | null,
+  results: Profissao[]
 }
 
 export interface Sexo {
@@ -31,12 +50,22 @@ export interface DistribuicaoPorSexo {
   previous: string | null,
   results: Sexo[]
 }
-export interface DistribuicaoPorFaixaEtaria {
+// TODO: Trocar isso para o novo formato
+export interface FaixaEtaria {
   ano: number
-  mes: number
   faixa_etaria: string
   percentual: string
+  mes?: number
   total_movimentacoes: number
+}
+export interface DistribuicaoPorFaixaEtaria {
+  count: number,
+  total_pages: number,
+  current_page: number,
+  page_size: number,
+  next: string | null,
+  previous: string | null,
+  results: FaixaEtaria[]
 }
 export interface SalarioPorProfissao {
   ano: number
@@ -133,12 +162,22 @@ export interface SalarioPorProfissao {
   total?: number
 }
 
-export interface ProfissoesPorDeficiencia {
+export interface Deficiencia {
   ano: number
+  mes: number
   tipo_deficiencia: string
   tipo_deficiencia_descricao: string
   percentual: string
   total_movimentacoes: number
+}
+export interface ProfissoesPorDeficiencia {
+  count: number,
+  total_pages: number,
+  current_page: number,
+  page_size: number,
+  next: string | null,
+  previous: string | null,
+  results: Deficiencia[]
 }
 
 export type NaviLink = {

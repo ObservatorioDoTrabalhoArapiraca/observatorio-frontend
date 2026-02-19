@@ -1,8 +1,9 @@
 
-import { SalarioPorProfissao } from "@/types"
+import { Profissao } from "@/types"
+import { capitalizeFirstLetter } from "@/Utils/capitalizeFirstLettrer"
 import { ColumnDef } from "@tanstack/react-table"
 
-export const columns: ColumnDef<SalarioPorProfissao>[] = [
+export const columns: ColumnDef<Profissao>[] = [
   {
     accessorKey: "ano",
     header: "Ano",
@@ -10,6 +11,24 @@ export const columns: ColumnDef<SalarioPorProfissao>[] = [
       return (
         <div>
           {row.original.ano}
+        </div>
+      )
+    },
+  },
+  {
+    accessorKey: "mes",
+    header: ({ column }) => {
+      return (
+        <div className="font-bold ">
+          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
+        </div>
+      )
+    },
+    cell: ({ row }) => {
+      return (
+        <div>
+          {row.original.mes}
+           
         </div>
       )
     },

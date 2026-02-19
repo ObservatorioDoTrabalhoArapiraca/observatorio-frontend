@@ -1,9 +1,9 @@
 
 import { capitalizeFirstLetter } from "@/Utils/capitalizeFirstLettrer"
-import { DistribuicaoPorFaixaEtaria } from "@/types"
+import { FaixaEtaria } from "@/types"
 import { ColumnDef } from "@tanstack/react-table"
 
-export const columns: ColumnDef<DistribuicaoPorFaixaEtaria>[] = [
+export const columns: ColumnDef<FaixaEtaria>[] = [
   {
     accessorKey: "ano",
     header: ({ column }) => {
@@ -23,41 +23,6 @@ export const columns: ColumnDef<DistribuicaoPorFaixaEtaria>[] = [
       )
     },
   },
-  // {
-  //   accessorKey: "escolaridade_codigo",
-  //   header: ({ column }) => {
-  //     return (
-  //       <div className="font-bold ">
-  //         {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
-  //       </div>
-  //     )
-  //   },
-  //   cell: ({ row }) => {
-  //     return (
-  //       <div>
-  //         {row.original.escolaridade_codigo}
-        
-  //       </div>
-  //     )
-  //   },
-  // },
-  {
-    accessorKey: "faixa_etaria",
-    header: ({ column }) => {
-      return (
-        <div className="font-bold ">
-          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
-        </div>
-      )
-    },
-    cell: ({ row }) => {
-      return (
-        <div>
-          {row.original.faixa_etaria}
-        </div>
-      )
-    },
-  },
   {
     accessorKey: "mes",
     header: ({ column }) => {
@@ -72,6 +37,23 @@ export const columns: ColumnDef<DistribuicaoPorFaixaEtaria>[] = [
         <div>
           {row.original.mes}
            
+        </div>
+      )
+    },
+  },
+  {
+    accessorKey: "faixa_etaria",
+    header: ({ column }) => {
+      return (
+        <div className="font-bold ">
+          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
+        </div>
+      )
+    },
+    cell: ({ row }) => {
+      return (
+        <div>
+          {row.original.faixa_etaria}
         </div>
       )
     },
