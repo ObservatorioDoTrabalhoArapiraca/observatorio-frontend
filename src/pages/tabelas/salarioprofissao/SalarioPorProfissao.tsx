@@ -2,7 +2,7 @@ import { DataTable } from "@/components/table/DataTable"
 import { Spinner } from "@/components/ui/spinner"
 import { getSalarioPorProfissao } from "@/core/services/cagedArapiracaServices"
 import { columns } from "@/pages/tabelas/salarioprofissao/columns"
-import {  Profissao, SalarioPorProfissao } from "@/types"
+import { Profissao } from "@/types"
 
 import { useEffect, useState } from "react"
 import { useParams, useSearchParams } from "react-router-dom"
