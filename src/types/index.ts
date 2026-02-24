@@ -15,11 +15,30 @@ export interface DistribuicaoPorEscolaridade {
   previous: string | null,
   results: Escolaridade[]
 }
+
+// TODO:atualizar esse endpoint no backend e padronizar o retorno dos dados com os demais
+export interface RacaCor {
+  ano: number
+  raca_cor: string
+  raca_cor_descricao: string
+  mes: number
+  percentual: string
+  total_movimentacoes: number
+}
+export interface DistribuicaoPorRacaCor {
+  count: number,
+  total_pages: number,
+  current_page: number,
+  page_size: number,
+  next: string | null,
+  previous: string | null,
+  results: RacaCor[]
+}
 export interface Profissao {
   ano: number
   cbo_codigo: string
   cbo_descricao: string
-  mes?: number
+  mes: number
   salario_medio: number
   total_movimentacoes: number
 }

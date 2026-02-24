@@ -1,4 +1,6 @@
 import { CardTitle } from "@/components/ui/card"
+import Charts from "@/pages/graficos/Charts"
+import ChartsPage from "@/pages/graficos/ChartsPage"
 import Home from "@/pages/Home"
 
 import Projeto from "@/pages/Project"
@@ -19,9 +21,7 @@ export const routePaths: RoutePath[] = [
   {
     path: "/graficos/:category",
     element: (
-      <CardTitle className="w-full items-center p-4 flex justify-center text-lg">
-        // Gráficos //{" "}
-      </CardTitle>
+        <ChartsPage/>
     ),
   },
   {
