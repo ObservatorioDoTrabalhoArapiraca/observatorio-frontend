@@ -6,7 +6,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
-import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { MESES } from "@/Utils/periodosDisponiveis";
+import { Expand } from "lucide-react";
 import {
   Bar,
   BarChart,
@@ -16,10 +18,6 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { useState } from "react";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { MESES } from "@/Utils/periodosDisponiveis";
-import { Expand } from "lucide-react";
 
 
 

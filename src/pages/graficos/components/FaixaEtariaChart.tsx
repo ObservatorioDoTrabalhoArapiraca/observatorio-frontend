@@ -48,7 +48,7 @@ export default function FaixaEtariaChart() {
   }, [isAnual, ano, agregacao])
   
   const chartData = transformFaixaEtariaData(dados, isAnual);
-  const { dataKeys, config } = useMemo(() => {
+  const { dataKeys } = useMemo(() => {
     if (chartData.length === 0) {
       return { dataKeys: Object.keys(faixaEtariaChartConfig), config: faixaEtariaChartConfig };
     }

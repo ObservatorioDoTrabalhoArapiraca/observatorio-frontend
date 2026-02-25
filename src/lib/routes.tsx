@@ -1,5 +1,3 @@
-import { CardTitle } from "@/components/ui/card"
-import Charts from "@/pages/graficos/Charts"
 import ChartsPage from "@/pages/graficos/ChartsPage"
 import Home from "@/pages/Home"
 
