@@ -6,6 +6,7 @@ import { racaCorChartConfig } from "@/pages/graficos/components/chartConfigData"
 import { transformRacaCorData } from "@/pages/graficos/components/transformToChartData";
 import { RacaCor } from "@/types";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 
 export default function RacaCorChart() {
@@ -33,7 +34,8 @@ export default function RacaCorChart() {
           })
           setDados(response.results)
         } catch (error) {
-        console.error("❌ Erro ao buscar dados:", error)
+          console.error("❌ Erro ao buscar dados:", error)
+          toast.error("Erro ao buscar dados")
         setError("Erro ao buscar dados")
       } finally {
         setLoading(false)

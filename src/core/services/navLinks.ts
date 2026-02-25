@@ -5,7 +5,7 @@ export const naviLinks = [
     name: "Tabelas e Gráficos",
     children: [
       { name: "Tabelas", path: "/tabelas/escolaridade" },
-      { name: "Gráficos", path: "/graficos/genero" },
+      { name: "Gráficos", path: "/graficos/todos" },
     ],
   },
   {
@@ -23,6 +23,7 @@ export const tableCategories = [
   { label: "Salário por Escolaridade", value: "escolaridade" },
   { label: "Salário por Profissão", value: "salarioporprofissao" },
   { label: "Distribuilção por sexo", value: "sexo" },
+  { label: "Distribuição por Raça/Cor", value: "racacor" },
   { label: "Salário por Faixa Etária", value: "faixaetaria" },
   { label: "Profissões por Deficiência", value: "pcd" },
   { label: "Total de Movimentações por Ano", value: "totalmovimentacoesano" },

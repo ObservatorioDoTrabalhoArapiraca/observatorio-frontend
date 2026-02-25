@@ -5,6 +5,7 @@ import { columns } from "@/pages/tabelas/movimentacoes/columns";
 import { Movimentacao } from "@/types";
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
+import { toast } from "sonner";
 // OBS: essa tabela for removida do frontend por não ser necessária segundo o Levi. Eu mantive o código pois caso seja necessário refazer a tabela de movimentações já tem pronta aqui.
 export default function MovimentacoesTablePage() {
  const [dados, setDados] = useState<Movimentacao[]>([])
@@ -78,7 +79,6 @@ export default function MovimentacoesTablePage() {
        setLoading(true);
        setError(null);
        try {
-            //  TODO: passar esses paramentros de ano opcionais para as outras tabelas
          const dados = await getMovimentacoes({
             ...(ano !== null && { ano }),
             ...(mes !== null && { mes }),
@@ -93,6 +93,7 @@ export default function MovimentacoesTablePage() {
        }
        catch (err) {
          console.error("❌ Erro ao buscar dados:", error, err)
+         toast.error("Erro ao buscar dados")
          setError("Erro ao buscar dados")
        } finally {
          setLoading(false)

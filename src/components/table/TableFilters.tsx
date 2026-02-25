@@ -8,6 +8,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getAnosDisponiveisFromData } from "@/Utils/periodosDisponiveis";
 
 export interface TableFiltersProps {
   ano: number | null;
@@ -27,7 +28,7 @@ export default function TableFilters({
   onAgregacaoChange,
 }: TableFiltersProps) {
   // Gerar anos (últimos 6 anos)
-  const anos = Array.from({ length: 7 }, (_, i) => new Date().getFullYear() - i);
+  const anos = getAnosDisponiveisFromData()
   
   // Meses do ano
   const meses = [

@@ -7,6 +7,7 @@ import { FaixaEtaria } from "@/types"
 
 import { useEffect, useState } from "react"
 import { useParams, useSearchParams } from "react-router-dom"
+import { toast } from "sonner"
 
 export default function TablePage() {
   const [dados, setDados] = useState<FaixaEtaria[]>([])
@@ -83,6 +84,7 @@ const parseAnoFromUrl = (): number | null => {
         setDados(response.results)
       } catch (error) {
         console.error("❌ Erro ao buscar dados:", error)
+        toast.error("Erro ao buscar dados")
         setError("Erro ao buscar dados")
       } finally {
         setLoading(false)

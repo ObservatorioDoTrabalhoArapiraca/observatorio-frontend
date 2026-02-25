@@ -1,15 +1,15 @@
 import { DataTable } from "@/components/table/DataTable"
 import { Spinner } from "@/components/ui/spinner"
-import { getDistribuicaoPorSexo } from "@/core/services/cagedArapiracaServices"
-import { columns } from "@/pages/tabelas/sexo/columns"
-import { Sexo } from "@/types"
+import { getDistribuicaoPorRacaCor, getDistribuicaoPorSexo } from "@/core/services/cagedArapiracaServices"
+import { columns } from "@/pages/tabelas/racacor/columns"
+import { RacaCor, Sexo } from "@/types"
 
 import { useEffect, useState } from "react"
 import { useParams, useSearchParams } from "react-router-dom"
 import { toast } from "sonner"
 
 export default function TablePage() {
-  const [dados, setDados] = useState<Sexo[]>([])
+  const [dados, setDados] = useState<RacaCor[]>([])
   const { category } = useParams()
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
@@ -74,7 +74,7 @@ export default function TablePage() {
     setError(null)
     const fetchData = async () => {
       try {
-        const response = await getDistribuicaoPorSexo({
+        const response = await getDistribuicaoPorRacaCor({
           ...(ano !== null && { ano }),
           ...(mes !== null && { mes }),
           agregacao: isAnual ? "anual" : "mensal"
@@ -96,7 +96,7 @@ export default function TablePage() {
   if (error) return <div>{error}</div>
   return (
     <div className="w-full mx-auto p-4">
-      <DataTable<Sexo, Sexo>
+      <DataTable<RacaCor, RacaCor>
         data={dados || []}
         columns={columns}
         filters={{
@@ -107,8 +107,8 @@ export default function TablePage() {
           onMesChange: handleMesChange,
           onAgregacaoChange: handleAgregacaoChange,
         }}
-        searchColumn="sexo_descricao" // Coluna para filtrar por texto
-        searchPlaceholder="Filtrar por sexo..."
+        searchColumn="raca_cor_descricao" // Coluna para filtrar por texto
+        searchPlaceholder="Filtrar por raça/cor..."
       />
     </div>
   )

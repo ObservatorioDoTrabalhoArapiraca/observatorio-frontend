@@ -6,6 +6,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
+import { Button } from "@/components/ui/button";
 import {
   Bar,
   BarChart,
@@ -15,8 +16,12 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { useState } from "react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { MESES } from "@/Utils/periodosDisponiveis";
+import { Expand } from "lucide-react";
 
-const MESES = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
+
 
 export interface ChartDataItem {
   periodo: string;
@@ -57,6 +62,45 @@ function formatYAxisTick(value: number): string {
   return value >= 1000 ? `${(value / 1000).toFixed(0)}k` : String(value);
 }
 
+interface ChartContentProps {
+  data: ChartDataItem[];
+  config: ChartConfig;
+  isAnual: boolean;
+  dataKeys: string[];
+  height?: number;
+}
+
+function ChartContent({ data, config, isAnual, dataKeys, height = 300 }: ChartContentProps) {
+  return (
+    <ChartContainer config={config} className={`w-full`} style={{ height }}>
+      <BarChart accessibilityLayer data={data}>
+        <CartesianGrid vertical={false} />
+        <XAxis
+          dataKey="periodo"
+          tickLine={false}
+          tickMargin={10}
+          axisLine={false}
+          tickFormatter={(value) => formatXAxisTick(value, isAnual)}
+        />
+        <YAxis tickFormatter={formatYAxisTick} />
+        <Tooltip
+          labelFormatter={(value) => formatTooltipLabel(value, isAnual)}
+        />
+        <Legend />
+        {dataKeys.map((key) => (
+          <Bar
+            key={key}
+            dataKey={key}
+            fill={config[key]?.color ?? "#6b7280"}
+            radius={4}
+            name={config[key]?.label?.toString() ?? key}
+          />
+        ))}
+      </BarChart>
+    </ChartContainer>
+  );
+}
+
 export function BarChartCard({
   title,
   description,
@@ -68,7 +112,8 @@ export function BarChartCard({
   emptyMessage = "Nenhum dado encontrado",
   dataKeys,
 }: BarChartCardProps) {
-  const renderContent = () => {
+
+  const renderStatus = () => {
     if (loading) {
       return (
         <div className="flex items-center justify-center min-h-[300px]">
@@ -93,43 +138,62 @@ export function BarChartCard({
       );
     }
 
-    return (
-      <ChartContainer config={config} className="min-h-[300px] w-full">
-        <BarChart accessibilityLayer data={data}>
-          <CartesianGrid vertical={false} />
-          <XAxis
-            dataKey="periodo"
-            tickLine={false}
-            tickMargin={10}
-            axisLine={false}
-            tickFormatter={(value) => formatXAxisTick(value, isAnual)}
-          />
-          <YAxis tickFormatter={formatYAxisTick} />
-          <Tooltip
-            labelFormatter={(value) => formatTooltipLabel(value, isAnual)}
-          />
-          <Legend />
-          {dataKeys.map((key) => (
-            <Bar
-              key={key}
-              dataKey={key}
-              fill={`var(--color-${key})`}
-              radius={4}
-              name={config[key]?.label?.toString() ?? key}
-            />
-          ))}
-        </BarChart>
-      </ChartContainer>
-    );
+    return null;
   };
 
+  const statusContent = renderStatus();
+
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{title}</CardTitle>
-        {description && <CardDescription>{description}</CardDescription>}
-      </CardHeader>
-      <CardContent>{renderContent()}</CardContent>
-    </Card>
+    <Dialog>
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between">
+          <div>
+            <CardTitle>{title}</CardTitle>
+            {description && <CardDescription>{description}</CardDescription>}
+          </div>
+
+          {/* Botão para expandir - só aparece quando há dados */}
+          {!loading && !error && data.length > 0 && (
+            <DialogTrigger asChild>
+              <button
+                className="p-2 rounded-md hover:bg-muted transition-colors"
+                title="Expandir gráfico"
+              >
+                <Expand className="h-5 w-5 text-muted-foreground" />
+              </button>
+            </DialogTrigger>
+          )}
+        </CardHeader>
+
+        <CardContent>
+          {statusContent ?? (
+            <ChartContent
+              data={data}
+              config={config}
+              isAnual={isAnual}
+              dataKeys={dataKeys}
+              height={300}
+            />
+          )}
+        </CardContent>
+      </Card>
+
+      {/* Dialog com gráfico ampliado */}
+      <DialogContent className="max-w-[90vw] max-h-[90vh]">
+        <DialogHeader>
+          <DialogTitle>{title}</DialogTitle>
+          {description && <DialogDescription>{description}</DialogDescription>}
+        </DialogHeader>
+        <div className="p-4">
+          <ChartContent
+            data={data}
+            config={config}
+            isAnual={isAnual}
+            dataKeys={dataKeys}
+            height={500}
+          />
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 }

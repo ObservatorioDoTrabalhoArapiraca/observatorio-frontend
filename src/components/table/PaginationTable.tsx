@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table } from "@tanstack/react-table";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
-// TODO: implementar paginação para tabelas, usando o componente Pagination do shadcn, e integrando com a API para buscar os dados paginados
+
 export type PaginationTableProps<TData> = {
   table: Table<TData>
 }

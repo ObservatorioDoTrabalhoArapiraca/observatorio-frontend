@@ -16,7 +16,6 @@ export interface DistribuicaoPorEscolaridade {
   results: Escolaridade[]
 }
 
-// TODO:atualizar esse endpoint no backend e padronizar o retorno dos dados com os demais
 export interface RacaCor {
   ano: number
   raca_cor: string
@@ -69,12 +68,12 @@ export interface DistribuicaoPorSexo {
   previous: string | null,
   results: Sexo[]
 }
-// TODO: Trocar isso para o novo formato
+
 export interface FaixaEtaria {
   ano: number
   faixa_etaria: string
   percentual: string
-  mes?: number
+  mes: number
   total_movimentacoes: number
 }
 export interface DistribuicaoPorFaixaEtaria {
@@ -86,14 +85,6 @@ export interface DistribuicaoPorFaixaEtaria {
   previous: string | null,
   results: FaixaEtaria[]
 }
-export interface SalarioPorProfissao {
-  ano: number
-  escolaridade_codigo?: string
-  escolaridade_descricao: string
-  mes: number
-  percentual: string
-  total_movimentacoes: number
-}
 
 export interface MedianaSalario {
   sexo: string
@@ -103,9 +94,9 @@ export interface MedianaSalario {
 export interface AnoTotalMovimentacoes {
   total_movimentacoes: number,
   filtros_aplicados: {
-      ano: number,
-      agregacao: "mensal" | "anual",
-      mes: number
+    ano: number,
+    agregacao: "mensal" | "anual",
+    mes: number
   }
 }
 
@@ -151,8 +142,8 @@ export interface Movimentacao {
   origem_informacao: string,
   criado_em: string,
   atualizado_em: string
-
- }
+  
+}
 export interface Movimentacoes {
   total_movimentacoes: number,
   filtros_aplicados: {
@@ -165,21 +156,29 @@ export interface Movimentacoes {
     page_size: number,
     total_pages: number,
     links: {
-        next: number | null,
-        previous: number | null
+      next: number | null,
+      previous: number | null
     }
-
+    
   },
   resultados: Movimentacao[]
 }
 
-export interface SalarioPorProfissao {
-  profissao: string
-  maximo: number
-  minimo: number
-  media: number
-  total?: number
-}
+// export interface SalarioPorProfissao {
+//   ano: number
+//   escolaridade_codigo?: string
+//   escolaridade_descricao: string
+//   mes: number
+//   percentual: string
+//   total_movimentacoes: number
+// }
+// export interface SalarioPorProfissao {
+//   profissao: string
+//   maximo: number
+//   minimo: number
+//   media: number
+//   total?: number
+// }
 
 export interface Deficiencia {
   ano: number

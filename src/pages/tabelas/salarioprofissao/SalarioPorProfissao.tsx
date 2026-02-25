@@ -6,6 +6,7 @@ import { Profissao } from "@/types"
 
 import { useEffect, useState } from "react"
 import { useParams, useSearchParams } from "react-router-dom"
+import { toast } from "sonner"
 
 export default function TablePage() {
   const [dados, setDados] = useState<Profissao[]>([])
@@ -82,6 +83,7 @@ export default function TablePage() {
         setDados(dados.results)
       } catch (error) {
         console.error("❌ Erro ao buscar dados:", error)
+        toast.error("Erro ao buscar dados")
         setError("Erro ao buscar dados")
       } finally {
         setLoading(false)

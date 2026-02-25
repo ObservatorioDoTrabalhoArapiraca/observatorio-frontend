@@ -12,6 +12,21 @@ interface TransformOptions<T> {
   getMes: (item: T) => number;
 }
 
+function normalizeToKey(value: string): string {
+  return value
+    .toLowerCase()
+    .trim()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") // "até" → "ate"
+    .replace(/\s+ou\s+mais/g, "_mais") // "65 ou mais" → "65_mais"
+    .replace(/\s+a\s+/g, "_")         // "18 a 24" → "18_24"
+    .replace(/\s+e\s+/g, "_")         // "x e y" → "x_y"
+    .replace(/\s+/g, "_")             // espaços → _
+    .replace(/-/g, "_")               // "18-24" → "18_24"
+    .replace(/_{2,}/g, "_")           // "__" → "_"
+    .replace(/^_|_$/g, "");           // remove _ nas pontas
+}
+
 export function transformToChartData<T>(
   options: TransformOptions<T>
 ): ChartDataItem[] {
@@ -52,22 +67,37 @@ export function transformSexoData(dados: Sexo[], isAnual: boolean): ChartDataIte
     dados,
     isAnual,
     getCategoriaKey: (item) => 
-      item.sexo_descricao.toLowerCase().includes("feminino") ? "feminino" : "masculino",
+      normalizeToKey(item.sexo_descricao),
     getCategoriaValue: (item) => item.total_movimentacoes,
     getAno: (item) => item.ano,
     getMes: (item) => item.mes,
   });
 }
-export function transformProfissaoData(dados: Profissao[], isAnual: boolean): ChartDataItem[] {
+export function transformProfissaoData(dados: Profissao[], isAnual: boolean, topN: number = 10): ChartDataItem[] {
+
+  const totalPorProfissao = dados.reduce((acc, item) => {
+    const key = normalizeToKey(item.cbo_descricao);
+    acc[key] = (acc[key] || 0) + item.total_movimentacoes;
+    return acc;
+  }, {} as Record<string, number>);
+
+  const topProfissoes = Object.entries(totalPorProfissao)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, topN)
+    .map(([key]) => key);
+
+  
+    const dadosFiltrados = dados.filter((item) =>
+      topProfissoes.includes(normalizeToKey(item.cbo_descricao))
+    );
+  
+
   return transformToChartData({
-    dados,
+    dados: dadosFiltrados,
     isAnual,
     getCategoriaKey: (item) => 
-      item.cbo_descricao
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "") // Remove acentos
-        .replace(/\s+/g, "_"), // Substitui espaços por _
+      normalizeToKey(item.cbo_descricao),
+      
     getCategoriaValue: (item) => item.total_movimentacoes,
     getAno: (item) => item.ano,
     getMes: (item) => item.mes,
@@ -82,11 +112,7 @@ export function transformEscolaridadeData(
     dados,
     isAnual,
     getCategoriaKey: (item) => 
-      item.escolaridade_descricao
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "") // Remove acentos
-        .replace(/\s+/g, "_"), // Substitui espaços por _
+      normalizeToKey(item.escolaridade_descricao),
     getCategoriaValue: (item) => item.total_movimentacoes,
     getAno: (item) => item.ano,
     getMes: (item) => item.mes,
@@ -100,11 +126,7 @@ export function transformDeficienciaData(
     dados,
     isAnual,
     getCategoriaKey: (item) => 
-      item.tipo_deficiencia_descricao
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "") // Remove acentos
-        .replace(/\s+/g, "_"), // Substitui espaços por _
+      normalizeToKey(item.tipo_deficiencia_descricao),
     getCategoriaValue: (item) => item.total_movimentacoes,
     getAno: (item) => item.ano,
     getMes: (item) => item.mes,
@@ -118,11 +140,7 @@ export function transformRacaCorData(
     dados,
     isAnual,
     getCategoriaKey: (item) => 
-      item.raca_cor_descricao
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "") // Remove acentos
-        .replace(/\s+/g, "_"), // Substitui espaços por _
+      normalizeToKey(item.raca_cor_descricao),
     getCategoriaValue: (item) => item.total_movimentacoes,
     getAno: (item) => item.ano,
     getMes: (item) => item.mes,
@@ -137,10 +155,7 @@ export function transformFaixaEtariaData(
     dados,
     isAnual,
     getCategoriaKey: (item) =>
-      item.faixa_etaria
-        .toLowerCase()
-        .replace(/\s+/g, "_")
-        .replace(/-/g, "_"),
+      normalizeToKey(item.faixa_etaria),
     getCategoriaValue: (item) => item.total_movimentacoes,
     getAno: (item) => item.ano,
     getMes: (item) => item.mes ?? 1,

@@ -5,14 +5,19 @@ import Navigation from "./components/Navigation"
 
 import { routePaths } from "@/lib/routes"
 import { AlertCircle } from "lucide-react"
+import { Toaster } from "@/components/ui/sonner"
+
 
 function App() {
   return (
     <div className="App">
-      <div className="bg-red-500 text-white p-2  flex items-center justify-center gap-2">
+      <div className="bg-red-500 text-white p-2  flex items-center justify-center gap-2  ">
         <AlertCircle /> Atenção! Site em desenvolvimento. Os dados mostrados aqui são fictícios e não representam dados reais do SINE. Data prevista para lançamento: 30/05/2026 ou quando esse aviso parar de ser exibido.
       </div>
       <Header />
+     
+
+      <Toaster />
       <BrowserRouter>
         <Navigation />
         <main>
@@ -25,6 +30,7 @@ function App() {
         </main>
       </BrowserRouter>
       <Footer />
+           
     </div>
   )
 }

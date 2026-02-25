@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { ReactNode } from "react";
 
 interface AgregacaoFilterProps {
   isAnual: boolean;
@@ -14,6 +15,7 @@ interface AgregacaoFilterProps {
   anosDisponiveis: number[];
   onAgregacaoChange: (isAnual: boolean) => void;
   onAnoChange: (ano: number) => void;
+  topN?: ReactNode
 }
 
 export function AgregacaoFilter({
@@ -22,6 +24,7 @@ export function AgregacaoFilter({
   anosDisponiveis,
   onAgregacaoChange,
   onAnoChange,
+  topN
 }: AgregacaoFilterProps) {
   return (
     <div className="flex flex-wrap gap-4 items-center p-4">
@@ -71,6 +74,10 @@ export function AgregacaoFilter({
           : `Exibindo meses de ${ano}`
         }
       </span>
+      <div>
+
+      {topN && topN}
+      </div>
     </div>
   );
 }

@@ -59,9 +59,6 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="overflow-hidden rounded-md border">
-      {/* TODO: adicionar a opção de pesquisa por título em todas as tabelas */}
-
-      {/* adicionar Filtro para pegar os parametros de busca: ano, mes, agregacao e vai passar como parametros para a rota */}
       <TableFilters
         ano={filters.ano}
         mes={filters.mes}
@@ -71,7 +68,7 @@ export function DataTable<TData, TValue>({
         onAgregacaoChange={filters.onAgregacaoChange}
       />
       {searchColumn && (
-        <div className="flex items-center py-4">
+        <div className="flex items-center p-4">
         <Input
           placeholder={searchPlaceholder}
           value={(table.getColumn(searchColumn)?.getFilterValue() as string) ?? ""}

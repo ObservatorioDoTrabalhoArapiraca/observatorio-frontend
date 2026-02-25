@@ -6,6 +6,7 @@ import { sexoChartConfig } from "@/pages/graficos/components/chartConfigData";
 import { transformSexoData } from "@/pages/graficos/components/transformToChartData";
 import { Sexo } from "@/types";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 
 export default function SexoChart() {
@@ -33,7 +34,8 @@ export default function SexoChart() {
           })
           setDados(response.results)
         } catch (error) {
-        console.error("❌ Erro ao buscar dados:", error)
+          console.error("❌ Erro ao buscar dados:", error)
+          toast.error("Erro ao buscar dados")
         setError("Erro ao buscar dados")
       } finally {
         setLoading(false)

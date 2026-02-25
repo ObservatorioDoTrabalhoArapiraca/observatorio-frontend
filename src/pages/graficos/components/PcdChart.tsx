@@ -5,7 +5,9 @@ import { BarChartCard } from "@/pages/graficos/components/BarChartCard";
 import { deficienciaChartConfig } from "@/pages/graficos/components/chartConfigData";
 import { transformDeficienciaData } from "@/pages/graficos/components/transformToChartData";
 import { Deficiencia } from "@/types";
+import { FALLBACK_COLORS } from "@/Utils/fallbackColors";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 
 export default function PcdChart() {
@@ -33,7 +35,8 @@ export default function PcdChart() {
           })
           setDados(response.results)
         } catch (error) {
-        console.error("❌ Erro ao buscar dados:", error)
+          console.error("❌ Erro ao buscar dados:", error)
+          toast.error("Erro ao buscar dados")
         setError("Erro ao buscar dados")
       } finally {
         setLoading(false)
@@ -45,7 +48,26 @@ export default function PcdChart() {
   }, [isAnual, ano, agregacao])
   
   const chartData = transformDeficienciaData(dados, isAnual);
-  const dataKeys = Object.keys(deficienciaChartConfig);
+ 
+  const dynamicKeys = chartData.length > 0
+  ? [...new Set(
+      chartData.flatMap((item) =>
+        Object.keys(item).filter((k) => !["periodo", "mes", "ano"].includes(k))
+      )
+    )]
+  : Object.keys(deficienciaChartConfig);
+
+// Mesclar config com fallback
+const dynamicConfig = { ...deficienciaChartConfig };
+dynamicKeys.forEach((key, index) => {
+  if (!dynamicConfig[key]) {
+    dynamicConfig[key] = {
+      label: key.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
+      color: FALLBACK_COLORS[index % FALLBACK_COLORS.length],
+    };
+  }
+});
+
   return (
     <div className="flex flex-col justify-between">
             <AgregacaoFilter
@@ -59,11 +81,11 @@ export default function PcdChart() {
             title="Distribuição por Deficiencia"
             description={isAnual ? "Dados anuais" : `Dados mensais de ${ano}`}
             data={chartData}
-            config={deficienciaChartConfig}
+            config={dynamicConfig}
             isAnual={isAnual}
             loading={loading}
             error={error}
-            dataKeys={dataKeys}
+            dataKeys={dynamicKeys}
             />
             </div>
   )

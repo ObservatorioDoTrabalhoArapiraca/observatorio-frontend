@@ -2,6 +2,7 @@ import { tableCategories } from "@/core/services/navLinks"
 import SalarioPorEscolaridade from "@/pages/tabelas/escolaridade/SalarioPorEscolaridade"
 import DistribuicaoFaixaEtaria from "@/pages/tabelas/faixaetaria/DistribuicaoFaixaEtaria"
 import ProfissoesPorDeficiencia from "@/pages/tabelas/pcd/ProfissoesPorDeficiencia"
+import DistribuicaoPorRacaCor from "@/pages/tabelas/racacor/DistribuicaoPorRacaCor"
 import SalarioPorProfissao from "@/pages/tabelas/salarioprofissao/SalarioPorProfissao"
 import DistribuicaoPorSexo from "@/pages/tabelas/sexo/DistribuicaoPorSexo"
 import TabsComponent from "@/pages/tabelas/TabsComponent"
@@ -16,12 +17,13 @@ export default function DataTablePage() {
       navigateTo="tabelas"
       tabsContent={[
     
-// TODO: Fazer a de racacor
+
         // { value: "movimentacoes", content: <Movimentacoes /> },
         { value: "totalmovimentacoesano", content: <TotalMovimentacoesAno /> },
         { value: "escolaridade", content: <SalarioPorEscolaridade /> },
         { value: "faixaetaria", content: <DistribuicaoFaixaEtaria /> },
         { value: "sexo", content: <DistribuicaoPorSexo /> },
+        { value: "racacor", content: <DistribuicaoPorRacaCor /> },
         { value: "pcd", content: <ProfissoesPorDeficiencia /> },
         { value: "salarioporprofissao", content: <SalarioPorProfissao /> },
       ]}

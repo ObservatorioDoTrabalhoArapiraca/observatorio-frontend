@@ -6,6 +6,7 @@ import { escolaridadeChartConfig, } from "@/pages/graficos/components/chartConfi
 import { transformEscolaridadeData } from "@/pages/graficos/components/transformToChartData";
 import { Escolaridade } from "@/types";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 
 export default function EscolaridadeChart() {
@@ -33,8 +34,10 @@ export default function EscolaridadeChart() {
           })
           setDados(response.results)
         } catch (error) {
-        console.error("❌ Erro ao buscar dados:", error)
-        setError("Erro ao buscar dados")
+          console.error("❌ Erro ao buscar dados:", error)
+        
+toast.error("Erro ao buscar dados de escolaridade")
+          setError("Erro ao buscar dados")
       } finally {
         setLoading(false)
       }

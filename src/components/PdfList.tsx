@@ -69,7 +69,6 @@ const PdfList: React.FC<PdfListProps> = ({ tipo, pdfs, isLoading }) => {
 
   return  (
     <div className="space-y-6">
-    {/* TODO: adicionar a opção de pesquisa por título */}
       <div className="relative">
         <input
           type="text"
@@ -78,8 +77,8 @@ const PdfList: React.FC<PdfListProps> = ({ tipo, pdfs, isLoading }) => {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="w-full px-4 py-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
-        {/* TODO: identificar e substituir ícone por algum da biblioteca*/}
-        <svg
+    
+        {/* <svg
           className="absolute left-3 top-3.5 h-5 w-5 text-gray-400"
           fill="none"
           stroke="currentColor"
@@ -91,7 +90,7 @@ const PdfList: React.FC<PdfListProps> = ({ tipo, pdfs, isLoading }) => {
             strokeWidth={2}
             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
           />
-        </svg>
+        </svg> */}
       </div>
 
       {/* Lista de PDFs */}
@@ -112,8 +111,8 @@ const PdfList: React.FC<PdfListProps> = ({ tipo, pdfs, isLoading }) => {
               className="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg transition-shadow duration-200 hover:border-blue-500"
             >
               <div className="flex items-start space-x-3">
-                {/* TODO: trocar esse ícone por algum da biblioteca */}
-                <div>icone</div>
+            
+                {/* 
                 <svg
                   className="w-8 h-8 text-red-600 flex-shrink-0"
                   fill="currentColor"
@@ -124,7 +123,7 @@ const PdfList: React.FC<PdfListProps> = ({ tipo, pdfs, isLoading }) => {
                     d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"
                     clipRule="evenodd"
                   />
-                </svg>
+                </svg> */}
                 <div className="flex-1 min-w-0">
                   <h3 className="text-sm font-semibold text-gray-900 break-words">
                     {pdf.nome}

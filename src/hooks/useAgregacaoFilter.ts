@@ -1,4 +1,4 @@
-import { ANOS_DISPONIVEIS } from "@/Utils/pariodosDisponiveis";
+import { getAnosDisponiveisFromData } from "@/Utils/periodosDisponiveis";
 import { useState, useEffect, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
 
@@ -34,7 +34,7 @@ export function useAgregacaoFilter(
 
   const [isAnual, setIsAnualState] = useState<boolean>(parseAgregacaoFromUrl());
   const [ano, setAnoState] = useState<number | null>(parseAnoFromUrl());
-
+const ANOS_DISPONIVEIS = getAnosDisponiveisFromData()
   const setIsAnual = useCallback((value: boolean) => {
     setIsAnualState(value);
     // Se mudar para mensal e não tiver ano, seleciona o mais recente

@@ -5,6 +5,7 @@ import { columns } from "@/pages/tabelas/totalmovimentacoesano/columns";
 import { AnoTotalMovimentacoes } from "@/types";
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
+import { toast } from "sonner";
 
 export default function TotalMovimentacoesAnoTablePage() {
  const [dados, setDados] = useState<AnoTotalMovimentacoes[]>([])
@@ -82,6 +83,7 @@ export default function TotalMovimentacoesAnoTablePage() {
        }
        catch (err) {
          console.error("❌ Erro ao buscar dados:", error, err)
+         toast.error("Erro ao buscar dados")
          setError("Erro ao buscar dados")
        } finally {
          setLoading(false)

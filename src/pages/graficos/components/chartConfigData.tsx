@@ -52,7 +52,7 @@ export const escolaridadeChartConfig: ChartConfig = {
 };
 
 export const deficienciaChartConfig: ChartConfig = {
-  sem: {
+  nao_deficiente: {
     label: "Sem Deficiência",
     color: "#ef4444",
   },
@@ -92,19 +92,19 @@ export const racaCorChartConfig: ChartConfig = {
   },
   preta: {
     label: "Preta",
-    color: "#321208",
+    color: "#442A21",
   },
   parda: {
     label: "Parda",
-    color: "#6D2711",
+    color: "#986C49",
   },
   amarela: {
     label: "Amarela",
-    color: "#E18C2B",
+    color: "#A3721C",
   },
   indigena: {
     label: "Indígena",
-    color: "#8D642F",
+    color: "#7C0A1D",
   },
   nao_informada: {
     label: "Não Informada",
@@ -117,23 +117,27 @@ export const racaCorChartConfig: ChartConfig = {
 };
 
 export const faixaEtariaChartConfig: ChartConfig = {
-  "18_24": {
+  ate_17_anos: {
+    label: "Até 17 anos",
+    color: "#f43f5e",
+  },
+  "18_24_anos": {
     label: "18-24 anos",
     color: "#22c55e",
   },
-  "25_29": {
+  "25_29_anos": {
     label: "25-29 anos",
     color: "#3b82f6",
   },
-  "30_39": {
+  "30_39_anos": {
     label: "30-39 anos",
     color: "#8b5cf6",
   },
-  "40_49": {
+  "40_49_anos": {
     label: "40-49 anos",
     color: "#f97316",
   },
-  "50_64": {
+  "50_64_anos": {
     label: "50-64 anos",
     color: "#ef4444",
   },
@@ -142,7 +146,3 @@ export const faixaEtariaChartConfig: ChartConfig = {
     color: "#6b7280",
   },
 };
-
-export const profissaoChartConfig: ChartConfig = {
-  // TODO: ver uma forma de gerar isso dinamicamente a partir dos dados, para não ficar hardcoded - tentar agregar por setor ou algo assim, para ter uma visão mais geral e não ficar com 100 profissões diferentes.
-}
