@@ -1,3 +1,4 @@
+import Help from "@/pages/Ajuda"
 import ChartsPage from "@/pages/graficos/ChartsPage"
 import Home from "@/pages/Home"
 
@@ -28,6 +29,6 @@ export const routePaths: RoutePath[] = [
   },
   {
     path: "/ajuda",
-    element: <div>Ajuda</div>,
+    element: <Help />,
   },
 ]
