@@ -14,7 +14,7 @@ export type AnoAPIMovimentacoes = {
 export const getAPIMovimentacao = async (): Promise<AnoAPIMovimentacoes[]> => {
   
   try {
-    const response = await api.get<AnoAPIMovimentacoes[]>(`movimentacoes/`);
+    const response = await api.get<AnoAPIMovimentacoes[]>(`/movimentacoes`);
 
     return response.data; 
   } catch (error) {
