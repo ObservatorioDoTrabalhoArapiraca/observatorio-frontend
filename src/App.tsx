@@ -15,13 +15,11 @@ function App() {
         <AlertCircle /> Atenção! Site em desenvolvimento. Os dados mostrados aqui são fictícios e não representam dados reais do SINE. Data prevista para lançamento: 30/05/2026 ou quando esse aviso parar de ser exibido.
       </div>
       <Header />
-     
-
       <Toaster />
       <BrowserRouter>
         <Navigation />
         <main>
-          {/* retirar os main de todas as páginas */}
+          {/* TODO: retirar os main de todas as páginas */}
           <Routes>
             {routePaths.map(({ path, element }) => (
               <Route key={path} path={path} element={element} />
