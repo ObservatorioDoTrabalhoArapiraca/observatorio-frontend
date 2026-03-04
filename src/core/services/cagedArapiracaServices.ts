@@ -1,7 +1,7 @@
 import api from "@/core/services/api";
 import { AnoTotalMovimentacoes, DistribuicaoPorEscolaridade, DistribuicaoPorFaixaEtaria, DistribuicaoPorRacaCor, DistribuicaoPorSexo, Movimentacoes, ProfissoesPorDeficiencia, SalarioPorProfissao } from "@/types";
 
-type QueryParams = {
+export type QueryParams = {
   ano?: number;
   mes?: number;
   agregacao: "mensal" | "anual";

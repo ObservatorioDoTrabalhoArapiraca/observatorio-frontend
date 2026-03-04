@@ -6,8 +6,6 @@ import ProfissaoChart from "@/pages/graficos/components/ProfissaoChart";
 import RacaCorChart from "@/pages/graficos/components/RacaCorChart";
 import SexoChart from "@/pages/graficos/components/SexoChart";
 
-
-
 export default function Charts() {
 
   return (

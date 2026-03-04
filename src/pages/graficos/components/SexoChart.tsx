@@ -1,5 +1,6 @@
 import { AgregacaoFilter } from "@/components/AgregacaoFilter";
 import { getDistribuicaoPorSexo } from "@/core/services/cagedArapiracaServices";
+
 import { useAgregacaoFilter } from "@/hooks/useAgregacaoFilter";
 import { BarChartCard } from "@/pages/graficos/components/BarChartCard";
 import { sexoChartConfig } from "@/pages/graficos/components/chartConfigData";

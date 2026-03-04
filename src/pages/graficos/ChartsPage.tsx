@@ -10,9 +10,7 @@ export default function ChartsPage() {
               Gráficos
       </CardTitle>
       <div className="w-full p-4">
-
         <Charts />
-       
       </div>
       </div>
   )

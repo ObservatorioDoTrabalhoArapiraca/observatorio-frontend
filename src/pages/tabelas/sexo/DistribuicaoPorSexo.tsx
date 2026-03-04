@@ -1,6 +1,7 @@
 import { DataTable } from "@/components/table/DataTable"
 import { Spinner } from "@/components/ui/spinner"
 import { getDistribuicaoPorSexo } from "@/core/services/cagedArapiracaServices"
+
 import { columns } from "@/pages/tabelas/sexo/columns"
 import { Sexo } from "@/types"
 
