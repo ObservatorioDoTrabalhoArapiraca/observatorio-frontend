@@ -1,5 +1,5 @@
 import api from "@/core/services/api";
-import { AnoTotalMovimentacoes, DistribuicaoPorEscolaridade, DistribuicaoPorFaixaEtaria, DistribuicaoPorRacaCor, DistribuicaoPorSexo, Movimentacoes, ProfissoesPorDeficiencia, SalarioPorProfissao } from "@/types";
+import { AnoTotalMovimentacoes, DistribuicaoPorEscolaridade, DistribuicaoPorFaixaEtaria, DistribuicaoPorRacaCor, DistribuicaoPorSexo, Movimentacoes, ProfissoesPorDeficiencia, SalarioPorProfissao, SaldoPorOcupacao } from "@/types";
 
 export type QueryParams = {
   ano?: number;
@@ -41,6 +41,21 @@ export const getDistribuicaoPorRacaCor = async ({ano, mes, agregacao}: QueryPara
 export const getSalarioPorProfissao = async ({ano, mes, agregacao}: QueryParams): Promise<SalarioPorProfissao> => {
   try {
     const response = await api.get<SalarioPorProfissao>(`analises/salario-ocupacao/`, {
+      params: {
+        ...(ano !== undefined && { ano }),
+        ...(mes !== undefined && { mes }),
+        agregacao,
+      },
+    });
+
+    return response.data; 
+  } catch (error) {
+    throw error;
+  }
+};
+export const getSaldoPorOcupacao = async ({ano, mes, agregacao}: QueryParams): Promise<SaldoPorOcupacao> => {
+  try {
+    const response = await api.get<SaldoPorOcupacao>(`analises/saldo-ocupacao/`, {
       params: {
         ...(ano !== undefined && { ano }),
         ...(mes !== undefined && { mes }),

@@ -22,6 +22,7 @@ export const tableCategories = [
   // { label: "Movimentações", value: "movimentacoes" },
   { label: "Salário por Escolaridade", value: "escolaridade" },
   { label: "Salário por Profissão", value: "salarioporprofissao" },
+  { label: "Saldo por Ocupação", value: "saldoocupacao" },
   { label: "Distribuilção por sexo", value: "sexo" },
   { label: "Distribuição por Raça/Cor", value: "racacor" },
   { label: "Salário por Faixa Etária", value: "faixaetaria" },

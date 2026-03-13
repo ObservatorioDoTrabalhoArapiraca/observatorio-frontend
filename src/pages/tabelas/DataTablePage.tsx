@@ -4,6 +4,7 @@ import DistribuicaoFaixaEtaria from "@/pages/tabelas/faixaetaria/DistribuicaoFai
 import ProfissoesPorDeficiencia from "@/pages/tabelas/pcd/ProfissoesPorDeficiencia"
 import DistribuicaoPorRacaCor from "@/pages/tabelas/racacor/DistribuicaoPorRacaCor"
 import SalarioPorProfissao from "@/pages/tabelas/salarioprofissao/SalarioPorProfissao"
+import SaldoPorOcupacao from "@/pages/tabelas/saldoocupacao/SaldoPorOcupacao"
 import DistribuicaoPorSexo from "@/pages/tabelas/sexo/DistribuicaoPorSexo"
 import TabsComponent from "@/pages/tabelas/TabsComponent"
 import TotalMovimentacoesAno from "@/pages/tabelas/totalmovimentacoesano/TotalMovimentacoesAno"
@@ -26,6 +27,7 @@ export default function DataTablePage() {
         { value: "racacor", content: <DistribuicaoPorRacaCor /> },
         { value: "pcd", content: <ProfissoesPorDeficiencia /> },
         { value: "salarioporprofissao", content: <SalarioPorProfissao /> },
+        { value: "saldoocupacao", content: <SaldoPorOcupacao /> },
       ]}
     />
   )

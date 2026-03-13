@@ -50,6 +50,28 @@ export interface SalarioPorProfissao {
   previous: string | null,
   results: Profissao[]
 }
+export interface SaldoOcupcacao {
+  ano: number
+  cbo_codigo: string
+  cbo_descricao: string
+  mes: number
+  salario_medio: number
+  total_movimentacoes: number
+  total_admissoes: number
+  total_demissoes: number
+  percentual: number
+  saldo_movimentacoes: number
+}
+
+export interface SaldoPorOcupacao {
+  count: number,
+  total_pages: number,
+  current_page: number,
+  page_size: number,
+  next: string | null,
+  previous: string | null,
+  results: SaldoOcupcacao[]
+}
 
 export interface Sexo {
   ano: number

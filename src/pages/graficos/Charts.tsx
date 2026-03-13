@@ -4,6 +4,7 @@ import FaixaEtariaChart from "@/pages/graficos/components/FaixaEtariaChart";
 import PcdChart from "@/pages/graficos/components/PcdChart";
 import ProfissaoChart from "@/pages/graficos/components/ProfissaoChart";
 import RacaCorChart from "@/pages/graficos/components/RacaCorChart";
+import SaldoOcupacaoChart from "@/pages/graficos/components/SaldoOcupacaoChart";
 import SexoChart from "@/pages/graficos/components/SexoChart";
 
 export default function Charts() {
@@ -15,7 +16,8 @@ export default function Charts() {
      <RacaCorChart/>
      <FaixaEtariaChart/>
      <ProfissaoChart/>
-     <PcdChart/>
+      <PcdChart />
+      <SaldoOcupacaoChart />
     </div>
   )
 }
