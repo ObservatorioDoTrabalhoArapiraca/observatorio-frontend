@@ -40,6 +40,8 @@ export interface Profissao {
   mes: number
   salario_medio: number
   total_movimentacoes: number
+  mov_low: number,
+  mov_zero: number,
 }
 export interface SalarioPorProfissao {
   count: number,

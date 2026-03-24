@@ -29,6 +29,13 @@ interface DataTableProps<TData, TValue> {
   filters: TableFiltersProps
   searchColumn?: string
   searchPlaceholder?: string
+  pagination: {
+    pageIndex: number,
+    totalPages: number,
+    pageSize: number,
+  onPageChange: (page: number) => void,
+  onPageSizeChange: (size: number) => void,
+  }
 }
 
 export function DataTable<TData, TValue>({
@@ -37,25 +44,40 @@ export function DataTable<TData, TValue>({
   filters,
   searchColumn,
   searchPlaceholder = "Buscar...",
+  pagination,
 }: DataTableProps<TData, TValue>) {
+
+  
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
     [])
-  const table = useReactTable({
-    data,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    onColumnFiltersChange: setColumnFilters,
-    getFilteredRowModel: getFilteredRowModel(),
-    state: {
-      columnFilters,
-    },
-    initialState: {
-      pagination: {
-        pageSize: 10,
+    const table = useReactTable({
+      data,
+      columns,
+      getCoreRowModel: getCoreRowModel(),
+      // getPaginationRowModel: getPaginationRowModel(),
+      manualPagination: true,
+      rowCount: pagination.totalPages * pagination.pageSize, // Total de registros para a paginação
+      onColumnFiltersChange: setColumnFilters,
+      getFilteredRowModel: getFilteredRowModel(),
+      state: {
+        columnFilters,
+        pagination: {
+          pageIndex: pagination.pageIndex,
+          pageSize: pagination.pageSize,
+        }
       },
-    },
-  })
+      onPaginationChange: (updater) => {
+        const newState = typeof updater === "function" ? updater(table.getState().pagination) : updater;
+        pagination.onPageChange(newState.pageIndex);
+        pagination.onPageSizeChange(newState.pageSize);
+      },
+      // initialState: {
+      //   pagination: {
+      //     pageSize: 10,
+      //   },
+      // },
+    })
+    
 
   return (
     <div className="overflow-hidden rounded-md border">

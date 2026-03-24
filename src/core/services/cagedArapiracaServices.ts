@@ -4,6 +4,8 @@ import { AnoTotalMovimentacoes, DistribuicaoPorEscolaridade, DistribuicaoPorFaix
 export type QueryParams = {
   ano?: number;
   mes?: number;
+  page?: number;
+  page_size?: number;
   agregacao: "mensal" | "anual";
   detalhes?: boolean;
 };
@@ -38,13 +40,15 @@ export const getDistribuicaoPorRacaCor = async ({ano, mes, agregacao}: QueryPara
     throw error;
   }
 };
-export const getSalarioPorProfissao = async ({ano, mes, agregacao}: QueryParams): Promise<SalarioPorProfissao> => {
+export const getSalarioPorProfissao = async ({ano, mes, agregacao, page, page_size}: QueryParams): Promise<SalarioPorProfissao> => {
   try {
     const response = await api.get<SalarioPorProfissao>(`analises/salario-ocupacao/`, {
       params: {
         ...(ano !== undefined && { ano }),
         ...(mes !== undefined && { mes }),
         agregacao,
+        page,
+        page_size,
       },
     });
 

@@ -68,4 +68,26 @@ export const columns: ColumnDef<Profissao>[] = [
       )
     },
   },
+  {
+    accessorKey: "mov_low",
+    header: "Movimentações Abaixo do Salário Mínimo",
+    cell: ({ row }) => {
+      return (
+        <div>
+          {row.original.mov_low}
+        </div>
+      )
+    },
+  },
+  {
+    accessorKey: "mov_zero",
+    header: "Movimentações com Salário Zero",
+    cell: ({ row }) => {
+      return (
+        <div>
+          {row.original.mov_zero}
+        </div>
+      )
+    },
+  },
 ]
