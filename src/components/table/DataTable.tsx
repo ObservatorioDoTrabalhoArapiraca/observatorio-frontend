@@ -58,6 +58,7 @@ export function DataTable<TData, TValue>({
     manualPagination: true,
     rowCount: totalCount,
     pageCount: totalPages,
+    autoResetPageIndex: false,
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
     state: {

@@ -1,10 +1,10 @@
 import { DataTable } from "@/components/table/DataTable"
+import { TableSkeleton } from "@/components/table/TableSkeleton"
 import { Spinner } from "@/components/ui/spinner"
 import { getSalarioPorProfissao } from "@/core/services/cagedArapiracaServices"
 import { columns } from "@/pages/tabelas/salarioprofissao/columns"
 import { Profissao, SalarioPorProfissao } from "@/types"
 import { PaginationState } from "@tanstack/react-table"
-
 import { useEffect, useState } from "react"
 import { useParams, useSearchParams } from "react-router-dom"
 import { toast } from "sonner"
@@ -16,7 +16,7 @@ export default function TablePage() {
   const [error, setError] = useState<string | null>(null)
   const [searchParams, setSearchParams] = useSearchParams();
  
-
+  const [lastTotalPages, setLastTotalPages] = useState(1);
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: 10
@@ -99,6 +99,7 @@ export default function TablePage() {
         console.log("Dados retornados pela API:", dados);
         if (dados) {
           setDados(dados);
+          setLastTotalPages(dados.total_pages);
           // NÃO use dados.current_page para setar o pageIndex aqui agora, 
           // pois se a API estiver mandando errado (Base 0), vai entrar em loop.
         }
@@ -114,7 +115,7 @@ export default function TablePage() {
 
     }
     fetchData()
-  }, [category, ano, mes, isAnual, pagination])
+  }, [category, ano, mes, isAnual, pagination.pageIndex, pagination.pageSize]) // Re-fetch quando a categoria, filtros ou paginação mudarem
 
   useEffect(() => {
     console.log("Estado atualizado de dados:", dados);
@@ -133,24 +134,29 @@ export default function TablePage() {
   if (error) return <div>{error}</div>
   return (
     <div className="w-full mx-auto p-4">
-      <DataTable<Profissao, Profissao>
-        data={dados?.results || []}
-        paginationState={pagination}
-        setPaginationState={setPagination}
-        totalPages={ dados?.total_pages || 1}
-        totalCount={dados?.count || 0}
-        columns={columns}
-        filters={{
-          ano,
-          mes,
-          isAnual,
-          onAnoChange: handleAnoChange,
-          onMesChange: handleMesChange,
-          onAgregacaoChange: handleAgregacaoChange,
-        }}
-        searchPlaceholder="filtrar por profissão"
-        searchColumn="cbo_descricao"
-      />
-    </div>
+      {loading ? (
+        // Renderiza o esqueleto enquanto carrega
+        <TableSkeleton rows={10} columns={3} />
+      ) : (
+        <DataTable<Profissao, Profissao>
+          data={dados?.results || []}
+          paginationState={pagination}
+          setPaginationState={setPagination}
+          totalPages={lastTotalPages}
+          totalCount={dados?.count || 0}
+          columns={columns}
+          filters={{
+            ano,
+            mes,
+            isAnual,
+            onAnoChange: handleAnoChange,
+            onMesChange: handleMesChange,
+            onAgregacaoChange: handleAgregacaoChange,
+          }}
+          searchPlaceholder="filtrar por profissão"
+          searchColumn="cbo_descricao"
+        />
+      )}
+          </div>
   )
 }

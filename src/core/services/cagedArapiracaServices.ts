@@ -42,7 +42,7 @@ export const getDistribuicaoPorRacaCor = async ({ano, mes, agregacao}: QueryPara
 };
 export const getSalarioPorProfissao = async ({ano, mes, agregacao, page, page_size}: QueryParams): Promise<SalarioPorProfissao> => {
   try {
-    const response = await api.get<SalarioPorProfissao>(`analises/salario-ocupacao/`, {
+    const response = await api.get<SalarioPorProfissao>(`analises/salario-ocupacao`, {
       params: {
         ...(ano !== undefined && { ano }),
         ...(mes !== undefined && { mes }),
