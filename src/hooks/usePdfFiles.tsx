@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getPdfs, PdfFile } from "../core/services/pdfService"
 
-export function usePdfFiles() {
+export function usePdfFiles(type: string) {
   const [pdfs, setPdfs] = useState<PdfFile[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -11,7 +11,7 @@ export function usePdfFiles() {
       try {
         setIsLoading(true)
         setError(null)
-        const data = await getPdfs()
+        const data = await getPdfs(type)
         setPdfs(data)
       } catch (err) {
         setError(err instanceof Error ? err.message : "Erro ao carregar PDFs")
@@ -23,7 +23,7 @@ export function usePdfFiles() {
   
     useEffect(() => {
       fetchPdfs()
-    }, [])
+    }, [type])
 
   return { pdfs, isLoading, error, refetch: fetchPdfs }
 }

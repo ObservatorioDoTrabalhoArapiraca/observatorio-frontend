@@ -4,7 +4,10 @@ import { useParams } from "react-router-dom"
 
 const RelatoriosPage = () => {
   const { category } = useParams()
-  const { pdfs, isLoading, error } = usePdfFiles()
+
+  const { pdfs, isLoading, error } = usePdfFiles(category ?? "")
+  
+
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Título dinâmico baseado na categoria */}
@@ -13,6 +16,10 @@ const RelatoriosPage = () => {
           ? "Boletim Conjuntural" 
           : category === "tematico" 
           ? "Boletim Temático" 
+          : category === "mensal"
+          ? "Boletim Mensal"
+          : category === "anual"
+          ? "Boletim Anual"
           : "Relatórios e Documentos"}
       </h1>
 

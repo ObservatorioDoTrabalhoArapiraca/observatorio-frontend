@@ -16,11 +16,7 @@ export default function PaginationTable<TData>({ table }: PaginationTableProps<T
     canPreviousPage: table.getCanPreviousPage(),
   });
   console.log("Total de páginas calculado:", table.getPageCount());
-
-  console.log("Pode avançar para a próxima página?", table.getCanNextPage());
-  console.log("Pode voltar para a página anterior?", table.getCanPreviousPage());
-  
-  console.log("Página atual (base 1):", table.getState().pagination.pageIndex + 1);
+  // console.log("Página atual (base 1):", table.getState().pagination.pageIndex + 1);
   return (
     <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-2 py-4">
     {/* Info e seletor de linhas por página */}
@@ -62,7 +58,7 @@ export default function PaginationTable<TData>({ table }: PaginationTableProps<T
           variant="outline"
           size="icon"
           className="h-8 w-8"
-          onClick={() => table.setPageIndex(0)}
+          onClick={() => table.firstPage()}
           disabled={!table.getCanPreviousPage()}
           title="Primeira página"
         >
@@ -92,7 +88,7 @@ export default function PaginationTable<TData>({ table }: PaginationTableProps<T
           variant="outline"
           size="icon"
           className="h-8 w-8"
-          onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+          onClick={() => table.lastPage()}
           disabled={!table.getCanNextPage()}
           title="Última página"
         >

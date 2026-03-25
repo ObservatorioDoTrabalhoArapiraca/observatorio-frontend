@@ -13,6 +13,8 @@ export const naviLinks = [
     children: [
       { name: "Conjunturais", path: "/boletim/conjuntural" },
       { name: "Temático", path: "/boletim/tematico" },
+      { name: "Anual", path: "/boletim/anual" },
+      { name: "Mensal", path: "/boletim/mensal" },
     ],
   },
   { name: "Ajuda", path: "/ajuda" },
@@ -33,4 +35,6 @@ export const tableCategories = [
 export const boletinsCategories = [
   { label: "conjunturais", value: "conjunturais" },
   { label: "Temático", value: "tematico" },
+  { label: "Mensal", value: "mensal" },
+  { label: "Anual", value: "anual" },
 ]

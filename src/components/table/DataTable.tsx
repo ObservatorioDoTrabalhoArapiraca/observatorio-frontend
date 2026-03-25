@@ -6,7 +6,7 @@ import {
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
-  getPaginationRowModel,
+  PaginationState,
   useReactTable,
 } from "@tanstack/react-table"
 
@@ -22,20 +22,18 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { useState } from "react"
+import { Dispatch, SetStateAction, useState } from "react"
+
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
   filters: TableFiltersProps
   searchColumn?: string
   searchPlaceholder?: string
-  pagination: {
-    pageIndex: number,
-    totalPages: number,
-    pageSize: number,
-  onPageChange: (page: number) => void,
-  onPageSizeChange: (size: number) => void,
-  }
+  paginationState: PaginationState
+  setPaginationState: Dispatch<SetStateAction<PaginationState>>
+  totalPages: number,
+  totalCount: number
 }
 
 export function DataTable<TData, TValue>({
@@ -44,41 +42,33 @@ export function DataTable<TData, TValue>({
   filters,
   searchColumn,
   searchPlaceholder = "Buscar...",
-  pagination,
+  paginationState,
+  setPaginationState,
+  totalPages,
+  totalCount
 }: DataTableProps<TData, TValue>) {
 
   
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
     [])
-    const table = useReactTable({
-      data,
-      columns,
-      getCoreRowModel: getCoreRowModel(),
-      // getPaginationRowModel: getPaginationRowModel(),
-      manualPagination: true,
-      rowCount: pagination.totalPages * pagination.pageSize, // Total de registros para a paginação
-      onColumnFiltersChange: setColumnFilters,
-      getFilteredRowModel: getFilteredRowModel(),
-      state: {
-        columnFilters,
-        pagination: {
-          pageIndex: pagination.pageIndex,
-          pageSize: pagination.pageSize,
-        }
+  const table = useReactTable({
+    data,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+    manualPagination: true,
+    rowCount: totalCount,
+    pageCount: totalPages,
+    onColumnFiltersChange: setColumnFilters,
+    getFilteredRowModel: getFilteredRowModel(),
+    state: {
+      columnFilters,
+      pagination: paginationState,
       },
-      onPaginationChange: (updater) => {
-        const newState = typeof updater === "function" ? updater(table.getState().pagination) : updater;
-        pagination.onPageChange(newState.pageIndex);
-        pagination.onPageSizeChange(newState.pageSize);
-      },
-      // initialState: {
-      //   pagination: {
-      //     pageSize: 10,
-      //   },
-      // },
+    onPaginationChange: setPaginationState
+      
     })
     
-
+    console.log("Estado de paginação no DataTable:", paginationState);
   return (
     <div className="overflow-hidden rounded-md border">
       <TableFilters

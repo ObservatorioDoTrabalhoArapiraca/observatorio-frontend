@@ -3,6 +3,7 @@ import { Spinner } from "@/components/ui/spinner"
 import { getSalarioPorProfissao } from "@/core/services/cagedArapiracaServices"
 import { columns } from "@/pages/tabelas/salarioprofissao/columns"
 import { Profissao, SalarioPorProfissao } from "@/types"
+import { PaginationState } from "@tanstack/react-table"
 
 import { useEffect, useState } from "react"
 import { useParams, useSearchParams } from "react-router-dom"
@@ -13,11 +14,14 @@ export default function TablePage() {
   const { category } = useParams()
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
-  const [currentPage, setCurrentPage] = useState<number>(1); // Página atual (base 0)
-  const [pageSize, setPageSize] = useState<number>(10); // Tamanho da página
-
   const [searchParams, setSearchParams] = useSearchParams();
-  
+ 
+
+  const [pagination, setPagination] = useState<PaginationState>({
+    pageIndex: 0,
+    pageSize: 10
+  });
+
   const parseAnoFromUrl = (): number | null => {
       const anoParam = searchParams.get("ano");
       if (!anoParam) return null;
@@ -81,20 +85,26 @@ export default function TablePage() {
           ano,
           mes,
           agregacao: isAnual ? "anual" : "mensal",
-          page: currentPage + 1,
-          page_size: pageSize,
+          page: pagination.pageIndex + 1,
+          page_size: pagination.pageSize,
         });
         const dados = await getSalarioPorProfissao({
           ...(ano !== null && { ano }),
           ...(mes !== null && { mes }),
           agregacao: isAnual ? "anual" : "mensal",
-          page: currentPage + 1, // API espera página base 1
-          page_size: pageSize,
+          page: pagination.pageIndex + 1, // API espera página base 1
+          page_size: pagination.pageSize,
         })
 
         console.log("Dados retornados pela API:", dados);
-        setDados(dados);
+        if (dados) {
+          setDados(dados);
+          // NÃO use dados.current_page para setar o pageIndex aqui agora, 
+          // pois se a API estiver mandando errado (Base 0), vai entrar em loop.
+        }
+        
       } catch (error) {
+        setPagination(prev => ({ ...prev, pageIndex: 0 }))
         console.error("❌ Erro ao buscar dados:", error)
         toast.error("Erro ao buscar dados")
         setError("Erro ao buscar dados")
@@ -104,7 +114,7 @@ export default function TablePage() {
 
     }
     fetchData()
-  }, [category, ano, mes, isAnual, currentPage, pageSize])
+  }, [category, ano, mes, isAnual, pagination])
 
   useEffect(() => {
     console.log("Estado atualizado de dados:", dados);
@@ -112,10 +122,12 @@ export default function TablePage() {
 
   console.log("Dados passados para DataTable:", dados);
   console.log("Estado de paginação:", {
-    pageIndex: currentPage,
-    pageSize: pageSize,
+    pageIndex: pagination.pageIndex,
+    pageSize: pagination.pageSize,
     totalPages: dados?.total_pages,
   }); 
+
+  console.log("Dados que estão indo para a tabela:", dados?.results?.length, "primeiro item:", dados?.results?.[0]?.cbo_descricao);
 
   if (loading) return <Spinner text="Carregando..."/>
   if (error) return <div>{error}</div>
@@ -123,16 +135,10 @@ export default function TablePage() {
     <div className="w-full mx-auto p-4">
       <DataTable<Profissao, Profissao>
         data={dados?.results || []}
-        pagination={{
-          pageIndex: currentPage, // Converte para base 0
-          totalPages: dados?.total_pages || 1,
-          pageSize: dados?.page_size || 10,
-          onPageChange: (page) => {
-            console.log("Mudando para a página:", page); // Log para verificar a página
-            setCurrentPage(page); // Converte de volta para base 1
-          },
-          onPageSizeChange: setPageSize,
-        }}
+        paginationState={pagination}
+        setPaginationState={setPagination}
+        totalPages={ dados?.total_pages || 1}
+        totalCount={dados?.count || 0}
         columns={columns}
         filters={{
           ano,
