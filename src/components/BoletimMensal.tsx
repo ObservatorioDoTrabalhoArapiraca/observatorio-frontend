@@ -12,7 +12,12 @@ export default function BoletimMensal({
   filtered: PdfFile[]
   sortedYears: string[]
   grouped: Record<string, Record<string, PdfFile[]>>
-}) {
+  }) {
+    const formatDriveUrl = (url: string): string => {
+      if (!url) return "#";
+      // Substitui /view por /preview e remove parâmetros extras de download
+      return url.replace(/\/view(\?.*)?$/, "/preview");
+    };
   return (
     <div className="md:w-3/4 p-4 md:p-0 mx-auto">
       <h2 className="my-4">Documentos Disponíveis</h2>
@@ -32,7 +37,7 @@ export default function BoletimMensal({
                     <li key={pdf.url}>
                       <Card className="p-4 rounded-md shadow-md ">
                         <a
-                          href={pdf.url}
+                          href={formatDriveUrl(pdf.url)}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex flex-wrap cursor-pointer items-center justify-between space-x-4 hover:text-primary-blue"

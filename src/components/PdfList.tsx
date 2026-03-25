@@ -70,7 +70,11 @@ const PdfList: React.FC<PdfListProps> = ({ tipo, pdfs, isLoading }) => {
 
 
   // Ordena os anos do mais recente para o mais antigo
-
+  const formatDriveUrl = (url: string): string => {
+    if (!url) return "#";
+    // Substitui /view por /preview e remove parâmetros extras de download
+    return url.replace(/\/view(\?.*)?$/, "/preview");
+  };
 
   return  (
     <div className="space-y-6">
@@ -98,7 +102,7 @@ const PdfList: React.FC<PdfListProps> = ({ tipo, pdfs, isLoading }) => {
           {pdfs.map((pdf, index) => (
             <a
               key={`${pdf.nome}-${index}`}
-              href={pdf.url}
+              href={formatDriveUrl(pdf.url)}
               target="_blank"
               rel="noopener noreferrer"
               className="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg transition-shadow duration-200 hover:border-blue-500"
