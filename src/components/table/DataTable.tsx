@@ -30,10 +30,10 @@ interface DataTableProps<TData, TValue> {
   filters: TableFiltersProps
   searchColumn?: string
   searchPlaceholder?: string
-  paginationState: PaginationState
-  setPaginationState: Dispatch<SetStateAction<PaginationState>>
-  totalPages: number,
-  totalCount: number
+  paginationState?: PaginationState
+  setPaginationState?: Dispatch<SetStateAction<PaginationState>>
+  totalPages?: number,
+  totalCount?: number
 }
 
 export function DataTable<TData, TValue>({
