@@ -62,8 +62,6 @@ export const getSalarioPorProfissao = async ({ano, mes, agregacao, page, page_si
   }
 };
 export const getSaldoPorOcupacao = async ({ ano, mes, agregacao, page, page_size }: QueryParams): Promise<SaldoPorOcupacao> => {
-  console.log(ano, mes, agregacao);
-  
   try {
     const response = await api.get<SaldoPorOcupacao>(`analises/saldo-ocupacao/`, {
       params: {

@@ -93,7 +93,6 @@ export default function TablePage() {
           page: pagination.pageIndex + 1, // API espera página base 1
           page_size: pagination.pageSize,
         })
-        console.log("dados",dados);
         if (dados) {
           setDados(dados);
           setLastTotalPages(dados.total_pages);
