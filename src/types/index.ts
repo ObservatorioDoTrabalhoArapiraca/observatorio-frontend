@@ -122,16 +122,8 @@ export interface AnoTotalMovimentacoes {
     agregacao: "mensal" | "anual",
     mes: number
   }
-  paginacao: {
-      page: number,
-      page_size: number,
-      total_pages: number,
-      links: {
-      next: string,
-      previous: string
-    }
-  }
-  resultados: Movimentacao[]
+  paginacao: null
+  resultados: null
 }
 
 export interface Movimentacao {

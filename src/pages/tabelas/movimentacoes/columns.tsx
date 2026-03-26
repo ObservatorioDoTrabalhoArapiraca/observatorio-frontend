@@ -24,26 +24,6 @@ export const columns: ColumnDef<Movimentacao>[] = [
     cell: ({ row }) => `R$ ${parseFloat(row.original.salario).toFixed(2)}`,
   },
   {
-    accessorKey: "tipo_movimentacao_descricao",
-    header: "Tipo Movimentação",
-    cell: ({ row }) => row.original.tipo_movimentacao_descricao,
-  },
-  {
-    accessorKey: "secao_descricao",
-    header: "Seção",
-    cell: ({ row }) => row.original.secao_descricao,
-  },
-  {
-    accessorKey: "subclasse_descricao",
-    header: "Subclasse",
-    cell: ({ row }) => row.original.subclasse_descricao,
-  },
-  {
-    accessorKey: "categoria_descricao",
-    header: "Categoria",
-    cell: ({ row }) => row.original.categoria_descricao,
-  },
-  {
     accessorKey: "grau_instrucao_descricao",
     header: "Escolaridade",
     cell: ({ row }) => row.original.grau_instrucao_descricao,
@@ -59,21 +39,6 @@ export const columns: ColumnDef<Movimentacao>[] = [
     cell: ({ row }) => <p>{row.original.sexo_descricao === "Homem" ? "Masculino" : "Feminino"}</p>
   },
   {
-    accessorKey: "tipo_empregador_descricao",
-    header: "Tipo Empregador",
-    cell: ({ row }) => row.original.tipo_empregador_descricao,
-  },
-  {
-    accessorKey: "tipo_estabelecimento_descricao",
-    header: "Tipo Estabelecimento",
-    cell: ({ row }) => row.original.tipo_estabelecimento_descricao,
-  },
-  {
-    accessorKey: "tipo_movimentacao_descricao",
-    header: "Tipo Movimentação",
-    cell: ({ row }) => row.original.tipo_movimentacao_descricao,
-  },
-  {
     accessorKey: "tipo_deficiencia_descricao",
     header: "Tipo Deficiência",
     cell: ({ row }) => <p>{row.original.tipo_deficiencia_descricao === "Intelectual (Mental)" ? "Intelectual" : row.original.tipo_deficiencia_descricao}</p>
@@ -84,19 +49,8 @@ export const columns: ColumnDef<Movimentacao>[] = [
     cell: ({ row }) => row.original.idade,
   },
   {
-    accessorKey: "horas_contratuais",
-    header: "Horas Contratuais",
-    cell: ({ row }) => row.original.horas_contratuais,
-  },
-  {
     accessorKey: "salario",
     header: "Salário",
     cell: ({ row }) => `R$ ${parseFloat(row.original.salario).toFixed(2)}`,
   },
-  {
-    accessorKey: "tamanho_estabelecimento",
-    header: "Tamanho Estabelecimento",
-    cell: ({ row }) => row.original.tamanho_estabelecimento,
-  },
-  
 ]

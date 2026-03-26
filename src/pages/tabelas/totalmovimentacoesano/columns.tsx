@@ -1,7 +1,7 @@
-import { Movimentacoes } from "@/types";
+import { AnoTotalMovimentacoes } from "@/types";
 import { ColumnDef } from "@tanstack/react-table";
 
-export const columns: ColumnDef<Movimentacoes>[] = [
+export const columns: ColumnDef<AnoTotalMovimentacoes>[] = [
   {
     accessorKey: "ano",
     header: "Ano",

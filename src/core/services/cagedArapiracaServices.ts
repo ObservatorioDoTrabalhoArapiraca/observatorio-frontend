@@ -132,17 +132,15 @@ export const getProfissoesPorDeficiencia = async ({ano, mes, agregacao, page, pa
     throw error;
   }
 };
-export const getTotalMovimentacao = async ({ ano, mes, agregacao, detalhes, page, page_size }: QueryParams): Promise<Movimentacoes> => {
+export const getTotalMovimentacao = async ({ ano, mes, agregacao, detalhes }: QueryParams): Promise<AnoTotalMovimentacoes> => {
   
   try {
-    const response = await api.get<Movimentacoes>(`analises/movimentacoes/`, {
+    const response = await api.get<AnoTotalMovimentacoes>(`analises/movimentacoes/`, {
       params: {
         ...(ano !== undefined && { ano }),
         ...(mes !== undefined && { mes }),
         agregacao,
         detalhes: detalhes ?? false, // para não retornar os detalhes das movimentações, apenas o total - isso é importante para otimizar a consulta e evitar sobrecarregar o frontend com dados desnecessários
-        page,
-        page_size,
       },
     });
 
