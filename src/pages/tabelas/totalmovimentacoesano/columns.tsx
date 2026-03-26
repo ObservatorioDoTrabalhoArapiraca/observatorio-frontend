@@ -14,6 +14,17 @@ export const columns: ColumnDef<AnoTotalMovimentacoes>[] = [
     },
   },
   {
+    accessorKey: "mes",
+    header: "Mês",
+    cell: ({ row }) => {
+      const mes = row.original.filtros_aplicados?.mes 
+      ?? row.original.filtros_aplicados?.mes 
+      ?? "Todos os meses";
+    return <div>{mes}</div>;
+  
+    },
+  },
+  {
     accessorKey: "total_movimentacoes",
     header: "Total Movimentacoes",
     cell: ({ row }) => {

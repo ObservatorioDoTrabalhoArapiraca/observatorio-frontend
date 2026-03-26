@@ -8,6 +8,9 @@ export const MESES = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "S
 
 // TODO: ver como vai implementar essa função, talvez seja melhor criar um endpoint específico para retornar os anos disponíveis, ou retornar junto com os dados da consulta, para evitar ter que fazer uma consulta extra só para isso
 export function getAnosDisponiveisFromData(): number[] {
-  return Array.from({ length: 5 }, (_, i) => new Date().getFullYear() - i);
+
+  const anoAtual = new Date().getFullYear();
+  const anoInicial = 2020;
+  return Array.from({ length: anoAtual -  anoInicial + 1 }, (_, i) => anoInicial + i);
          
 }
