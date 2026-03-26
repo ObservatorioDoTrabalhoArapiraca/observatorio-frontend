@@ -1,21 +1,29 @@
 import { DataTable } from "@/components/table/DataTable"
+import { TableSkeleton } from "@/components/table/TableSkeleton"
 import { Spinner } from "@/components/ui/spinner"
 import { getDistribuicaoPorSexo } from "@/core/services/cagedArapiracaServices"
 
 import { columns } from "@/pages/tabelas/sexo/columns"
-import { Sexo } from "@/types"
+import { DistribuicaoPorSexo, Sexo } from "@/types"
+import { PaginationState } from "@tanstack/react-table"
 
 import { useEffect, useState } from "react"
 import { useParams, useSearchParams } from "react-router-dom"
 import { toast } from "sonner"
 
 export default function TablePage() {
-  const [dados, setDados] = useState<Sexo[]>([])
+  const [dados, setDados] = useState<DistribuicaoPorSexo | null>(null)
   const { category } = useParams()
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
   
   const [searchParams, setSearchParams] = useSearchParams();
+  
+   const [lastTotalPages, setLastTotalPages] = useState(1);
+    const [pagination, setPagination] = useState<PaginationState>({
+      pageIndex: 0,
+      pageSize: 10
+    });
   
   const parseAnoFromUrl = (): number | null => {
       const anoParam = searchParams.get("ano");
@@ -78,11 +86,21 @@ export default function TablePage() {
         const response = await getDistribuicaoPorSexo({
           ...(ano !== null && { ano }),
           ...(mes !== null && { mes }),
-          agregacao: isAnual ? "anual" : "mensal"
+          agregacao: isAnual ? "anual" : "mensal", 
+          page: pagination.pageIndex + 1, // API espera página base 1
+          page_size: pagination.pageSize,
         })
-        setDados(response.results)
+        if (response) {
+          setDados(response);
+          setLastTotalPages(response.total_pages);
+          // NÃO use dados.current_page para setar o pageIndex aqui agora, 
+          // pois se a API estiver mandando errado (Base 0), vai entrar em loop.
+        }
+      
+          
+     
       } catch (error) {
-        console.error("❌ Erro ao buscar dados:", error)
+        setPagination(prev => ({ ...prev, pageIndex: 0 }))
         toast.error("Erro ao buscar dados")
         setError("Erro ao buscar dados")
       } finally {
@@ -91,26 +109,35 @@ export default function TablePage() {
 
     }
     fetchData()
-  }, [category, ano, mes, isAnual])
+  }, [category, ano, mes, isAnual, pagination.pageIndex, pagination.pageSize])
 
   if (loading) return <Spinner text="Carregando..."/>
   if (error) return <div>{error}</div>
   return (
     <div className="w-full mx-auto p-4">
-      <DataTable<Sexo, Sexo>
-        data={dados || []}
-        columns={columns}
-        filters={{
-          ano,
-          mes,
-          isAnual,
-          onAnoChange: handleAnoChange,
-          onMesChange: handleMesChange,
-          onAgregacaoChange: handleAgregacaoChange,
-        }}
-        searchColumn="sexo_descricao" // Coluna para filtrar por texto
-        searchPlaceholder="Filtrar por sexo..."
-      />
+      {loading ? (
+        // Renderiza o esqueleto enquanto carrega
+        <TableSkeleton rows={10} columns={3} />
+      ) : (
+        <DataTable<Sexo, Sexo>
+          data={dados?.results || []}
+          paginationState={pagination}
+          setPaginationState={setPagination}
+          totalPages={lastTotalPages}
+          totalCount={dados?.count || 0}
+          columns={columns}
+          filters={{
+            ano,
+            mes,
+            isAnual,
+            onAnoChange: handleAnoChange,
+            onMesChange: handleMesChange,
+            onAgregacaoChange: handleAgregacaoChange,
+          }}
+          searchColumn="sexo_descricao" // Coluna para filtrar por texto
+          searchPlaceholder="Filtrar por sexo..."
+        />
+      )}
     </div>
   )
 }

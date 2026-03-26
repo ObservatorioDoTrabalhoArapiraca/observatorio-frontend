@@ -7,16 +7,8 @@ export type PaginationTableProps<TData> = {
   table: Table<TData>
 }
 export default function PaginationTable<TData>({ table }: PaginationTableProps<TData>) {
-  
-  console.log("Estado de paginação no PaginationTable:", {
-    pageIndex: table.getState().pagination.pageIndex,
-    pageSize: table.getState().pagination.pageSize,
-    totalPages: table.getPageCount(),
-    canNextPage: table.getCanNextPage(),
-    canPreviousPage: table.getCanPreviousPage(),
-  });
-  console.log("Total de páginas calculado:", table.getPageCount());
-  // console.log("Página atual (base 1):", table.getState().pagination.pageIndex + 1);
+
+
   return (
     <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-2 py-4">
     {/* Info e seletor de linhas por página */}

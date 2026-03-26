@@ -1,21 +1,28 @@
 import { DataTable } from "@/components/table/DataTable"
+import { TableSkeleton } from "@/components/table/TableSkeleton"
 import { Spinner } from "@/components/ui/spinner"
 import { getDistribuicaoPorEscolaridade } from "@/core/services/cagedArapiracaServices"
 import { columns } from "@/pages/tabelas/escolaridade/columns"
-import { Escolaridade } from "@/types"
+import { DistribuicaoPorEscolaridade, Escolaridade } from "@/types"
+import { PaginationState } from "@tanstack/react-table"
 
 import { useEffect, useState } from "react"
 import { useParams, useSearchParams } from "react-router-dom"
 import { toast } from "sonner"
 
 export default function TablePage() {
-  const [dados, setDados] = useState<Escolaridade[]>([])
+  const [dados, setDados] = useState<DistribuicaoPorEscolaridade | null>(null)
   const { category } = useParams()
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
 
   const [searchParams, setSearchParams] = useSearchParams();
 
+    const [lastTotalPages, setLastTotalPages] = useState(1);
+    const [pagination, setPagination] = useState<PaginationState>({
+      pageIndex: 0,
+      pageSize: 10
+    });
 
 const parseAnoFromUrl = (): number | null => {
     const anoParam = searchParams.get("ano");
@@ -81,9 +88,16 @@ const parseAnoFromUrl = (): number | null => {
         const response = await getDistribuicaoPorEscolaridade({
           ...(ano !== null && { ano }),
           ...(mes !== null && { mes }),
-          agregacao: isAnual ? "anual" : "mensal"
+          agregacao: isAnual ? "anual" : "mensal",
+          page: pagination.pageIndex + 1, // API espera página base 1
+          page_size: pagination.pageSize,
         });
-        setDados(response.results)
+     if (response) {
+          setDados(response);
+          setLastTotalPages(response.total_pages);
+          // NÃO use dados.current_page para setar o pageIndex aqui agora, 
+          // pois se a API estiver mandando errado (Base 0), vai entrar em loop.
+        }
       } catch (error) {
         console.error("❌ Erro ao buscar dados:", error)
         toast.error("Erro ao buscar dados")
@@ -94,7 +108,7 @@ const parseAnoFromUrl = (): number | null => {
 
     }
     fetchData()
-  }, [category, ano, mes, isAnual])
+  }, [category, ano, mes, isAnual,  pagination.pageIndex, pagination.pageSize])
 
   
 
@@ -102,20 +116,29 @@ const parseAnoFromUrl = (): number | null => {
   if (error) return <div>{error}</div>
   return (
     <div className="w-full mx-auto p-4">
-      <DataTable<Escolaridade, Escolaridade>
-        data={dados}
-        columns={columns}
-        filters={{
-          ano,
-          mes,
-          isAnual,
-          onAnoChange: handleAnoChange,
-          onMesChange: handleMesChange,
-          onAgregacaoChange: handleAgregacaoChange,
-        }}
-        searchColumn="escolaridade_descricao"
-        searchPlaceholder="Pesquisar por escolaridade..."
-      />
+      {loading ? (
+        // Renderiza o esqueleto enquanto carrega
+        <TableSkeleton rows={10} columns={3} />
+      ) : (
+        <DataTable<Escolaridade, Escolaridade>
+          data={dados?.results || []}
+          columns={columns}
+          paginationState={pagination}
+          setPaginationState={setPagination}
+          totalPages={lastTotalPages}
+          totalCount={dados?.count || 0}
+          filters={{
+            ano,
+            mes,
+            isAnual,
+            onAnoChange: handleAnoChange,
+            onMesChange: handleMesChange,
+            onAgregacaoChange: handleAgregacaoChange,
+          }}
+          searchColumn="escolaridade_descricao"
+          searchPlaceholder="Pesquisar por escolaridade..."
+        />
+      )}
     </div>
   )
 }

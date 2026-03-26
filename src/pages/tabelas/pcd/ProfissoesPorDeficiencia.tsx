@@ -1,21 +1,29 @@
 import { DataTable } from "@/components/table/DataTable"
+import { TableSkeleton } from "@/components/table/TableSkeleton"
 import { Spinner } from "@/components/ui/spinner"
 import { getProfissoesPorDeficiencia } from "@/core/services/cagedArapiracaServices"
 import { columns } from "@/pages/tabelas/pcd/columns"
-import { Deficiencia } from "@/types"
+import { Deficiencia, ProfissoesPorDeficiencia } from "@/types"
+import { PaginationState } from "@tanstack/react-table"
 
 import { useEffect, useState } from "react"
 import { useParams, useSearchParams } from "react-router-dom"
 import { toast } from "sonner"
 
 export default function TablePage() {
-  const [dados, setDados] = useState<Deficiencia[]>([])
+  const [dados, setDados] = useState<ProfissoesPorDeficiencia | null>(null)
   const { category } = useParams()
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
   
   const [searchParams, setSearchParams] = useSearchParams();
   
+  const [lastTotalPages, setLastTotalPages] = useState(1);
+  const [pagination, setPagination] = useState<PaginationState>({
+    pageIndex: 0,
+    pageSize: 10
+  });
+
 const parseAnoFromUrl = (): number | null => {
     const anoParam = searchParams.get("ano");
     if (!anoParam) return null;
@@ -78,9 +86,16 @@ const parseAnoFromUrl = (): number | null => {
         const response = await getProfissoesPorDeficiencia({
           ...(ano !== null && { ano }),
           ...(mes !== null && { mes }),
-          agregacao: isAnual ? "anual" : "mensal"
+          agregacao: isAnual ? "anual" : "mensal",
+          page: pagination.pageIndex + 1, // API espera página base 1
+          page_size: pagination.pageSize,
         })
-        setDados(response.results)
+        if (response) {
+          setDados(response);
+          setLastTotalPages(response.total_pages);
+        }
+      
+     
        
       } catch (error) {
         console.error("❌ Erro ao buscar dados:", error)
@@ -92,7 +107,7 @@ const parseAnoFromUrl = (): number | null => {
 
     }
     fetchData()
-  }, [category, ano, mes, isAnual])
+  }, [category, ano, mes, isAnual, pagination.pageIndex, pagination.pageSize])
 
   
 
@@ -100,20 +115,29 @@ const parseAnoFromUrl = (): number | null => {
   if (error) return <div>{error}</div>
   return (
     <div className="w-full mx-auto p-4">
-      <DataTable<Deficiencia, Deficiencia>
-        data={dados || []}
-        columns={columns}
-        filters={{
-          ano,
-          mes,
-          isAnual,
-          onAnoChange: handleAnoChange,
-          onMesChange: handleMesChange,
-          onAgregacaoChange: handleAgregacaoChange,
-        }}
-        searchColumn="tipo_deficiencia_descricao"
-        searchPlaceholder="Pesquisar por tipo de Deficiência"
-      />
+      {loading ? (
+        // Renderiza o esqueleto enquanto carrega
+        <TableSkeleton rows={10} columns={3} />
+      ) : (
+        <DataTable<Deficiencia, Deficiencia>
+          data={dados?.results || []}
+          paginationState={pagination}
+          setPaginationState={setPagination}
+          totalPages={lastTotalPages}
+          totalCount={dados?.count || 0}
+          columns={columns}
+          filters={{
+            ano,
+            mes,
+            isAnual,
+            onAnoChange: handleAnoChange,
+            onMesChange: handleMesChange,
+            onAgregacaoChange: handleAgregacaoChange,
+          }}
+          searchColumn="tipo_deficiencia_descricao"
+          searchPlaceholder="Pesquisar por tipo de Deficiência"
+        />
+      )}
     </div>
   )
 }

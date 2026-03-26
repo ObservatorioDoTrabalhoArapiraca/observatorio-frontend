@@ -69,7 +69,7 @@ export function DataTable<TData, TValue>({
       
     })
     
-    console.log("Estado de paginação no DataTable:", paginationState);
+
   return (
     <div className="overflow-hidden rounded-md border">
       <TableFilters

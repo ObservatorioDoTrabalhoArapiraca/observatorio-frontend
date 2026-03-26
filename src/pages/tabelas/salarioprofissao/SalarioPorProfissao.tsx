@@ -81,13 +81,7 @@ export default function TablePage() {
     setError(null)
     const fetchData = async () => {
       try {
-        console.log("Bbuscando dados com os parâmetros:", {
-          ano,
-          mes,
-          agregacao: isAnual ? "anual" : "mensal",
-          page: pagination.pageIndex + 1,
-          page_size: pagination.pageSize,
-        });
+      
         const dados = await getSalarioPorProfissao({
           ...(ano !== null && { ano }),
           ...(mes !== null && { mes }),
@@ -96,7 +90,7 @@ export default function TablePage() {
           page_size: pagination.pageSize,
         })
 
-        console.log("Dados retornados pela API:", dados);
+
         if (dados) {
           setDados(dados);
           setLastTotalPages(dados.total_pages);
@@ -106,7 +100,7 @@ export default function TablePage() {
         
       } catch (error) {
         setPagination(prev => ({ ...prev, pageIndex: 0 }))
-        console.error("❌ Erro ao buscar dados:", error)
+       
         toast.error("Erro ao buscar dados")
         setError("Erro ao buscar dados")
       } finally {
@@ -117,18 +111,9 @@ export default function TablePage() {
     fetchData()
   }, [category, ano, mes, isAnual, pagination.pageIndex, pagination.pageSize]) // Re-fetch quando a categoria, filtros ou paginação mudarem
 
-  useEffect(() => {
-    console.log("Estado atualizado de dados:", dados);
-  }, [dados]);
 
-  console.log("Dados passados para DataTable:", dados);
-  console.log("Estado de paginação:", {
-    pageIndex: pagination.pageIndex,
-    pageSize: pagination.pageSize,
-    totalPages: dados?.total_pages,
-  }); 
 
-  console.log("Dados que estão indo para a tabela:", dados?.results?.length, "primeiro item:", dados?.results?.[0]?.cbo_descricao);
+
 
   if (loading) return <Spinner text="Carregando..."/>
   if (error) return <div>{error}</div>
