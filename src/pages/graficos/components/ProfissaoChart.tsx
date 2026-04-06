@@ -15,7 +15,7 @@ export default function ProfissaoChart() {
 
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
-  const [topN, setTopN] = useState<number>(10);
+  // const [topN, setTopN] = useState<number>(10);
   const {
     isAnual,
     ano,
@@ -48,7 +48,7 @@ export default function ProfissaoChart() {
       }
   }, [isAnual, ano, agregacao])
   
-  const chartData = transformProfissaoData(dados, isAnual, topN);
+  const chartData = transformProfissaoData(dados, isAnual);
   const dynamicKeys = chartData.length > 0
   ? [...new Set(
       chartData.flatMap((item) =>
