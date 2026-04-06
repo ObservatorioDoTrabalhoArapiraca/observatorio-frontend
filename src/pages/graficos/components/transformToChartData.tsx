@@ -1,6 +1,6 @@
 
 import { ChartDataItem } from "@/pages/graficos/components/BarChartCard";
-import { Deficiencia, Escolaridade, FaixaEtaria, Profissao, RacaCor, SaldoOcupcacao, Sexo } from "@/types";
+import { Deficiencia, Escolaridade, FaixaEtaria, Profissao, RacaCor, SaldoOcupcacao, Setor, Sexo } from "@/types";
 
 // Transformador genérico para dados com categoria
 interface TransformOptions<T> {
@@ -73,6 +73,17 @@ export function transformSexoData(dados: Sexo[], isAnual: boolean): ChartDataIte
     getMes: (item) => item.mes,
   });
 }
+export function transformSetorData(dados: Setor[], isAnual: boolean): ChartDataItem[] {
+  return transformToChartData({
+    dados,
+    isAnual,
+    getCategoriaKey: (item) => 
+      normalizeToKey(item.setor_denominacao),
+    getCategoriaValue: (item) => item.total_movimentacoes,
+    getAno: (item) => item.ano,
+    getMes: (item) => item.mes,
+  });
+}
 export function transformProfissaoData(dados: Profissao[], isAnual: boolean, topN: number = 10): ChartDataItem[] {
 
   const totalPorProfissao = dados.reduce((acc, item) => {
@@ -103,7 +114,7 @@ export function transformProfissaoData(dados: Profissao[], isAnual: boolean, top
     getMes: (item) => item.mes,
   });
 }
-export function transformSaldoOcupacaoData(dados: SaldoOcupcacao[], isAnual: boolean, topN: number = 10): ChartDataItem[] {
+export function transformSaldoOcupacaoData(dados: SaldoOcupcacao[], isAnual: boolean, topN: number = 12): ChartDataItem[] {
 
   const totalPorOcupacao = dados.reduce((acc, item) => {
     const key = normalizeToKey(item.cbo_descricao);

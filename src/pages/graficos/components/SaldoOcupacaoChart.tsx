@@ -2,7 +2,7 @@ import { AgregacaoFilter } from "@/components/AgregacaoFilter";
 import { ChartConfig } from "@/components/ui/chart";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import {  getSaldoPorOcupacao } from "@/core/services/cagedArapiracaServices";
+import { getSaldoPorOcupacao } from "@/core/services/cagedArapiracaServices";
 import { useAgregacaoFilter } from "@/hooks/useAgregacaoFilter";
 import { BarChartCard } from "@/pages/graficos/components/BarChartCard";
 import { transformSaldoOcupacaoData } from "@/pages/graficos/components/transformToChartData";
@@ -34,9 +34,9 @@ export default function SaldoOcupacaoChart() {
         try { 
           const response = await getSaldoPorOcupacao({
             ...(!isAnual && ano !== null && { ano }),
-            agregacao,
+            agregacao, pagination: false
           })
-          setDados(response.results)
+          setDados(response as unknown as SaldoOcupcacao[])
         } catch (error) {
           console.error("❌ Erro ao buscar dados:", error)
           toast.error("Erro ao buscar dados")
@@ -89,10 +89,11 @@ dynamicKeys.forEach((key, index) => {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="5">5</SelectItem>
-                <SelectItem value="10">10</SelectItem>
-                <SelectItem value="15">15</SelectItem>
-                <SelectItem value="20">20</SelectItem>
+                {
+                  ["1","3","5","10"].map((n) => (
+                    <SelectItem value={n}>{n}</SelectItem>
+                  ))
+                }
               </SelectContent>
             </Select>
         </div>}

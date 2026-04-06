@@ -5,6 +5,7 @@ import PcdChart from "@/pages/graficos/components/PcdChart";
 import ProfissaoChart from "@/pages/graficos/components/ProfissaoChart";
 import RacaCorChart from "@/pages/graficos/components/RacaCorChart";
 import SaldoOcupacaoChart from "@/pages/graficos/components/SaldoOcupacaoChart";
+import SetorChart from "@/pages/graficos/components/Setor";
 import SexoChart from "@/pages/graficos/components/SexoChart";
 
 export default function Charts() {
@@ -18,6 +19,7 @@ export default function Charts() {
      <ProfissaoChart/>
       <PcdChart />
       <SaldoOcupacaoChart />
+      <SetorChart />
     </div>
   )
 }

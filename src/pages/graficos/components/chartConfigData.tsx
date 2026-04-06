@@ -115,6 +115,32 @@ export const racaCorChartConfig: ChartConfig = {
     color: "#8b5cf6",
   },
 };
+export const setorChartConfig: ChartConfig = {
+  branca: {
+    label: "AGROPECUÁRIA",
+    color: "#1a4120",
+  },
+  preta: {
+    label: "INDÚSTRIA",
+    color: "#2148b3",
+  },
+  parda: {
+    label: "CONSTRUÇÃO",
+    color: "#434747",
+  },
+  amarela: {
+    label: "COMÉRCIO",
+    color: "#6d0c0c",
+  },
+  indigena: {
+    label: "SERVIÇOS",
+    color: "#14b8a6",
+  },
+  nao_informada: {
+    label: "NÃO IDENTIFICADO",
+    color: "#3d0c32",
+  },
+};
 
 export const faixaEtariaChartConfig: ChartConfig = {
   ate_17_anos: {

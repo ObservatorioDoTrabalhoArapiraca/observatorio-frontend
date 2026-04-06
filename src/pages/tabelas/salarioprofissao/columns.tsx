@@ -70,7 +70,7 @@ export const columns: ColumnDef<Profissao>[] = [
   },
   {
     accessorKey: "mov_low",
-    header: "Movimentações Abaixo do Salário Mínimo",
+    header: "Movimentações Abaixo do Salário Mínimo*",
     cell: ({ row }) => {
       return (
         <div>
@@ -81,7 +81,7 @@ export const columns: ColumnDef<Profissao>[] = [
   },
   {
     accessorKey: "mov_zero",
-    header: "Movimentações com Salário Zero",
+    header: "Movimentações com Salário Zero*",
     cell: ({ row }) => {
       return (
         <div>

@@ -30,9 +30,11 @@ export default function EscolaridadeChart() {
         try { 
           const response = await getDistribuicaoPorEscolaridade({
             ...(!isAnual && ano !== null && { ano }),
-            agregacao,
+            agregacao, pagination: false
           })
-          setDados(response.results)
+          
+          const rawData = response?.results || (Array.isArray(response) ? response : []);
+      setDados(rawData);
         } catch (error) {
           console.error("❌ Erro ao buscar dados:", error)
         

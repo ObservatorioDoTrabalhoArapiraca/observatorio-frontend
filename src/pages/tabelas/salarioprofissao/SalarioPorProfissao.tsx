@@ -6,7 +6,7 @@ import { columns } from "@/pages/tabelas/salarioprofissao/columns"
 import { Profissao, SalarioPorProfissao } from "@/types"
 import { PaginationState } from "@tanstack/react-table"
 import { useEffect, useState } from "react"
-import { useParams, useSearchParams } from "react-router-dom"
+import { Link, useParams, useSearchParams } from "react-router-dom"
 import { toast } from "sonner"
 
 export default function TablePage() {
@@ -123,6 +123,10 @@ export default function TablePage() {
         // Renderiza o esqueleto enquanto carrega
         <TableSkeleton rows={10} columns={3} />
       ) : (
+          <>
+          <p className="text-red-500 text-sm pb-3">
+            * Valores referentes a movimentações com salário abaixo do mínimo legal foram suprimidos para preservar a qualidade dos dados. Isso inclui casos de salário zero, valores negativos ou outros registros que possam indicar inconsistências ou erros de digitação. A exclusão desses dados visa garantir que as análises e insights gerados a partir desta tabela sejam mais precisos e representativos da realidade do mercado de trabalho em Arapiraca de acordo com a <Link to="/salario-base" className="underline hover:text-blue-500">tabela</Link>.
+          </p>
         <DataTable<Profissao, Profissao>
           data={dados?.results || []}
           paginationState={pagination}
@@ -140,8 +144,9 @@ export default function TablePage() {
           }}
           searchPlaceholder="filtrar por profissão"
           searchColumn="cbo_descricao"
-        />
+          />
+          </>
       )}
-          </div>
+    </div>
   )
 }

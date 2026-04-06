@@ -60,23 +60,6 @@ export const columns: ColumnDef<Setor>[] = [
     },
   },
   {
-    accessorKey: "secao",
-    header: ({ column }) => {
-      return (
-        <div className="font-bold ">
-          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
-        </div>
-      )
-    },
-    cell: ({ row }) => {
-      return (
-        <div>
-          {row.original.secao}
-        </div>
-      )
-    },
-  },
-  {
     accessorKey: "percentual",
     header: ({ column }) => {
       return (

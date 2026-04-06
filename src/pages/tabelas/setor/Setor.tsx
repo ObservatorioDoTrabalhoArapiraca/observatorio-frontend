@@ -8,7 +8,7 @@ import { DistribuicaoPorSetor, Setor } from "@/types"
 import { PaginationState } from "@tanstack/react-table"
 
 import { useEffect, useState } from "react"
-import { useParams, useSearchParams } from "react-router-dom"
+import { Link, useParams, useSearchParams } from "react-router-dom"
 import { toast } from "sonner"
 
 export default function TablePage() {
@@ -119,6 +119,11 @@ export default function TablePage() {
         // Renderiza o esqueleto enquanto carrega
         <TableSkeleton rows={10} columns={3} />
       ) : (
+          <>
+            <p className="text-red-500 text-sm pb-3">
+
+          * A divisão por setor foi realizada com base na seção da movimentação seguindo esta <Link to="/setores-agregados" className="underline hover:text-blue-500">tabela</Link> como ferefência.
+            </p>
         <DataTable<Setor, Setor>
           data={dados?.results || []}
           paginationState={pagination}
@@ -136,7 +141,8 @@ export default function TablePage() {
           }}
           searchColumn="setor_denominacao" // Coluna para filtrar por texto
           searchPlaceholder="Filtrar por setor..."
-        />
+          />
+      </>
       )}
     </div>
   )

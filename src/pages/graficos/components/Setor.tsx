@@ -1,17 +1,18 @@
 import { AgregacaoFilter } from "@/components/AgregacaoFilter";
-import { getProfissoesPorDeficiencia } from "@/core/services/cagedArapiracaServices";
+import { getDistribuicaoPorSetor } from "@/core/services/cagedArapiracaServices";
+
 import { useAgregacaoFilter } from "@/hooks/useAgregacaoFilter";
 import { BarChartCard } from "@/pages/graficos/components/BarChartCard";
-import { deficienciaChartConfig } from "@/pages/graficos/components/chartConfigData";
-import { transformDeficienciaData } from "@/pages/graficos/components/transformToChartData";
-import { Deficiencia } from "@/types";
-import { FALLBACK_COLORS } from "@/Utils/fallbackColors";
+import { setorChartConfig } from "@/pages/graficos/components/chartConfigData";
+import { transformSetorData } from "@/pages/graficos/components/transformToChartData";
+import { Setor } from "@/types";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "sonner";
 
 
-export default function PcdChart() {
-  const [dados, setDados] = useState<Deficiencia[]>([])
+export default function SetorChart() {
+  const [dados, setDados] = useState<Setor[]>([])
 
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
@@ -29,12 +30,12 @@ export default function PcdChart() {
         setLoading(true);
         setError(null);
         try { 
-          const response = await getProfissoesPorDeficiencia({
+          const response = await getDistribuicaoPorSetor({
             ...(!isAnual && ano !== null && { ano }),
             agregacao, pagination: false
           })
           const rawData = response?.results || (Array.isArray(response) ? response : []);
-          setDados(rawData);
+      setDados(rawData);
         } catch (error) {
           console.error("❌ Erro ao buscar dados:", error)
           toast.error("Erro ao buscar dados")
@@ -48,29 +49,15 @@ export default function PcdChart() {
       }
   }, [isAnual, ano, agregacao])
   
-  const chartData = transformDeficienciaData(dados, isAnual);
- 
-  const dynamicKeys = chartData.length > 0
-  ? [...new Set(
-      chartData.flatMap((item) =>
-        Object.keys(item).filter((k) => !["periodo", "mes", "ano"].includes(k))
-      )
-    )]
-  : Object.keys(deficienciaChartConfig);
-
-// Mesclar config com fallback
-const dynamicConfig = { ...deficienciaChartConfig };
-dynamicKeys.forEach((key, index) => {
-  if (!dynamicConfig[key]) {
-    dynamicConfig[key] = {
-      label: key.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
-      color: FALLBACK_COLORS[index % FALLBACK_COLORS.length],
-    };
-  }
-});
-
+  const chartData = transformSetorData(dados, isAnual);
+  const dataKeys = Object.keys(setorChartConfig);
   return (
     <div className="flex flex-col justify-between">
+       <div className="text-red-500 text-sm pb-3">
+            * Valores referentes a movimentações com salário abaixo do mínimo legal foram suprimidos para preservar a qualidade dos dados. Isso inclui casos de salário zero, valores negativos ou outros registros que possam indicar inconsistências ou erros de digitação. A exclusão desses dados visa garantir que as análises e insights gerados a partir desta tabela sejam mais precisos e representativos da realidade do mercado de trabalho em Arapiraca de acordo com a <Link to="/salario-base" className="underline hover:text-blue-500">
+              tabela
+            </Link>.
+          </div>
             <AgregacaoFilter
             isAnual={isAnual}
             ano={ano}
@@ -79,14 +66,14 @@ dynamicKeys.forEach((key, index) => {
             onAnoChange={setAno}
             />
           <BarChartCard
-            title="Distribuição por Deficiencia"
+            title="Distribuição por Setor*"
             description={isAnual ? "Dados anuais" : `Dados mensais de ${ano}`}
             data={chartData}
-            config={dynamicConfig}
+            config={setorChartConfig}
             isAnual={isAnual}
             loading={loading}
             error={error}
-            dataKeys={dynamicKeys}
+            dataKeys={dataKeys}
             />
             </div>
   )
