@@ -92,6 +92,23 @@ export interface DistribuicaoPorSexo {
   previous: string | null,
   results: Sexo[]
 }
+export interface Setor {
+  ano: number
+  secao?: string
+  setor_denominacao: string
+  total_movimentacoes: number
+  mes: number
+  percentual: string
+}
+export interface DistribuicaoPorSetor {
+  count: number,
+  total_pages: number,
+  current_page: number,
+  page_size: number,
+  next: string | null,
+  previous: string | null,
+  results: Setor[]
+}
 
 export interface FaixaEtaria {
   ano: number

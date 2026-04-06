@@ -5,6 +5,7 @@ import ProfissoesPorDeficiencia from "@/pages/tabelas/pcd/ProfissoesPorDeficienc
 import DistribuicaoPorRacaCor from "@/pages/tabelas/racacor/DistribuicaoPorRacaCor"
 import SalarioPorProfissao from "@/pages/tabelas/salarioprofissao/SalarioPorProfissao"
 import SaldoPorOcupacao from "@/pages/tabelas/saldoocupacao/SaldoPorOcupacao"
+import Setor from "@/pages/tabelas/setor/Setor"
 import DistribuicaoPorSexo from "@/pages/tabelas/sexo/DistribuicaoPorSexo"
 import TabsComponent from "@/pages/tabelas/TabsComponent"
 import TotalMovimentacoesAno from "@/pages/tabelas/totalmovimentacoesano/TotalMovimentacoesAno"
@@ -28,6 +29,7 @@ export default function DataTablePage() {
         { value: "pcd", content: <ProfissoesPorDeficiencia /> },
         { value: "salarioporprofissao", content: <SalarioPorProfissao /> },
         { value: "saldoocupacao", content: <SaldoPorOcupacao /> },
+        { value: "setor", content: <Setor /> },
       ]}
     />
   )

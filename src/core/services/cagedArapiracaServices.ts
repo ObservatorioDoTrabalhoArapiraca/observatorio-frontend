@@ -1,5 +1,5 @@
 import api from "@/core/services/api";
-import { AnoTotalMovimentacoes, DistribuicaoPorEscolaridade, DistribuicaoPorFaixaEtaria, DistribuicaoPorRacaCor, DistribuicaoPorSexo, Movimentacoes, ProfissoesPorDeficiencia, SalarioPorProfissao, SaldoPorOcupacao } from "@/types";
+import { AnoTotalMovimentacoes, DistribuicaoPorEscolaridade, DistribuicaoPorFaixaEtaria, DistribuicaoPorRacaCor, DistribuicaoPorSetor, DistribuicaoPorSexo, Movimentacoes, ProfissoesPorDeficiencia, SalarioPorProfissao, SaldoPorOcupacao } from "@/types";
 
 export type QueryParams = {
   ano?: number;
@@ -64,6 +64,24 @@ export const getSalarioPorProfissao = async ({ano, mes, agregacao, page, page_si
 export const getSaldoPorOcupacao = async ({ ano, mes, agregacao, page, page_size }: QueryParams): Promise<SaldoPorOcupacao> => {
   try {
     const response = await api.get<SaldoPorOcupacao>(`analises/saldo-ocupacao/`, {
+      params: {
+        ...(ano !== undefined && { ano }),
+        ...(mes !== undefined && { mes }),
+        agregacao,
+        page,
+        page_size,
+      },
+    });
+
+
+    return response.data; 
+  } catch (error) {
+    throw error;
+  }
+};
+export const getDistribuicaoPorSetor = async ({ ano, mes, agregacao, page, page_size }: QueryParams): Promise<DistribuicaoPorSetor> => {
+  try {
+    const response = await api.get<DistribuicaoPorSetor>(`analises/setor-caged/`, {
       params: {
         ...(ano !== undefined && { ano }),
         ...(mes !== undefined && { mes }),
