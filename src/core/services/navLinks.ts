@@ -2,10 +2,24 @@ export const naviLinks = [
   { name: "Inicio", path: "/" },
   { name: "O Projeto", path: "/project" },
   {
-    name: "Tabelas e Gráficos",
+    name: "CAGED Arapiraca",
     children: [
-      { name: "Tabelas", path: "/tabelas/escolaridade" },
-      { name: "Gráficos", path: "/graficos/todos" },
+      { name: "Tabelas", path: "/caged/tabelas/escolaridade" },
+      { name: "Gráficos", path: "/caged/graficos/todos" },
+    ],
+  },
+  {
+    name: "RAIS Arapiraca",
+    children: [
+      { name: "Tabelas", path: "/rais/tabelas/escolaridade" },
+      { name: "Gráficos", path: "/rais/graficos/todos" },
+    ],
+  },
+  {
+    name: "RAIS e CAGED Arapiraca",
+    children: [
+      { name: "Tabelas", path: "/rais-caged/tabelas/escolaridade" },
+      { name: "Gráficos", path: "/rais-caged/graficos/todos" },
     ],
   },
   {

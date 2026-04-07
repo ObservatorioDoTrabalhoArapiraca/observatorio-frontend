@@ -16,9 +16,23 @@ export type RoutePath = {
 export const routePaths: RoutePath[] = [
   { path: "/", element: <Home /> },
   { path: "/project", element: <Projeto /> },
-  { path: "/tabelas/:category", element: <DataTablePage /> },
+  { path: "/caged/tabelas/:category", element: <DataTablePage /> },
   {
-    path: "/graficos/:category",
+    path: "/caged/graficos/:category",
+    element: (
+        <ChartsPage/>
+    ),
+  },
+  { path: "/rais/tabelas/:category", element: <DataTablePage /> },
+  {
+    path: "/rais/graficos/:category",
+    element: (
+        <ChartsPage/>
+    ),
+  },
+  { path: "/rais-caged/tabelas/:category", element: <DataTablePage /> },
+  {
+    path: "/rais-caged/graficos/:category",
     element: (
         <ChartsPage/>
     ),
