@@ -29,16 +29,16 @@ export function AgregacaoFilter({
   return (
     <div className="flex flex-wrap gap-4 items-center p-4">
       {/* Checkbox para alternar agregação */}
-      <div className="flex items-center space-x-2">
+      <div className="items-center">
+        <Label 
+      
+          className="text-sm font-medium flex flex-wrap items-center gap-1 cursor-pointer"
+        >
         <Checkbox
           id="agregacao-mensal"
           checked={!isAnual}
           onCheckedChange={(checked) => onAgregacaoChange(!checked)}
         />
-        <Label 
-          htmlFor="agregacao-mensal" 
-          className="text-sm font-medium cursor-pointer"
-        >
           Visualização mensal
         </Label>
       </div>

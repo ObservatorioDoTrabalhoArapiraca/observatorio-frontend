@@ -76,6 +76,7 @@ function ChartContent({ data, config, isAnual, dataKeys, height = 300 }: ChartCo
         <XAxis
           dataKey="periodo"
           tickLine={false}
+          className="flex justify-end items-end"
           tickMargin={10}
           axisLine={false}
           tickFormatter={(value) => formatXAxisTick(value, isAnual)}
@@ -177,9 +178,9 @@ export function BarChartCard({
       </Card>
 
       {/* Dialog com gráfico ampliado */}
-      <DialogContent className="max-w-[90vw] max-h-[90vh]">
-        <DialogHeader>
-          <DialogTitle>{title}</DialogTitle>
+      <DialogContent className="md:max-w-[90vw] md:max-h-[90vh] w-[90vw] h-[90vh] overflow-auto">
+        <DialogHeader className="flex items-start justify-start">
+          <DialogTitle >{title}</DialogTitle>
           {description && <DialogDescription>{description}</DialogDescription>}
         </DialogHeader>
         <div className="p-4">

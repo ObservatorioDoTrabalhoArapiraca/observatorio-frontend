@@ -34,8 +34,10 @@ export default function SetorChart() {
             ...(!isAnual && ano !== null && { ano }),
             agregacao, pagination: false
           })
-          const rawData = response?.results || (Array.isArray(response) ? response : []);
-      setDados(rawData);
+          const rawData = Array.isArray(response) ? response : (response?.results || []);
+
+console.log("Raw Data Setores:", rawData); // <--- DEBUGE AQUI
+setDados(rawData);
         } catch (error) {
           console.error("❌ Erro ao buscar dados:", error)
           toast.error("Erro ao buscar dados")

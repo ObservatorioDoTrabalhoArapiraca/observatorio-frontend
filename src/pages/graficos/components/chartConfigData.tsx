@@ -116,29 +116,29 @@ export const racaCorChartConfig: ChartConfig = {
   },
 };
 export const setorChartConfig: ChartConfig = {
-  branca: {
+  agropecuaria: {
     label: "AGROPECUÁRIA",
-    color: "#1a4120",
+    color: "#22c55e",
   },
-  preta: {
+  industria: {
     label: "INDÚSTRIA",
-    color: "#2148b3",
+    color: "#f97316",
   },
-  parda: {
+  construcao: {
     label: "CONSTRUÇÃO",
-    color: "#434747",
+    color: "#eab308",
   },
-  amarela: {
+  comercio: {
     label: "COMÉRCIO",
-    color: "#6d0c0c",
+    color: "#ef4444",
   },
-  indigena: {
+  servicos: {
     label: "SERVIÇOS",
     color: "#14b8a6",
   },
-  nao_informada: {
+  nao_identificado: {
     label: "NÃO IDENTIFICADO",
-    color: "#3d0c32",
+    color: "#8b5cf6",
   },
 };
 

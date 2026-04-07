@@ -1,5 +1,7 @@
 import { AgregacaoFilter } from "@/components/AgregacaoFilter";
 import { ChartConfig } from "@/components/ui/chart";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { getSalarioPorProfissao } from "@/core/services/cagedArapiracaServices";
 import { useAgregacaoFilter } from "@/hooks/useAgregacaoFilter";
 import { BarChartCard } from "@/pages/graficos/components/BarChartCard";
@@ -15,7 +17,7 @@ export default function ProfissaoChart() {
 
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
-  // const [topN, setTopN] = useState<number>(10);
+  const [topN, setTopN] = useState<number>(10);
   const {
     isAnual,
     ano,
@@ -34,7 +36,7 @@ export default function ProfissaoChart() {
             ...(!isAnual && ano !== null && { ano }),
             agregacao, pagination: false
           })
-          setDados(response.results as unknown as Profissao[])
+          setDados(response as unknown as Profissao[])
         } catch (error) {
           console.error("❌ Erro ao buscar dados:", error)
           toast.error("Erro ao buscar dados")
@@ -69,7 +71,7 @@ dynamicKeys.forEach((key, index) => {
   return (
     <div className="flex flex-col justify-between">
       <div className="text-red-500 text-sm pb-3">
-            * Profisões já filtradas considerando o Top 10 das profissões para não poluir visualmente o gráfico.
+            * Profissões já filtradas considerando o Top 10 das profissões para não poluir visualmente o gráfico.
           </div>
       <div className="flex flex-wrap gap-2 pb-2 items-end">
             <AgregacaoFilter
@@ -78,31 +80,31 @@ dynamicKeys.forEach((key, index) => {
             anosDisponiveis={anosDisponiveis}
             onAgregacaoChange={setIsAnual}
           onAnoChange={setAno}
-        //   topN={ <div className="flex items-center gap-2">
-        //     <Label htmlFor="topN" className="text-sm whitespace-nowrap">
-        //       Exibir top:
-        //     </Label>
-        //     <Select
-        //       value={topN.toString()}
-        //       onValueChange={(value) => setTopN(Number(value))}
-        //     >
-        //       <SelectTrigger id="topN" className="w-[80px]">
-        //         <SelectValue />
-        //       </SelectTrigger>
-        //       <SelectContent>
-        //       {
-        //           ["1","3","5","10"].map((n) => (
-        //             <SelectItem value={n}>{n}</SelectItem>
-        //           ))
-        //         }
-        //       </SelectContent>
-        //     </Select>
-        // </div>}
+          topN={ <div className="flex items-center gap-2">
+            <Label htmlFor="topN" className="text-sm whitespace-nowrap">
+              Exibir top:
+            </Label>
+            <Select
+              value={topN.toString()}
+              onValueChange={(value) => setTopN(Number(value))}
+            >
+              <SelectTrigger id="topN" className="w-[80px]">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+              {
+                  ["1","3","5","10"].map((n) => (
+                    <SelectItem value={n}>{n}</SelectItem>
+                  ))
+                }
+              </SelectContent>
+            </Select>
+        </div>}
       />
      
       </div>
           <BarChartCard
-            title="Distribuição por Profissão"
+            title="Distribuição por Profissão*"
             description={isAnual ? "Dados anuais" : `Dados mensais de ${ano}`}
             data={chartData}
             config={dynamicConfig}
