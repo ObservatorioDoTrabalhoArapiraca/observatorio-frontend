@@ -6,6 +6,7 @@ import {
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
+  getPaginationRowModel,
   PaginationState,
   useReactTable,
 } from "@tanstack/react-table"
@@ -45,41 +46,45 @@ export function DataTable<TData, TValue>({
   paginationState,
   setPaginationState,
   totalPages,
-  totalCount
+  totalCount,
 }: DataTableProps<TData, TValue>) {
 
   
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
     [])
+
+  const isManualPagination = !!setPaginationState;
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    manualPagination: true,
-    rowCount: totalCount,
-    pageCount: totalPages,
+    manualPagination: isManualPagination,
+    rowCount: isManualPagination ? totalCount : undefined,
+    pageCount: isManualPagination ? totalPages : undefined,
     autoResetPageIndex: false,
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
     state: {
       columnFilters,
-      pagination: paginationState,
+      ...(isManualPagination && { pagination: paginationState }),
       },
-    onPaginationChange: setPaginationState
-      
+    onPaginationChange: setPaginationState,
+    getPaginationRowModel: getPaginationRowModel(),
     })
     
 
   return (
     <div className="overflow-hidden rounded-md border">
+      {filters && 
       <TableFilters
-        ano={filters.ano}
-        mes={filters.mes}
-        isAnual={filters.isAnual}
-        onAnoChange={filters.onAnoChange}
-        onMesChange={filters.onMesChange}
-        onAgregacaoChange={filters.onAgregacaoChange}
+      ano={filters.ano}
+      mes={filters.mes}
+      isAnual={filters.isAnual}
+      onAnoChange={filters.onAnoChange}
+      onMesChange={filters.onMesChange}
+      onAgregacaoChange={filters.onAgregacaoChange}
       />
+    }
       {searchColumn && (
         <div className="flex items-center p-4">
         <Input
@@ -134,8 +139,9 @@ export function DataTable<TData, TValue>({
           )}
         </TableBody>
         </Table>
-        </div>
-        <PaginationTable table={table} />
+      </div>
+      { (isManualPagination || data.length > 0) && <PaginationTable table={table} />}
+        
     </div>
   
   )

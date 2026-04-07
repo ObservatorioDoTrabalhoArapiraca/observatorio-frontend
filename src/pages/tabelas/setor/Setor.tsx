@@ -122,7 +122,7 @@ export default function TablePage() {
           <>
             <p className="text-red-500 text-sm pb-3">
 
-          * A divisão por setor foi realizada com base na seção da movimentação seguindo esta <Link to="/setores-agregados" className="underline hover:text-blue-500">tabela</Link> como ferefência.
+          * A divisão por setor foi realizada com base na seção da movimentação seguindo esta <Link to="/ajuda" className="underline hover:text-blue-500" target="_blank">tabela</Link> como rerefência.
             </p>
         <DataTable<Setor, Setor>
           data={dados?.results || []}

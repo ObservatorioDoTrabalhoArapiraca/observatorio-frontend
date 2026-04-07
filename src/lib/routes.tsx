@@ -1,4 +1,4 @@
-import Help from "@/pages/Ajuda"
+import Help from "@/pages/ajuda/Ajuda"
 import ChartsPage from "@/pages/graficos/ChartsPage"
 import Home from "@/pages/Home"
 

@@ -168,9 +168,9 @@ export interface Movimentacao {
 export interface Movimentacoes {
   total_movimentacoes: number,
   filtros_aplicados: {
-      ano: number,
-      agregacao: "mensal" | "anual",
-      mes: number
+    ano: number,
+    agregacao: "mensal" | "anual",
+    mes: number
   }
   paginacao: {
     page: number,
@@ -186,14 +186,14 @@ export interface Movimentacoes {
 }
 
 // export interface SalarioPorProfissao {
-//   ano: number
-//   escolaridade_codigo?: string
-//   escolaridade_descricao: string
-//   mes: number
-//   percentual: string
-//   total_movimentacoes: number
-// }
-// export interface SalarioPorProfissao {
+  //   ano: number
+  //   escolaridade_codigo?: string
+  //   escolaridade_descricao: string
+  //   mes: number
+  //   percentual: string
+  //   total_movimentacoes: number
+  // }
+  // export interface SalarioPorProfissao {
 //   profissao: string
 //   maximo: number
 //   minimo: number
@@ -223,4 +223,20 @@ export type NaviLink = {
   name: string
   path?: string
   children?: {name: string, path: string}[]
+}
+
+export interface SetoresAgregados {
+  id: number,
+  denominacao: string,
+  secao_inicio: string,
+  secao_fim: string,
+  divisao_inicio: number,
+  divisao_fim: number
+}
+export interface SalarioBase {
+    desde: number,
+    valor: number,
+    legislacao: string,
+    reajuste: number
+  
 }

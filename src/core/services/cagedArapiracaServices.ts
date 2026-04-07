@@ -1,5 +1,5 @@
 import api from "@/core/services/api";
-import { AnoTotalMovimentacoes, DistribuicaoPorEscolaridade, DistribuicaoPorFaixaEtaria, DistribuicaoPorRacaCor, DistribuicaoPorSetor, DistribuicaoPorSexo, Movimentacoes, ProfissoesPorDeficiencia, SalarioPorProfissao, SaldoPorOcupacao } from "@/types";
+import { AnoTotalMovimentacoes, DistribuicaoPorEscolaridade, DistribuicaoPorFaixaEtaria, DistribuicaoPorRacaCor, DistribuicaoPorSetor, DistribuicaoPorSexo, Movimentacoes, ProfissoesPorDeficiencia, SalarioBase, SalarioPorProfissao, SaldoPorOcupacao, SetoresAgregados } from "@/types";
 
 export type QueryParams = {
   ano?: number;
@@ -84,6 +84,24 @@ export const getSaldoPorOcupacao = async ({ ano, mes, agregacao, page, page_size
     throw error;
   }
 };
+
+export const getSetoresAgregados = async (): Promise<SetoresAgregados> => {
+  try {
+    const response = await api.get<SetoresAgregados>(`/setores-agregados/`);
+    return response.data;
+    
+  } catch (error) {
+    throw error;
+  }
+}
+export const getSalarioBase = async (): Promise<SalarioBase> => {
+  try {
+    const response = await api.get<SalarioBase>(`/salario-base/`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
 export const getDistribuicaoPorSetor = async ({ ano, mes, agregacao, page, page_size, pagination }: QueryParams): Promise<DistribuicaoPorSetor> => {
   try {
     const response = await api.get<DistribuicaoPorSetor>(`analises/setor-caged/`, {

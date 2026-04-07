@@ -28,7 +28,7 @@ export const tableCategories = [
   { label: "Distribuição por sexo", value: "sexo" },
   { label: "Distribuição por setor", value: "setor" },
   { label: "Distribuição por Raça/Cor", value: "racacor" },
-  { label: "Salário por Faixa Etária", value: "faixaetaria" },
+  { label: "Faixa Etária", value: "faixaetaria" },
   { label: "Profissões por Deficiência", value: "pcd" },
   { label: "Total de Movimentações por Ano", value: "totalmovimentacoesano" },
 ]
