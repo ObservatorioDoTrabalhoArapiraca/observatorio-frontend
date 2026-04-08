@@ -1,9 +1,9 @@
 import { AgregacaoFilter } from "@/components/AgregacaoFilter";
 import { getProfissoesPorDeficiencia } from "@/core/services/cagedArapiracaServices";
 import { useAgregacaoFilter } from "@/hooks/useAgregacaoFilter";
-import { BarChartCard } from "@/pages/graficos/components/BarChartCard";
-import { deficienciaChartConfig } from "@/pages/graficos/components/chartConfigData";
-import { transformDeficienciaData } from "@/pages/graficos/components/transformToChartData";
+import { BarChartCard } from "@/pages/rais/graficos/components/BarChartCard";
+import { deficienciaChartConfig } from "@/pages/rais/graficos/components/chartConfigData";
+import { transformDeficienciaData } from "@/pages/rais/graficos/components/transformToChartData";
 import { Deficiencia } from "@/types";
 import { FALLBACK_COLORS } from "@/Utils/fallbackColors";
 import { useEffect, useState } from "react";

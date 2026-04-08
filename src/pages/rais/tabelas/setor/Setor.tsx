@@ -2,7 +2,7 @@ import { DataTable } from "@/components/table/DataTable"
 import { TableSkeleton } from "@/components/table/TableSkeleton"
 import { Spinner } from "@/components/ui/spinner"
 import { getDistribuicaoPorSetor } from "@/core/services/cagedArapiracaServices"
-import { columns } from "@/pages/tabelas/setor/columns"
+import { columns } from "@/pages/rais/tabelas/setor/columns"
 
 import { DistribuicaoPorSetor, Setor } from "@/types"
 import { PaginationState } from "@tanstack/react-table"

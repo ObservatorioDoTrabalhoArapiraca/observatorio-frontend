@@ -3,7 +3,7 @@ import { DataTable } from "@/components/table/DataTable"
 import { TableSkeleton } from "@/components/table/TableSkeleton"
 import { Spinner } from "@/components/ui/spinner"
 import { getSaldoPorOcupacao } from "@/core/services/cagedArapiracaServices"
-import { columns } from "@/pages/tabelas/saldoocupacao/columns"
+import { columns } from "@/pages/rais/tabelas/saldoocupacao/columns"
 
 import { SaldoOcupcacao, SaldoPorOcupacao } from "@/types"
 import { PaginationState } from "@tanstack/react-table"

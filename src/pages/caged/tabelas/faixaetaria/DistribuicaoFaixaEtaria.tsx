@@ -2,7 +2,7 @@ import { DataTable } from "@/components/table/DataTable"
 import { TableSkeleton } from "@/components/table/TableSkeleton"
 import { Spinner } from "@/components/ui/spinner"
 import { getDistribuicaoFaixaEtaria } from "@/core/services/cagedArapiracaServices"
-import { columns } from "@/pages/tabelas/faixaetaria/columns"
+import { columns } from "@/pages/caged/tabelas/faixaetaria/columns"
 
 import { DistribuicaoPorFaixaEtaria, FaixaEtaria } from "@/types"
 import { PaginationState } from "@tanstack/react-table"

@@ -1,5 +1,5 @@
 import { CardTitle } from "@/components/ui/card";
-import Charts from "@/pages/graficos/Charts";
+import Charts from "@/pages/caged/graficos/Charts";
 
 
 export default function ChartsPage() {

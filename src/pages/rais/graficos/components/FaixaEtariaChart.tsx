@@ -1,9 +1,9 @@
 import { AgregacaoFilter } from "@/components/AgregacaoFilter";
 import { getDistribuicaoFaixaEtaria } from "@/core/services/cagedArapiracaServices";
 import { useAgregacaoFilter } from "@/hooks/useAgregacaoFilter";
-import { BarChartCard } from "@/pages/graficos/components/BarChartCard";
-import { faixaEtariaChartConfig } from "@/pages/graficos/components/chartConfigData";
-import { transformFaixaEtariaData } from "@/pages/graficos/components/transformToChartData";
+import { BarChartCard } from "@/pages/rais/graficos/components/BarChartCard";
+import { faixaEtariaChartConfig } from "@/pages/rais/graficos/components/chartConfigData";
+import { transformFaixaEtariaData } from "@/pages/rais/graficos/components/transformToChartData";
 import { FaixaEtaria } from "@/types";
 import { FALLBACK_COLORS } from "@/Utils/fallbackColors";
 import { useEffect, useMemo, useState } from "react";

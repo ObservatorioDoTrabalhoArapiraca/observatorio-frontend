@@ -2,7 +2,7 @@ import { DataTable } from "@/components/table/DataTable";
 import { TableSkeleton } from "@/components/table/TableSkeleton";
 import { Spinner } from "@/components/ui/spinner";
 import { getTotalMovimentacao } from "@/core/services/cagedArapiracaServices";
-import { columns } from "@/pages/tabelas/totalmovimentacoesano/columns";
+import { columns } from "@/pages/rais/tabelas/totalmovimentacoesano/columns";
 import { AnoTotalMovimentacoes } from "@/types";
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";

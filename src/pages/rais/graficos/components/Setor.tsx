@@ -2,9 +2,9 @@ import { AgregacaoFilter } from "@/components/AgregacaoFilter";
 import { getDistribuicaoPorSetor } from "@/core/services/cagedArapiracaServices";
 
 import { useAgregacaoFilter } from "@/hooks/useAgregacaoFilter";
-import { BarChartCard } from "@/pages/graficos/components/BarChartCard";
-import { setorChartConfig } from "@/pages/graficos/components/chartConfigData";
-import { transformSetorData } from "@/pages/graficos/components/transformToChartData";
+import { BarChartCard } from "@/pages/rais/graficos/components/BarChartCard";
+import { setorChartConfig } from "@/pages/rais/graficos/components/chartConfigData";
+import { transformSetorData } from "@/pages/rais/graficos/components/transformToChartData";
 import { Setor } from "@/types";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";

@@ -3,7 +3,7 @@ import { TableSkeleton } from "@/components/table/TableSkeleton"
 import { Spinner } from "@/components/ui/spinner"
 import { getDistribuicaoPorSexo } from "@/core/services/cagedArapiracaServices"
 
-import { columns } from "@/pages/tabelas/sexo/columns"
+import { columns } from "@/pages/caged/tabelas/sexo/columns"
 import { DistribuicaoPorSexo, Sexo } from "@/types"
 import { PaginationState } from "@tanstack/react-table"
 

@@ -1,9 +1,9 @@
 import { AgregacaoFilter } from "@/components/AgregacaoFilter";
 import { getDistribuicaoPorRacaCor } from "@/core/services/cagedArapiracaServices";
 import { useAgregacaoFilter } from "@/hooks/useAgregacaoFilter";
-import { BarChartCard } from "@/pages/graficos/components/BarChartCard";
-import { racaCorChartConfig } from "@/pages/graficos/components/chartConfigData";
-import { transformRacaCorData } from "@/pages/graficos/components/transformToChartData";
+import { BarChartCard } from "@/pages/caged/graficos/components/BarChartCard";
+import { racaCorChartConfig } from "@/pages/caged/graficos/components/chartConfigData";
+import { transformRacaCorData } from "@/pages/caged/graficos/components/transformToChartData";
 import { RacaCor } from "@/types";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";

@@ -2,7 +2,7 @@ import { DataTable } from "@/components/table/DataTable"
 import { TableSkeleton } from "@/components/table/TableSkeleton"
 import { Spinner } from "@/components/ui/spinner"
 import { getDistribuicaoPorRacaCor } from "@/core/services/cagedArapiracaServices"
-import { columns } from "@/pages/tabelas/racacor/columns"
+import { columns } from "@/pages/rais/tabelas/racacor/columns"
 import { DistribuicaoPorRacaCor, RacaCor } from "@/types"
 import { PaginationState } from "@tanstack/react-table"
 

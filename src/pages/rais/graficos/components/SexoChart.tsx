@@ -2,9 +2,9 @@ import { AgregacaoFilter } from "@/components/AgregacaoFilter";
 import { getDistribuicaoPorSexo } from "@/core/services/cagedArapiracaServices";
 
 import { useAgregacaoFilter } from "@/hooks/useAgregacaoFilter";
-import { BarChartCard } from "@/pages/graficos/components/BarChartCard";
-import { sexoChartConfig } from "@/pages/graficos/components/chartConfigData";
-import { transformSexoData } from "@/pages/graficos/components/transformToChartData";
+import { BarChartCard } from "@/pages/rais/graficos/components/BarChartCard";
+import { sexoChartConfig } from "@/pages/rais/graficos/components/chartConfigData";
+import { transformSexoData } from "@/pages/rais/graficos/components/transformToChartData";
 import { Sexo } from "@/types";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";

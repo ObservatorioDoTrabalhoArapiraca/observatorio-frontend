@@ -1,10 +1,13 @@
 import Help from "@/pages/ajuda/Ajuda"
-import ChartsPage from "@/pages/graficos/ChartsPage"
+import ChartsPage from "@/pages/caged/graficos/ChartsPage"
+import DataTablePageCaged from "@/pages/caged/tabelas/DataTablePageCaged"
+
 import Home from "@/pages/Home"
 
 import Projeto from "@/pages/Project"
+import DataTablePageRais from "@/pages/rais/tabelas/DataTablePageRais"
 import RelatoriosPage from "@/pages/RelatoriosPage"
-import DataTablePage from "@/pages/tabelas/DataTablePage"
+
 
 import { ReactNode } from "react"
 
@@ -16,23 +19,16 @@ export type RoutePath = {
 export const routePaths: RoutePath[] = [
   { path: "/", element: <Home /> },
   { path: "/project", element: <Projeto /> },
-  { path: "/caged/tabelas/:category", element: <DataTablePage /> },
+  { path: "/caged/tabelas/:category", element: <DataTablePageCaged /> },
   {
     path: "/caged/graficos/:category",
     element: (
         <ChartsPage/>
     ),
   },
-  { path: "/rais/tabelas/:category", element: <DataTablePage /> },
+  { path: "/rais/tabelas/:category", element: <DataTablePageRais /> },
   {
     path: "/rais/graficos/:category",
-    element: (
-        <ChartsPage/>
-    ),
-  },
-  { path: "/rais-caged/tabelas/:category", element: <DataTablePage /> },
-  {
-    path: "/rais-caged/graficos/:category",
     element: (
         <ChartsPage/>
     ),

@@ -2,7 +2,7 @@ import { DataTable } from "@/components/table/DataTable"
 import { TableSkeleton } from "@/components/table/TableSkeleton"
 import { Spinner } from "@/components/ui/spinner"
 import { getProfissoesPorDeficiencia } from "@/core/services/cagedArapiracaServices"
-import { columns } from "@/pages/tabelas/pcd/columns"
+import { columns } from "@/pages/caged/tabelas/pcd/columns"
 import { Deficiencia, ProfissoesPorDeficiencia } from "@/types"
 import { PaginationState } from "@tanstack/react-table"
 

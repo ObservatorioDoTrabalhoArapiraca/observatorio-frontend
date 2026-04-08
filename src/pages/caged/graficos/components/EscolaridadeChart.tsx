@@ -1,9 +1,9 @@
 import { AgregacaoFilter } from "@/components/AgregacaoFilter";
 import { getDistribuicaoPorEscolaridade } from "@/core/services/cagedArapiracaServices";
 import { useAgregacaoFilter } from "@/hooks/useAgregacaoFilter";
-import { BarChartCard } from "@/pages/graficos/components/BarChartCard";
-import { escolaridadeChartConfig, } from "@/pages/graficos/components/chartConfigData";
-import { transformEscolaridadeData } from "@/pages/graficos/components/transformToChartData";
+import { BarChartCard } from "@/pages/caged/graficos/components/BarChartCard";
+import { escolaridadeChartConfig, } from "@/pages/caged/graficos/components/chartConfigData";
+import { transformEscolaridadeData } from "@/pages/caged/graficos/components/transformToChartData";
 import { Escolaridade } from "@/types";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";

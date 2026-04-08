@@ -2,7 +2,7 @@ import { DataTable } from "@/components/table/DataTable"
 import { TableSkeleton } from "@/components/table/TableSkeleton"
 import { Spinner } from "@/components/ui/spinner"
 import { getDistribuicaoPorEscolaridade } from "@/core/services/cagedArapiracaServices"
-import { columns } from "@/pages/tabelas/escolaridade/columns"
+import { columns } from "@/pages/rais/tabelas/escolaridade/columns"
 import { DistribuicaoPorEscolaridade, Escolaridade } from "@/types"
 import { PaginationState } from "@tanstack/react-table"
 

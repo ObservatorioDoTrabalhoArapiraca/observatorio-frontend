@@ -16,13 +16,6 @@ export const naviLinks = [
     ],
   },
   {
-    name: "RAIS e CAGED Arapiraca",
-    children: [
-      { name: "Tabelas", path: "/rais-caged/tabelas/escolaridade" },
-      { name: "Gráficos", path: "/rais-caged/graficos/todos" },
-    ],
-  },
-  {
     name: "Boletins e Documentos",
     children: [
       { name: "Conjunturais", path: "/boletim/conjuntural" },
