@@ -1,5 +1,5 @@
 import { AgregacaoFilter } from "@/components/AgregacaoFilter";
-import { getDistribuicaoPorSetor } from "@/core/services/cagedArapiracaServices";
+import { getDistribuicaoPorSetor } from "@/core/services/raisArapiracaServices";
 
 import { useAgregacaoFilter } from "@/hooks/useAgregacaoFilter";
 import { BarChartCard } from "@/pages/rais/graficos/components/BarChartCard";

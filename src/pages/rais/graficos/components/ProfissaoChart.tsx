@@ -2,7 +2,7 @@ import { AgregacaoFilter } from "@/components/AgregacaoFilter";
 import { ChartConfig } from "@/components/ui/chart";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { getSalarioPorProfissao } from "@/core/services/cagedArapiracaServices";
+import { getSalarioPorProfissao } from "@/core/services/raisArapiracaServices";
 import { useAgregacaoFilter } from "@/hooks/useAgregacaoFilter";
 import { BarChartCard } from "@/pages/rais/graficos/components/BarChartCard";
 import { transformProfissaoData } from "@/pages/rais/graficos/components/transformToChartData";

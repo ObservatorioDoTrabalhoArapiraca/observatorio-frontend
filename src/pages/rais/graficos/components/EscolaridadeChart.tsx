@@ -1,5 +1,5 @@
 import { AgregacaoFilter } from "@/components/AgregacaoFilter";
-import { getDistribuicaoPorEscolaridade } from "@/core/services/cagedArapiracaServices";
+import { getDistribuicaoPorEscolaridade } from "@/core/services/raisArapiracaServices";
 import { useAgregacaoFilter } from "@/hooks/useAgregacaoFilter";
 import { BarChartCard } from "@/pages/rais/graficos/components/BarChartCard";
 import { escolaridadeChartConfig, } from "@/pages/rais/graficos/components/chartConfigData";

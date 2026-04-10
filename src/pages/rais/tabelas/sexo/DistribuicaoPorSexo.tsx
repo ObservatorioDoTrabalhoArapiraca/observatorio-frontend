@@ -1,7 +1,7 @@
 import { DataTable } from "@/components/table/DataTable"
 import { TableSkeleton } from "@/components/table/TableSkeleton"
 import { Spinner } from "@/components/ui/spinner"
-import { getDistribuicaoPorSexo } from "@/core/services/cagedArapiracaServices"
+import { getDistribuicaoPorSexo } from "@/core/services/raisArapiracaServices"
 
 import { columns } from "@/pages/rais/tabelas/sexo/columns"
 import { DistribuicaoPorSexo, Sexo } from "@/types"

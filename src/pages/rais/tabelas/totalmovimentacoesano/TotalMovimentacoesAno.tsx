@@ -1,15 +1,15 @@
 import { DataTable } from "@/components/table/DataTable";
 import { TableSkeleton } from "@/components/table/TableSkeleton";
 import { Spinner } from "@/components/ui/spinner";
-import { getTotalMovimentacao } from "@/core/services/cagedArapiracaServices";
+import { getTotalMovimentacaoRais } from "@/core/services/raisArapiracaServices";
 import { columns } from "@/pages/rais/tabelas/totalmovimentacoesano/columns";
-import { AnoTotalMovimentacoes } from "@/types";
+import { AnoTotalMovimentacoes, AnoTotalMovimentacoesRais } from "@/types";
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { toast } from "sonner";
 
 export default function TotalMovimentacoesAnoTablePage() {
- const [dados, setDados] = useState<AnoTotalMovimentacoes | null>(null)
+ const [dados, setDados] = useState<AnoTotalMovimentacoesRais | null>(null)
   const [loading, setLoading] = useState<boolean>(true);
   const { category } = useParams()
   const [error, setError] = useState<string | null>(null)
@@ -74,7 +74,7 @@ export default function TotalMovimentacoesAnoTablePage() {
      setError(null);
      const fetchData = async () => {
        try {
-         const dados = await getTotalMovimentacao({
+         const dados = await getTotalMovimentacaoRais({
           ...(ano !== null && { ano }),
           ...(mes !== null && { mes }),
            agregacao: isAnual ? "anual" : "mensal",

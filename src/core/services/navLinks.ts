@@ -27,7 +27,16 @@ export const naviLinks = [
   { name: "Ajuda", path: "/ajuda" },
 ]
 
-export const tableCategories = [
+export const tableCategoriesRais = [
+  // { label: "Movimentações", value: "movimentacoes" },
+  { label: "Salário por Escolaridade", value: "escolaridade" },
+  { label: "Salário por Profissão", value: "salarioporprofissao" },
+  { label: "Distribuição por sexo", value: "sexo" },
+  { label: "Distribuição por setor", value: "setor" },
+  { label: "Faixa Etária", value: "faixaetaria" },
+  { label: "Total de Movimentações por Ano", value: "totalmovimentacoesano" },
+]
+export const tableCategoriesCaged = [
   // { label: "Movimentações", value: "movimentacoes" },
   { label: "Salário por Escolaridade", value: "escolaridade" },
   { label: "Salário por Profissão", value: "salarioporprofissao" },

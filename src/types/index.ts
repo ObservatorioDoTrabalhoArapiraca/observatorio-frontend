@@ -142,8 +142,40 @@ export interface AnoTotalMovimentacoes {
   paginacao: null
   resultados: null
 }
+export interface AnoTotalMovimentacoesRais {
+  total_movimentacoes: number,
+  filtros_aplicados: {
+    ano: number,
+    agregacao: "mensal" | "anual",
+    mes: number
+  }
+  paginacao: null
+  resultados: null
+}
 
 export interface Movimentacao {
+  id: number,
+  competencia_movimentacao: number,
+  municipio_codigo: number,
+  municipio_descricao: string,
+  cbo2002_ocupacao_codigo: number,
+  cbo2002_ocupacao_descricao: string,
+  grau_instrucao_codigo: number,
+  grau_instrucao_descricao: string,
+  raca_cor_codigo: number,
+  raca_cor_descricao: string,
+  sexo_codigo: number,
+  sexo_descricao: string,
+  tipo_deficiencia_codigo: number,
+  tipo_deficiencia_descricao: string,
+  saldo_movimentacao: number,
+  idade: number,
+  salario: string,
+  criado_em: string,
+  atualizado_em: string
+  
+}
+export interface MovimentacaoRais {
   id: number,
   competencia_movimentacao: number,
   municipio_codigo: number,
@@ -239,4 +271,27 @@ export interface SalarioBase {
     legislacao: string,
     reajuste: number
   
+}
+
+// Exclusivos da Rais:
+
+export interface VinculoCBO {
+  ano: number
+  mes: number
+  percentual: string
+  total_movimentacoes: number
+  cbo_codigo?: string
+  cbo_descricao: string
+  qtd_hora_contr: number,
+  faixa_hora_contrat: number,
+  faixa_hora_contrat_descricao: string
+}
+export interface DistribuicaoVinculoCBO {
+  count: number,
+  total_pages: number,
+  current_page: number,
+  page_size: number,
+  next: string | null,
+  previous: string | null,
+  results: VinculoCBO[]
 }

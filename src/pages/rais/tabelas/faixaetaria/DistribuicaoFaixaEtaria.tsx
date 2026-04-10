@@ -1,7 +1,7 @@
 import { DataTable } from "@/components/table/DataTable"
 import { TableSkeleton } from "@/components/table/TableSkeleton"
 import { Spinner } from "@/components/ui/spinner"
-import { getDistribuicaoFaixaEtaria } from "@/core/services/cagedArapiracaServices"
+import { getDistribuicaoFaixaEtaria } from "@/core/services/raisArapiracaServices"
 import { columns } from "@/pages/rais/tabelas/faixaetaria/columns"
 
 import { DistribuicaoPorFaixaEtaria, FaixaEtaria } from "@/types"

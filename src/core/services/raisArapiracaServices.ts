@@ -1,5 +1,5 @@
 import api from "@/core/services/api";
-import { AnoTotalMovimentacoes, DistribuicaoPorEscolaridade, DistribuicaoPorFaixaEtaria, DistribuicaoPorRacaCor, DistribuicaoPorSetor, DistribuicaoPorSexo, Movimentacoes, ProfissoesPorDeficiencia, SalarioBase, SalarioPorProfissao, SaldoPorOcupacao, SetoresAgregados } from "@/types";
+import { AnoTotalMovimentacoes, AnoTotalMovimentacoesRais, DistribuicaoPorEscolaridade, DistribuicaoPorFaixaEtaria,  DistribuicaoPorSetor, DistribuicaoPorSexo, DistribuicaoVinculoCBO, SalarioPorProfissao } from "@/types";
 
 export type QueryParams = {
   ano?: number;
@@ -13,7 +13,7 @@ export type QueryParams = {
 
 export const getDistribuicaoPorEscolaridade = async ({ano, mes, agregacao, page, page_size, pagination}: QueryParams): Promise<DistribuicaoPorEscolaridade> => {
   try {
-    const response = await api.get<DistribuicaoPorEscolaridade>(`analises/escolaridade/`, {
+    const response = await api.get<DistribuicaoPorEscolaridade>(`analises/rais/grau-instrucao/`, {
       params: {
         ...(ano !== undefined && { ano }),
         ...(mes !== undefined && { mes }),
@@ -29,27 +29,10 @@ export const getDistribuicaoPorEscolaridade = async ({ano, mes, agregacao, page,
     throw error;
   }
 };
-export const getDistribuicaoPorRacaCor = async ({ano, mes, agregacao, page, page_size, pagination}: QueryParams): Promise<DistribuicaoPorRacaCor> => {
-  try {
-    const response = await api.get<DistribuicaoPorRacaCor>(`analises/raca-cor/`, {
-      params: {
-        ...(ano !== undefined && { ano }),
-        ...(mes !== undefined && { mes }),
-        agregacao,
-        page,
-        page_size,
-        pagination
-      },
-    });
 
-    return response.data; 
-  } catch (error) {
-    throw error;
-  }
-};
 export const getSalarioPorProfissao = async ({ano, mes, agregacao, page, page_size, pagination}: QueryParams): Promise<SalarioPorProfissao> => {
   try {
-    const response = await api.get<SalarioPorProfissao>(`analises/salario-ocupacao/`, {
+    const response = await api.get<SalarioPorProfissao>(`analises/rais/salario-ocupacao/`, {
       params: {
         ...(ano !== undefined && { ano }),
         ...(mes !== undefined && { mes }),
@@ -65,46 +48,11 @@ export const getSalarioPorProfissao = async ({ano, mes, agregacao, page, page_si
     throw error;
   }
 };
-export const getSaldoPorOcupacao = async ({ ano, mes, agregacao, page, page_size, pagination }: QueryParams): Promise<SaldoPorOcupacao> => {
-  try {
-    const response = await api.get<SaldoPorOcupacao>(`analises/saldo-ocupacao/`, {
-      params: {
-        ...(ano !== undefined && { ano }),
-        ...(mes !== undefined && { mes }),
-        agregacao,
-        page,
-        page_size,
-        pagination
-      },
-    });
 
 
-    return response.data; 
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const getSetoresAgregados = async (): Promise<SetoresAgregados> => {
-  try {
-    const response = await api.get<SetoresAgregados>(`/setores-agregados/`);
-    return response.data;
-    
-  } catch (error) {
-    throw error;
-  }
-}
-export const getSalarioBase = async (): Promise<SalarioBase> => {
-  try {
-    const response = await api.get<SalarioBase>(`/salario-base/`);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-}
 export const getDistribuicaoPorSetor = async ({ ano, mes, agregacao, page, page_size, pagination }: QueryParams): Promise<DistribuicaoPorSetor> => {
   try {
-    const response = await api.get<DistribuicaoPorSetor>(`analises/setor-caged/`, {
+    const response = await api.get<DistribuicaoPorSetor>(`analises/rais/setor/`, {
       params: {
         ...(ano !== undefined && { ano }),
         ...(mes !== undefined && { mes }),
@@ -123,7 +71,7 @@ export const getDistribuicaoPorSetor = async ({ ano, mes, agregacao, page, page_
 };
 export const getDistribuicaoFaixaEtaria = async ({ano, mes, agregacao, page, page_size, pagination}: QueryParams): Promise<DistribuicaoPorFaixaEtaria> => {
   try {
-    const response = await api.get<DistribuicaoPorFaixaEtaria>(`analises/idade/`, {
+    const response = await api.get<DistribuicaoPorFaixaEtaria>(`analises/rais/faixa-etaria/`, {
       params: {
         ...(ano !== undefined && { ano }),
         ...(mes !== undefined && { mes }),
@@ -141,7 +89,7 @@ export const getDistribuicaoFaixaEtaria = async ({ano, mes, agregacao, page, pag
 };
 export const getDistribuicaoPorSexo = async ({ano, mes, agregacao, page, page_size, pagination}: QueryParams): Promise<DistribuicaoPorSexo> => {
   try {
-    const response = await api.get<DistribuicaoPorSexo>(`analises/sexo/`, {
+    const response = await api.get<DistribuicaoPorSexo>(`analises/rais/sexo/`, {
       params: {
         ...(ano !== undefined && { ano }),
         ...(mes !== undefined && { mes }),
@@ -157,9 +105,9 @@ export const getDistribuicaoPorSexo = async ({ano, mes, agregacao, page, page_si
     throw error;
   }
 };
-export const getProfissoesPorDeficiencia = async ({ano, mes, agregacao, page, page_size, pagination}: QueryParams): Promise<ProfissoesPorDeficiencia> => {
+export const getVinculoCbo = async ({ano, mes, agregacao, page, page_size, pagination}: QueryParams): Promise<DistribuicaoVinculoCBO> => {
   try {
-    const response = await api.get<ProfissoesPorDeficiencia>(`analises/pcd/`, {
+    const response = await api.get<DistribuicaoVinculoCBO>(`analises/rais/vinculo-cbo/`, {
       params: {
         ...(ano !== undefined && { ano }),
         ...(mes !== undefined && { mes }),
@@ -175,9 +123,10 @@ export const getProfissoesPorDeficiencia = async ({ano, mes, agregacao, page, pa
     throw error;
   }
 };
-export const getTotalMovimentacao = async ({ ano, mes, agregacao, detalhes, pagination }: QueryParams): Promise<AnoTotalMovimentacoes> => {
+
+export const getTotalMovimentacaoRais = async ({ ano, mes, agregacao, detalhes, pagination }: QueryParams): Promise<AnoTotalMovimentacoesRais> => {
   try {
-    const response = await api.get<AnoTotalMovimentacoes>(`analises/movimentacoes/`, {
+    const response = await api.get<AnoTotalMovimentacoesRais>(`analises/rais/total-movimentacoes/`, {
       params: {
         ...(ano !== undefined && { ano }),
         ...(mes !== undefined && { mes }),
@@ -188,27 +137,6 @@ export const getTotalMovimentacao = async ({ ano, mes, agregacao, detalhes, pagi
     });
 
     return response.data; 
-  } catch (error) {
-    throw error;
-  }
-};
-export const getMovimentacoes = async ({ ano, mes, agregacao, detalhes, page, page_size, pagination }: QueryParams): Promise<Movimentacoes> => {
-  
-  
-  try {
-    const response = await api.get<Movimentacoes>(`movimentacoes/`, {
-      params: {
-        ...(ano !== undefined && { ano }),
-        ...(mes !== undefined && { mes }),
-        agregacao,
-        detalhes: detalhes ?? true, // para retornar os detalhes das movimentações 
-        page,
-        page_size,
-        pagination
-      },
-    });
-
-    return response.data
   } catch (error) {
     throw error;
   }

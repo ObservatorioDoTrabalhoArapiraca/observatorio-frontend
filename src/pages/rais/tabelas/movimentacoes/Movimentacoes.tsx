@@ -1,14 +1,14 @@
 import { DataTable } from "@/components/table/DataTable";
 import { Spinner } from "@/components/ui/spinner";
-import { getMovimentacoes } from "@/core/services/cagedArapiracaServices";
+import { getTotalMovimentacao } from "@/core/services/raisArapiracaServices";
 import { columns } from "@/pages/rais/tabelas/movimentacoes/columns";
-import { Movimentacao } from "@/types";
+import { AnoTotalMovimentacoesRais, Movimentacao } from "@/types";
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { toast } from "sonner";
 // OBS: essa tabela for removida do frontend por não ser necessária segundo o Levi. Eu mantive o código pois caso seja necessário refazer a tabela de movimentações já tem pronta aqui.
 export default function MovimentacoesTablePage() {
- const [dados, setDados] = useState<Movimentacao[]>([])
+ const [dados, setDados] = useState<AnoTotalMovimentacoesRais>([])
   
   const [loading, setLoading] = useState<boolean>(true);
   const { category } = useParams()
@@ -79,7 +79,7 @@ export default function MovimentacoesTablePage() {
        setLoading(true);
        setError(null);
        try {
-         const dados = await getMovimentacoes({
+         const dados = await getTotalMovimentacao({
             ...(ano !== null && { ano }),
             ...(mes !== null && { mes }),
             agregacao: isAnual ? "anual" : "mensal",

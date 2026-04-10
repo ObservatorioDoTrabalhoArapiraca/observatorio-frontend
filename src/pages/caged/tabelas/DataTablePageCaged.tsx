@@ -1,6 +1,5 @@
 import TabsComponent from "@/components/table/TabsComponent"
-import { tableCategories } from "@/core/services/navLinks"
-import TotalMovimentacoesAno from "@/pages/caged/tabelas/totalmovimentacoesano/TotalMovimentacoesAno"
+import { tableCategoriesCaged } from "@/core/services/navLinks"
 import SalarioPorEscolaridade from "@/pages/caged/tabelas/escolaridade/SalarioPorEscolaridade"
 import DistribuicaoFaixaEtaria from "@/pages/caged/tabelas/faixaetaria/DistribuicaoFaixaEtaria"
 import ProfissoesPorDeficiencia from "@/pages/caged/tabelas/pcd/ProfissoesPorDeficiencia"
@@ -9,6 +8,7 @@ import SalarioPorProfissao from "@/pages/caged/tabelas/salarioprofissao/SalarioP
 import SaldoPorOcupacao from "@/pages/caged/tabelas/saldoocupacao/SaldoPorOcupacao"
 import Setor from "@/pages/caged/tabelas/setor/Setor"
 import DistribuicaoPorSexo from "@/pages/caged/tabelas/sexo/DistribuicaoPorSexo"
+import TotalMovimentacoesAno from "@/pages/caged/tabelas/totalmovimentacoesano/TotalMovimentacoesAno"
 
 
 
@@ -16,13 +16,11 @@ export default function DataTablePageCaged() {
   return (
     <TabsComponent
       cardTitle="Tabelas"
-      categories={tableCategories}
+      categories={tableCategoriesCaged}
       // type="caged"
       defaultTab="escolaridade"
       navigateTo="caged/tabelas/"
       tabsContent={[
-    
-
         // { value: "movimentacoes", content: <Movimentacoes /> },
         { value: "totalmovimentacoesano", content: <TotalMovimentacoesAno /> },
         { value: "escolaridade", content: <SalarioPorEscolaridade /> },
