@@ -1,8 +1,9 @@
 import { CardTitle } from "@/components/ui/card";
-import Charts from "@/pages/caged/graficos/Charts";
+import Charts from "@/pages/rais/graficos/Charts";
 
 
-export default function ChartsPage() {
+
+export default function ChartsPageRais() {
 
   return (
     <div className="w-full items-center p-4 flex flex-col justify-center text-lg">

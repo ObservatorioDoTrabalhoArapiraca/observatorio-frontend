@@ -1,5 +1,5 @@
 import api from "@/core/services/api";
-import { AnoTotalMovimentacoes, AnoTotalMovimentacoesRais, DistribuicaoPorEscolaridade, DistribuicaoPorFaixaEtaria,  DistribuicaoPorSetor, DistribuicaoPorSexo, DistribuicaoVinculoCBO, SalarioPorProfissao } from "@/types";
+import { AnoTotalMovimentacoesRais, DistribuicaoPorEscolaridade, DistribuicaoPorFaixaEtaria, DistribuicaoPorSetor, DistribuicaoPorSexo, DistribuicaoVinculoCBO, SalarioPorProfissao } from "@/types";
 
 export type QueryParams = {
   ano?: number;

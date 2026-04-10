@@ -51,70 +51,8 @@ export const escolaridadeChartConfig: ChartConfig = {
   },
 };
 
-export const deficienciaChartConfig: ChartConfig = {
-  nao_deficiente: {
-    label: "Sem Deficiência",
-    color: "#ef4444",
-  },
-  fisica: {
-    label: "Física",
-    color: "#f97316",
-  },
-  auditiva: {
-    label: "Auditiva",
-    color: "#eab308",
-  },
-  visual: {
-    label: "Visual",
-    color: "#84cc16",
-  },
-  intelectual: {
-    label: "Intelectual",
-    color: "#22c55e",
-  },
-  multipla: {
-    label: "Múltipla",
-    color: "#14b8a6",
-  },
-  rehabilitado: {
-    label: "Reabilitado",
-    color: "#3b82f6",
-  },
-  nao_identificado: {
-    label: "Não Identificado",
-    color: "#8b5cf6",
-  },
-};
-export const racaCorChartConfig: ChartConfig = {
-  branca: {
-    label: "Branca",
-    color: "#FF9E92",
-  },
-  preta: {
-    label: "Preta",
-    color: "#442A21",
-  },
-  parda: {
-    label: "Parda",
-    color: "#986C49",
-  },
-  amarela: {
-    label: "Amarela",
-    color: "#A3721C",
-  },
-  indigena: {
-    label: "Indígena",
-    color: "#7C0A1D",
-  },
-  nao_informada: {
-    label: "Não Informada",
-    color: "#14b8a6",
-  },
-  nao_identificado: {
-    label: "Não Identificado",
-    color: "#8b5cf6",
-  },
-};
+
+
 export const setorChartConfig: ChartConfig = {
   agropecuaria: {
     label: "AGROPECUÁRIA",

@@ -36,8 +36,8 @@ export default function SetorChart() {
           })
           const rawData = Array.isArray(response) ? response : (response?.results || []);
 
-console.log("Raw Data Setores:", rawData); // <--- DEBUGE AQUI
-setDados(rawData);
+
+      setDados(rawData);
         } catch (error) {
           console.error("❌ Erro ao buscar dados:", error)
           toast.error("Erro ao buscar dados")

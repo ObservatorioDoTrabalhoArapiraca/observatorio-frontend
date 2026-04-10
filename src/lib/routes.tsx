@@ -1,10 +1,12 @@
 import Help from "@/pages/ajuda/Ajuda"
-import ChartsPage from "@/pages/caged/graficos/ChartsPage"
+import ChartsPageCaged from "@/pages/caged/graficos/ChartsPageCaged"
+
 import DataTablePageCaged from "@/pages/caged/tabelas/DataTablePageCaged"
 
 import Home from "@/pages/Home"
 
 import Projeto from "@/pages/Project"
+import ChartsPageRais from "@/pages/rais/graficos/ChartsPageRais"
 import DataTablePageRais from "@/pages/rais/tabelas/DataTablePageRais"
 import RelatoriosPage from "@/pages/RelatoriosPage"
 
@@ -23,14 +25,14 @@ export const routePaths: RoutePath[] = [
   {
     path: "/caged/graficos/:category",
     element: (
-        <ChartsPage/>
+        <ChartsPageCaged/>
     ),
   },
   { path: "/rais/tabelas/:category", element: <DataTablePageRais /> },
   {
     path: "/rais/graficos/:category",
     element: (
-        <ChartsPage/>
+        <ChartsPageRais/>
     ),
   },
   {
