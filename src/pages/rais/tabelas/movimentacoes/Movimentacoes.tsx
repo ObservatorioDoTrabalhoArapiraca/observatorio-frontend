@@ -1,14 +1,14 @@
 import { DataTable } from "@/components/table/DataTable";
 import { Spinner } from "@/components/ui/spinner";
-import { getTotalMovimentacao } from "@/core/services/raisArapiracaServices";
+import { getTotalMovimentacaoRais } from "@/core/services/raisArapiracaServices";
 import { columns } from "@/pages/rais/tabelas/movimentacoes/columns";
-import { AnoTotalMovimentacoesRais, Movimentacao } from "@/types";
+import { AnoTotalMovimentacoesRais } from "@/types";
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { toast } from "sonner";
 // OBS: essa tabela for removida do frontend por não ser necessária segundo o Levi. Eu mantive o código pois caso seja necessário refazer a tabela de movimentações já tem pronta aqui.
 export default function MovimentacoesTablePage() {
- const [dados, setDados] = useState<AnoTotalMovimentacoesRais>([])
+ const [dados, setDados] = useState<AnoTotalMovimentacoesRais | null>(null)
   
   const [loading, setLoading] = useState<boolean>(true);
   const { category } = useParams()
@@ -79,7 +79,7 @@ export default function MovimentacoesTablePage() {
        setLoading(true);
        setError(null);
        try {
-         const dados = await getTotalMovimentacao({
+         const dados = await getTotalMovimentacaoRais({
             ...(ano !== null && { ano }),
             ...(mes !== null && { mes }),
             agregacao: isAnual ? "anual" : "mensal",
@@ -106,7 +106,19 @@ export default function MovimentacoesTablePage() {
 
   return (
     <div className="container mx-auto p-4">
-      <DataTable columns={columns} data={dados}
+      <DataTable columns={columns} data={dados ? [
+              {
+                total_movimentacoes: dados.total_movimentacoes,
+                filtros_aplicados: {
+                    ano: dados.filtros_aplicados?.ano,
+                    mes: dados.filtros_aplicados?.mes,
+                    agregacao: dados.filtros_aplicados?.agregacao as "anual" | "mensal",
+                  },
+                  paginacao: null,
+                  resultados: null
+                
+              }
+            ] : []}
       filters={{
         ano,
         mes,

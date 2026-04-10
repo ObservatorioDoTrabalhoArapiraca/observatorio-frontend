@@ -1,56 +1,39 @@
-import { Movimentacao } from "@/types"
-import { ColumnDef } from "@tanstack/react-table"
+import { AnoTotalMovimentacoesRais } from "@/types";
+import { ColumnDef } from "@tanstack/react-table";
 
 
-export const columns: ColumnDef<Movimentacao>[] = [
+export const columns: ColumnDef<AnoTotalMovimentacoesRais>[] = [
   {
-    accessorKey: "competencia_movimentacao",
-    header: "Competência",
-    cell: ({ row }) => row.original.competencia_movimentacao.toString().slice(4, 6) + "/" + row.original.competencia_movimentacao.toString().slice(0, 4),
+    accessorKey: "ano",
+    header: "Ano",
+    cell: ({ row }) => {
+      const ano = row.original.filtros_aplicados?.ano 
+      ?? row.original.filtros_aplicados?.ano 
+      ?? "Todos os anos";
+    return <div>{ano}</div>;
+  
+    },
   },
   {
-    accessorKey: "municipio_descricao",
-    header: "Município",
-    cell: ({ row }) => row.original.municipio_descricao,
+    accessorKey: "mes",
+    header: "Mês",
+    cell: ({ row }) => {
+      const mes = row.original.filtros_aplicados?.mes 
+      ?? row.original.filtros_aplicados?.mes 
+      ?? "Todos os meses";
+    return <div>{mes}</div>;
+  
+    },
   },
   {
-    accessorKey: "cbo2002_ocupacao_descricao",
-    header: "Ocupação (CBO2002)",
-    cell: ({ row }) => row.original.cbo2002_ocupacao_descricao,
-  },
-  {
-    accessorKey: "salario",
-    header: "Salário",
-    cell: ({ row }) => `R$ ${parseFloat(row.original.salario).toFixed(2)}`,
-  },
-  {
-    accessorKey: "grau_instrucao_descricao",
-    header: "Escolaridade",
-    cell: ({ row }) => row.original.grau_instrucao_descricao,
-  },
-  {
-    accessorKey: "raca_cor_descricao",
-    header: "Raça/Cor",
-    cell: ({ row }) => row.original.raca_cor_descricao,
-  },
-  {
-    accessorKey: "sexo_descricao",
-    header: "Sexo",
-    cell: ({ row }) => <p>{row.original.sexo_descricao === "Homem" ? "Masculino" : "Feminino"}</p>
-  },
-  {
-    accessorKey: "tipo_deficiencia_descricao",
-    header: "Tipo Deficiência",
-    cell: ({ row }) => <p>{row.original.tipo_deficiencia_descricao === "Intelectual (Mental)" ? "Intelectual" : row.original.tipo_deficiencia_descricao}</p>
-  },
-  {
-    accessorKey: "idade",
-    header: "Idade",
-    cell: ({ row }) => row.original.idade,
-  },
-  {
-    accessorKey: "salario",
-    header: "Salário",
-    cell: ({ row }) => `R$ ${parseFloat(row.original.salario).toFixed(2)}`,
+    accessorKey: "total_movimentacoes",
+    header: "Total Movimentacoes",
+    cell: ({ row }) => {
+      return (
+        <div>
+         {row.original.total_movimentacoes}
+        </div>
+      )
+    },
   },
 ]
