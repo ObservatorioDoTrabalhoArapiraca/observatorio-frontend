@@ -1,6 +1,6 @@
 
 import { ChartDataItem } from "@/pages/rais/graficos/components/BarChartCard";
-import { Deficiencia, Escolaridade, FaixaEtaria, Profissao, RacaCor, SaldoOcupcacao, Setor, Sexo } from "@/types";
+import { Deficiencia, Escolaridade, FaixaEtaria, GrauInstrucaoRais, Profissao, RacaCor, SaldoOcupcacao, Setor, Sexo } from "@/types";
 
 // Transformador genérico para dados com categoria
 interface TransformOptions<T> {
@@ -145,6 +145,20 @@ export function transformSaldoOcupacaoData(dados: SaldoOcupcacao[], isAnual: boo
   });
 }
 
+export function transformEscolaridadeRaisData(
+  dados: GrauInstrucaoRais[],
+  isAnual: boolean
+): ChartDataItem[] {
+  return transformToChartData({
+    dados,
+    isAnual,
+    getCategoriaKey: (item) => 
+      normalizeToKey(item.grau_instrucao_descricao),
+    getCategoriaValue: (item) => item.total_movimentacoes,
+    getAno: (item) => item.ano,
+    getMes: (item) => item.mes,
+  });
+}
 export function transformEscolaridadeData(
   dados: Escolaridade[],
   isAnual: boolean

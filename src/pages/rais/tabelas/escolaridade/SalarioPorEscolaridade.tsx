@@ -1,9 +1,9 @@
 import { DataTable } from "@/components/table/DataTable"
 import { TableSkeleton } from "@/components/table/TableSkeleton"
 import { Spinner } from "@/components/ui/spinner"
-import { getDistribuicaoPorEscolaridade } from "@/core/services/raisArapiracaServices"
+import { getDistribuicaoPorGrauInstrucao } from "@/core/services/raisArapiracaServices"
 import { columns } from "@/pages/rais/tabelas/escolaridade/columns"
-import { DistribuicaoPorEscolaridade, Escolaridade } from "@/types"
+import { DistribuicaoPorGrauInstrucaoRais, GrauInstrucaoRais } from "@/types"
 import { PaginationState } from "@tanstack/react-table"
 
 import { useEffect, useState } from "react"
@@ -11,7 +11,7 @@ import { useParams, useSearchParams } from "react-router-dom"
 import { toast } from "sonner"
 
 export default function TablePage() {
-  const [dados, setDados] = useState<DistribuicaoPorEscolaridade | null>(null)
+  const [dados, setDados] = useState<DistribuicaoPorGrauInstrucaoRais | null>(null)
   const { category } = useParams()
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
@@ -85,7 +85,7 @@ const parseAnoFromUrl = (): number | null => {
     const fetchData = async () => {
       try {
        
-        const response = await getDistribuicaoPorEscolaridade({
+        const response = await getDistribuicaoPorGrauInstrucao({
           ...(ano !== null && { ano }),
           ...(mes !== null && { mes }),
           agregacao: isAnual ? "anual" : "mensal",
@@ -120,7 +120,7 @@ const parseAnoFromUrl = (): number | null => {
         // Renderiza o esqueleto enquanto carrega
         <TableSkeleton rows={10} columns={3} />
       ) : (
-        <DataTable<Escolaridade, Escolaridade>
+        <DataTable<GrauInstrucaoRais, GrauInstrucaoRais>
           data={dados?.results || []}
           columns={columns}
           paginationState={pagination}
@@ -135,8 +135,8 @@ const parseAnoFromUrl = (): number | null => {
             onMesChange: handleMesChange,
             onAgregacaoChange: handleAgregacaoChange,
           }}
-          searchColumn="escolaridade_descricao"
-          searchPlaceholder="Pesquisar por escolaridade..."
+          searchColumn="grau_instrucao_descricao"
+          searchPlaceholder="Pesquisar por grau de instrução..."
         />
       )}
     </div>

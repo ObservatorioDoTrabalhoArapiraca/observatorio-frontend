@@ -1,9 +1,9 @@
 
 import { capitalizeFirstLetter } from "@/Utils/capitalizeFirstLettrer"
-import { Escolaridade } from "@/types"
+import { GrauInstrucaoRais } from "@/types"
 import { ColumnDef } from "@tanstack/react-table"
 
-export const columns: ColumnDef<Escolaridade>[] = [
+export const columns: ColumnDef<GrauInstrucaoRais>[] = [
   {
     accessorKey: "ano",
     header: ({ column }) => {
@@ -43,7 +43,7 @@ export const columns: ColumnDef<Escolaridade>[] = [
     },
   },
   {
-    accessorKey: "escolaridade_descricao",
+    accessorKey: "grau_instrucao_descricao",
     header: ({ column }) => {
       return (
         <div className="font-bold ">
@@ -54,7 +54,7 @@ export const columns: ColumnDef<Escolaridade>[] = [
     cell: ({ row }) => {
       return (
         <div>
-          {row.original.escolaridade_descricao}
+          {row.original.grau_instrucao_descricao}
         </div>
       )
     },

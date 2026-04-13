@@ -15,6 +15,23 @@ export interface DistribuicaoPorEscolaridade {
   previous: string | null,
   results: Escolaridade[]
 }
+export interface GrauInstrucaoRais {
+  ano: number
+  grau_instrucao_codigo?: string
+  grau_instrucao_descricao: string
+  mes: number
+  percentual: string
+  total_movimentacoes: number
+}
+export interface DistribuicaoPorGrauInstrucaoRais {
+  count: number,
+  total_pages: number,
+  current_page: number,
+  page_size: number,
+  next: string | null,
+  previous: string | null,
+  results: GrauInstrucaoRais[]
+}
 
 export interface RacaCor {
   ano: number

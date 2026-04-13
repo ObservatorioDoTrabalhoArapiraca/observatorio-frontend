@@ -38,7 +38,6 @@ export default function ProfissaoChart() {
           })
           setDados(response as unknown as Profissao[])
         } catch (error) {
-          console.error("❌ Erro ao buscar dados:", error)
           toast.error("Erro ao buscar dados")
         setError("Erro ao buscar dados")
       } finally {
@@ -94,7 +93,7 @@ dynamicKeys.forEach((key, index) => {
               <SelectContent>
               {
                   ["1","3","5","10"].map((n) => (
-                    <SelectItem value={n}>{n}</SelectItem>
+                    <SelectItem key={n} value={n}>{n}</SelectItem>
                   ))
                 }
               </SelectContent>

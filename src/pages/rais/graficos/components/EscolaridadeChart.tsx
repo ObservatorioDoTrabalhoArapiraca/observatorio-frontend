@@ -1,16 +1,16 @@
 import { AgregacaoFilter } from "@/components/AgregacaoFilter";
-import { getDistribuicaoPorEscolaridade } from "@/core/services/raisArapiracaServices";
+import { getDistribuicaoPorGrauInstrucao } from "@/core/services/raisArapiracaServices";
 import { useAgregacaoFilter } from "@/hooks/useAgregacaoFilter";
 import { BarChartCard } from "@/pages/rais/graficos/components/BarChartCard";
 import { escolaridadeChartConfig, } from "@/pages/rais/graficos/components/chartConfigData";
-import { transformEscolaridadeData } from "@/pages/rais/graficos/components/transformToChartData";
-import { Escolaridade } from "@/types";
+import { transformEscolaridadeRaisData } from "@/pages/rais/graficos/components/transformToChartData";
+import { GrauInstrucaoRais } from "@/types";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 
 export default function EscolaridadeChart() {
-  const [dados, setDados] = useState<Escolaridade[]>([])
+  const [dados, setDados] = useState<GrauInstrucaoRais[]>([])
 
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
@@ -28,7 +28,7 @@ export default function EscolaridadeChart() {
         setLoading(true);
         setError(null);
         try { 
-          const response = await getDistribuicaoPorEscolaridade({
+          const response = await getDistribuicaoPorGrauInstrucao({
             ...(!isAnual && ano !== null && { ano }),
             agregacao, pagination: false
           })
@@ -52,7 +52,7 @@ toast.error("Erro ao buscar dados de escolaridade")
 
 
   
-  const chartData = transformEscolaridadeData(dados, isAnual);
+  const chartData = transformEscolaridadeRaisData(dados, isAnual);
   const dataKeys = Object.keys(escolaridadeChartConfig);
   return (
     <div className="flex flex-col justify-between">
