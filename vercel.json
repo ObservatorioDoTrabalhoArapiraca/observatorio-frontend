@@ -2,11 +2,11 @@
   "rewrites": [
   {
     "source": "/api/movimentacoes",
-    "destination": "https://observatorio-fast-api.vercel.app/api/movimentacoes"
+    "destination": "https://observatorio-backend-fast-api.vercel.app/api/movimentacoes"
   },
   {
     "source": "/api/:path*",
-    "destination": "https://observatorio-fast-api.vercel.app/api/:path*"
+    "destination": "https://observatorio-backend-fast-api.vercel.app/api/:path*"
   }
 ]
 }
