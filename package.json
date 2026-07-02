@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "dev:local": "VITE_API_URL=http://localhost:8000/api/ vite",
-    "dev:railway": "VITE_API_URL=https://observatorio-backend-production.up.railway.app/api/ vite",
+    "dev:fastapi": "VITE_API_URL=https://observatorio-backend-fast-api.vercel.app/api/ vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
