@@ -68,7 +68,7 @@ export function transformSexoData(dados: Sexo[], isAnual: boolean): ChartDataIte
     isAnual,
     getCategoriaKey: (item) => 
       normalizeToKey(item.sexo_descricao),
-    getCategoriaValue: (item) => item.total_movimentacoes,
+    getCategoriaValue: (item) => item.saldo_movimentacoes,
     getAno: (item) => item.ano,
     getMes: (item) => item.mes,
   });
@@ -79,7 +79,7 @@ export function transformSetorData(dados: Setor[], isAnual: boolean): ChartDataI
     isAnual,
     getCategoriaKey: (item) => 
       normalizeToKey(item.setor_denominacao),
-    getCategoriaValue: (item) => item.total_movimentacoes,
+    getCategoriaValue: (item) => item.saldo_movimentacoes,
     getAno: (item) => item.ano,
     getMes: (item) => item.mes,
   });
@@ -88,7 +88,7 @@ export function transformProfissaoData(dados: Profissao[], isAnual: boolean, top
 
   const totalPorProfissao = dados.reduce((acc, item) => {
     const key = normalizeToKey(item.cbo_descricao);
-    acc[key] = (acc[key] || 0) + item.total_movimentacoes;
+    acc[key] = (acc[key] || 0) + item.saldo_movimentacoes;
     return acc;
   }, {} as Record<string, number>);
 
@@ -109,7 +109,7 @@ export function transformProfissaoData(dados: Profissao[], isAnual: boolean, top
     getCategoriaKey: (item) => 
       normalizeToKey(item.cbo_descricao),
       
-    getCategoriaValue: (item) => item.total_movimentacoes,
+    getCategoriaValue: (item) => item.saldo_movimentacoes,
     getAno: (item) => item.ano,
     getMes: (item) => item.mes,
   });
@@ -154,7 +154,7 @@ export function transformEscolaridadeData(
     isAnual,
     getCategoriaKey: (item) => 
       normalizeToKey(item.escolaridade_descricao),
-    getCategoriaValue: (item) => item.total_movimentacoes,
+    getCategoriaValue: (item) => item.saldo_movimentacoes,
     getAno: (item) => item.ano,
     getMes: (item) => item.mes,
   });
@@ -168,7 +168,7 @@ export function transformDeficienciaData(
     isAnual,
     getCategoriaKey: (item) => 
       normalizeToKey(item.tipo_deficiencia_descricao),
-    getCategoriaValue: (item) => item.total_movimentacoes,
+    getCategoriaValue: (item) => item.saldo_movimentacoes,
     getAno: (item) => item.ano,
     getMes: (item) => item.mes,
   });
@@ -182,7 +182,7 @@ export function transformRacaCorData(
     isAnual,
     getCategoriaKey: (item) => 
       normalizeToKey(item.raca_cor_descricao),
-    getCategoriaValue: (item) => item.total_movimentacoes,
+    getCategoriaValue: (item) => item.saldo_movimentacoes,
     getAno: (item) => item.ano,
     getMes: (item) => item.mes,
   });
@@ -197,7 +197,7 @@ export function transformFaixaEtariaData(
     isAnual,
     getCategoriaKey: (item) =>
       normalizeToKey(item.faixa_etaria),
-    getCategoriaValue: (item) => item.total_movimentacoes,
+    getCategoriaValue: (item) => item.saldo_movimentacoes,
     getAno: (item) => item.ano,
     getMes: (item) => item.mes ?? 1,
   });
