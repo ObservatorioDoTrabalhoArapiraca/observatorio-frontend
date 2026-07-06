@@ -57,6 +57,57 @@ export const columns: ColumnDef<Profissao>[] = [
     },
   },
   {
+    accessorKey: "saldo_movimentacoes",
+    header: ({ column }) => {
+      return (
+        <div className="font-bold ">
+          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
+        </div>
+      )
+    },
+    cell: ({ row }) => {
+      return (
+        <div>
+          {row.original.saldo_movimentacoes}
+        </div>
+      )
+    },
+  },
+  {
+    accessorKey: "total_admissoes",
+    header: ({ column }) => {
+      return (
+        <div className="font-bold ">
+          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
+        </div>
+      )
+    },
+    cell: ({ row }) => {
+      return (
+        <div>
+          {row.original.total_admissoes}
+        </div>
+      )
+    },
+  },
+  {
+    accessorKey: "total_demissoes",
+    header: ({ column }) => {
+      return (
+        <div className="font-bold ">
+          {capitalizeFirstLetter(column.id).replace(/_/g, " ")}
+        </div>
+      )
+    },
+    cell: ({ row }) => {
+      return (
+        <div>
+          {row.original.total_demissoes}
+        </div>
+      )
+    },
+  },
+  {
     accessorKey: "total_movimentacoes",
     header: "Total Movimentações",
     cell: ({ row }) => {

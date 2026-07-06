@@ -5,6 +5,9 @@ export interface Escolaridade {
   mes: number
   percentual: string
   total_movimentacoes: number
+  total_admissoes: number
+  total_demissoes: number
+  saldo_movimentacoes: number
 }
 export interface DistribuicaoPorEscolaridade {
   count: number,
@@ -21,6 +24,9 @@ export interface GrauInstrucaoRais {
   grau_instrucao_descricao: string
   mes: number
   percentual: string
+  total_admissoes: number
+  total_demissoes: number
+  saldo_movimentacoes: number
   total_movimentacoes: number
 }
 export interface DistribuicaoPorGrauInstrucaoRais {
@@ -39,6 +45,9 @@ export interface RacaCor {
   raca_cor_descricao: string
   mes: number
   percentual: string
+  total_admissoes: number
+  total_demissoes: number
+  saldo_movimentacoes: number
   total_movimentacoes: number
 }
 export interface DistribuicaoPorRacaCor {
@@ -56,6 +65,9 @@ export interface Profissao {
   cbo_descricao: string
   mes: number
   salario_medio: number
+  total_admissoes: number
+  total_demissoes: number
+  saldo_movimentacoes: number
   total_movimentacoes: number
   mov_low: number,
   mov_zero: number,
@@ -98,6 +110,9 @@ export interface Sexo {
   sexo_descricao: string
   total_movimentacoes: number
   mes: number
+  total_admissoes: number
+  total_demissoes: number
+  saldo_movimentacoes: number
   percentual: string
 }
 export interface DistribuicaoPorSexo {
@@ -115,6 +130,9 @@ export interface Setor {
   setor_denominacao: string
   total_movimentacoes: number
   mes: number
+  total_admissoes: number
+  total_demissoes: number
+  saldo_movimentacoes: number
   percentual: string
 }
 export interface DistribuicaoPorSetor {
@@ -132,6 +150,9 @@ export interface FaixaEtaria {
   faixa_etaria: string
   percentual: string
   mes: number
+  total_admissoes: number
+  total_demissoes: number
+  saldo_movimentacoes: number
   total_movimentacoes: number
 }
 export interface DistribuicaoPorFaixaEtaria {
@@ -256,6 +277,9 @@ export interface Deficiencia {
   tipo_deficiencia: string
   tipo_deficiencia_descricao: string
   percentual: string
+  total_admissoes: number
+  total_demissoes: number
+  saldo_movimentacoes: number
   total_movimentacoes: number
 }
 export interface ProfissoesPorDeficiencia {
