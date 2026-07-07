@@ -64,7 +64,7 @@ toast.error("Erro ao buscar dados de escolaridade")
             onAnoChange={setAno}
             />
           <BarChartCard
-            title="Distribuição por Escolaridade"
+            title="Saldo por Escolaridade"
             description={isAnual ? "Dados anuais" : `Dados mensais de ${ano}`}
             data={chartData}
             config={escolaridadeChartConfig}

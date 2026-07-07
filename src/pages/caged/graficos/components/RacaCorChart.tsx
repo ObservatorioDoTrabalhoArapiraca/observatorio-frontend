@@ -59,7 +59,7 @@ export default function RacaCorChart() {
             onAnoChange={setAno}
             />
           <BarChartCard
-            title="Distribuição por Raça/Cor"
+            title="Saldo por Raça/Cor"
             description={isAnual ? "Dados anuais" : `Dados mensais de ${ano}`}
             data={chartData}
             config={racaCorChartConfig}

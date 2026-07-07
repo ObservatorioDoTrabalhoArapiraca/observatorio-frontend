@@ -79,7 +79,7 @@ dynamicKeys.forEach((key, index) => {
             onAnoChange={setAno}
             />
           <BarChartCard
-            title="Distribuição por Deficiencia"
+            title="Saldo por Deficiencia"
             description={isAnual ? "Dados anuais" : `Dados mensais de ${ano}`}
             data={chartData}
             config={dynamicConfig}

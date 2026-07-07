@@ -104,7 +104,7 @@ dynamicKeys.forEach((key, index) => {
      
       </div>
           <BarChartCard
-            title="Distribuição por Profissão*"
+            title="Saldo por Profissão*"
             description={isAnual ? "Dados anuais" : `Dados mensais de ${ano}`}
             data={chartData}
             config={dynamicConfig}

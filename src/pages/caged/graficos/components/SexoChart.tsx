@@ -60,7 +60,7 @@ export default function SexoChart() {
             onAnoChange={setAno}
             />
           <BarChartCard
-            title="Distribuição por Sexo"
+            title="Saldo por Sexo"
             description={isAnual ? "Dados anuais" : `Dados mensais de ${ano}`}
             data={chartData}
             config={sexoChartConfig}

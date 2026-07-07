@@ -4,6 +4,7 @@ export interface Escolaridade {
   escolaridade_descricao: string
   mes: number
   percentual: string
+  salario: number
   total_movimentacoes: number
   total_admissoes: number
   total_demissoes: number

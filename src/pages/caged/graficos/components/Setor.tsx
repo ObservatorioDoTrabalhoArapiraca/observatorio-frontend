@@ -69,7 +69,7 @@ export default function SetorChart() {
             onAnoChange={setAno}
             />
           <BarChartCard
-            title="Distribuição por Setor*"
+            title="Saldo por Setor*"
             description={isAnual ? "Dados anuais" : `Dados mensais de ${ano}`}
             data={chartData}
             config={setorChartConfig}

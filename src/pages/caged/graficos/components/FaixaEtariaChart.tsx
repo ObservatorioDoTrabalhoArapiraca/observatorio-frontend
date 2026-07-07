@@ -90,7 +90,7 @@ export default function FaixaEtariaChart() {
             onAnoChange={setAno}
             />
           <BarChartCard
-            title="Distribuição por Faixa Etária"
+            title="Saldo por Faixa Etária"
             description={isAnual ? "Dados anuais" : `Dados mensais de ${ano}`}
             data={chartData}
             config={faixaEtariaChartConfig}

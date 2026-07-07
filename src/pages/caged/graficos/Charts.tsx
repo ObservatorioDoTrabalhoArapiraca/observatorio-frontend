@@ -12,11 +12,11 @@ export default function Charts() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full">
-     <SexoChart/>
-     <EscolaridadeChart/>
-     <RacaCorChart/>
-     <FaixaEtariaChart/>
-     <ProfissaoChart/>
+      <SexoChart/>
+      <EscolaridadeChart/>
+      <RacaCorChart/>
+      <FaixaEtariaChart/>
+      <ProfissaoChart/>
       <PcdChart />
       <SaldoOcupacaoChart />
       <SetorChart />
