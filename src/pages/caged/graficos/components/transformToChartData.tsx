@@ -63,25 +63,8 @@ export function transformToChartData<T>(
 // Transformadores específicos para cada tipo de dado
 
 export function transformSexoData(dados: Sexo[], isAnual: boolean): ChartDataItem[] {
-
-  const totalPorOcupacao = dados.reduce((acc, item) => {
-    const key = normalizeToKey(item.sexo_descricao);
-    acc[key] = (acc[key] || 0) + item.saldo_movimentacoes;
-    return acc;
-  }, {} as Record<string, number>);
-
-  const topOcupacoes = Object.entries(totalPorOcupacao)
-    .sort((a, b) => b[1] - a[1])
-    
-    .map(([key]) => key);
-
-  
-    const dadosFiltrados = dados.filter((item) =>
-      topOcupacoes.includes(normalizeToKey(item.sexo_descricao))
-    );
-  
   return transformToChartData({
-    dados: dadosFiltrados,
+    dados,
     isAnual,
     getCategoriaKey: (item) => 
       normalizeToKey(item.sexo_descricao),
