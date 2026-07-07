@@ -1,7 +1,6 @@
 
 import { ChartDataItem } from "@/pages/caged/graficos/components/BarChartCard";
 import { Deficiencia, Escolaridade, FaixaEtaria, Profissao, RacaCor, SaldoOcupcacao, Setor, Sexo } from "@/types";
-
 // Transformador genérico para dados com categoria
 interface TransformOptions<T> {
   dados: T[];
